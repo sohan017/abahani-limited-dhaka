@@ -37,6 +37,7 @@ class CreatePlayersTable extends Migration
             //$table->string('physio_id');
             $table->string('email');
             $table->string('password');
+            $table->rememberToken();
             $table->timestamps();
         });
     }

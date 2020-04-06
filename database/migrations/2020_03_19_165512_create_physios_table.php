@@ -28,6 +28,7 @@ class CreatePhysiosTable extends Migration
             $table->string('national_id_number');
             $table->string('email');
             $table->text('password');
+            $table->rememberToken();
             $table->timestamps();
         });
     }

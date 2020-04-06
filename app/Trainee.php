@@ -2,11 +2,25 @@
 
 namespace App;
 
-use Illuminate\Database\Eloquent\Model;
+use Illuminate\Notifications\Notifiable;
+use Illuminate\Foundation\Auth\User as Authenticatable;
 
-class Trainee extends Model
+class Trainee extends Authenticatable
 {
-    protected $fillable = ["name", "playertype_id", "coach_id", "dob", "img", "address", "city", "state", "country", "nationality", "gender", "hight", "weight", "religion", "national_id_number", "birth_certificet_number", "email", "password", "verification_no", "is_played", "ap_fee"];
+    use Notifiable;
+
+    protected $guard = 'trainee';
+
+    /**
+     * The attributes that should be hidden for arrays.
+     *
+     * @var array
+     */
+    protected $hidden = [
+        'password', 'remember_token',
+    ];
+
+    protected $fillable = ["name", "playertype_id", "coach_id", "dob", "img", "address", "city", "state", "country", "nationality", "gender", "hight", "weight", "religion", "national_id_number", "birth_certificet_number", "email", "password", "is_verified", "is_played", "ap_fee"];
 
     public function playerType()
     {

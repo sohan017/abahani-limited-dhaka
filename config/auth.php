@@ -46,6 +46,30 @@ return [
             'provider' => 'users',
             'hash' => false,
         ],
+        'bidder' => [
+            'driver' => 'session',
+            'provider' => 'bidders',
+        ],
+        'coach' => [
+            'driver' => 'session',
+            'provider' => 'coachs',
+        ],
+        'physio' => [
+            'driver' => 'session',
+            'provider' => 'physios',
+        ],
+        'player' => [
+            'driver' => 'session',
+            'provider' => 'players',
+        ],
+        'subscriber' => [
+            'driver' => 'session',
+            'provider' => 'subscribers',
+        ],
+        'trainee' => [
+            'driver' => 'session',
+            'provider' => 'trainees',
+        ],
     ],
 
     /*
@@ -70,11 +94,30 @@ return [
             'driver' => 'eloquent',
             'model' => App\User::class,
         ],
-
-        // 'users' => [
-        //     'driver' => 'database',
-        //     'table' => 'users',
-        // ],
+        'bidders' => [
+            'driver' => 'eloquent',
+            'model' => App\Bidder::class,
+        ],
+        'coachs' => [
+            'driver' => 'eloquent',
+            'model' => App\Coach::class,
+        ],
+        'physios' => [
+            'driver' => 'eloquent',
+            'model' => App\Physio::class,
+        ],
+        'players' => [
+            'driver' => 'eloquent',
+            'model' => App\Player::class,
+        ],
+        'subscribers' => [
+            'driver' => 'eloquent',
+            'model' => App\Subscriber::class,
+        ],
+        'trainees' => [
+            'driver' => 'eloquent',
+            'model' => App\Trainee::class,
+        ],
     ],
 
     /*
@@ -95,6 +138,42 @@ return [
     'passwords' => [
         'users' => [
             'provider' => 'users',
+            'table' => 'password_resets',
+            'expire' => 60,
+            'throttle' => 60,
+        ],
+        'bidders' => [
+            'provider' => 'bidders',
+            'table' => 'password_resets',
+            'expire' => 60,
+            'throttle' => 60,
+        ],
+        'coachs' => [
+            'provider' => 'coachs',
+            'table' => 'password_resets',
+            'expire' => 60,
+            'throttle' => 60,
+        ],
+        'physios' => [
+            'provider' => 'physios',
+            'table' => 'password_resets',
+            'expire' => 60,
+            'throttle' => 60,
+        ],
+        'Players' => [
+            'provider' => 'Players',
+            'table' => 'password_resets',
+            'expire' => 60,
+            'throttle' => 60,
+        ],
+        'Subscribers' => [
+            'provider' => 'Subscribers',
+            'table' => 'password_resets',
+            'expire' => 60,
+            'throttle' => 60,
+        ],
+        'trainees' => [
+            'provider' => 'trainees',
             'table' => 'password_resets',
             'expire' => 60,
             'throttle' => 60,

@@ -16,9 +16,9 @@ class CreateTraineesTable extends Migration
         Schema::create('trainees', function (Blueprint $table) {
             $table->id();
             $table->string('name', 100);
-            $table->integer('playertype_id');
-            $table->integer('coach_id');
-            $table->text('dob');
+            $table->integer('playertype_id')->nullable();
+            $table->integer('coach_id')->nullable();
+            $table->string('dob');
             $table->text('img');
             $table->text('address');
             $table->string('city');
@@ -29,13 +29,14 @@ class CreateTraineesTable extends Migration
             $table->double('hight', 3,2);;
             $table->string('weight');
             $table->string('religion');
-            $table->string('national_id_number');
-            $table->string('birth_certificet_number');
+            $table->string('national_id_number')->nullable();
+            $table->string('birth_certificet_number')->nullable();
             $table->string('email');
             $table->string('password');
-            $table->text('verification_no');
+            $table->boolean('is_verified')->default(false);
             $table->boolean('is_played')->default(false);
-            $table->string('ap_fee');
+            $table->string('ap_fee')->default("Unpaid");
+            $table->rememberToken();
             $table->timestamps();
         });
     }

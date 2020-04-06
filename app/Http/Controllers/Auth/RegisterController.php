@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
+use App\Subscriber;
+use App\Trainee;
 use App\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
@@ -39,6 +41,8 @@ class RegisterController extends Controller
     public function __construct()
     {
         $this->middleware('guest');
+        $this->middleware('guest:subscriber');
+        $this->middleware('guest:trainee');
     }
 
     /**
@@ -69,5 +73,38 @@ class RegisterController extends Controller
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
         ]);
+    }
+
+
+    public function showSubscriberRegisterForm()
+    {
+        return view('auth.register', ['url' => 'subscriber']);
+    }
+
+    protected function createSubscriber(Request $request)
+    {
+        $this->validator($request->all())->validate();
+        $subscriber = Subscriber::create([
+            'name' => $request['name'],
+            'email' => $request['email'],
+            'password' => Hash::make($request['password']),
+        ]);
+        return redirect()->intended('login/subscriber');
+    }
+
+    public function showTraineeRegisterForm()
+    {
+        return view('auth.register', ['url' => 'trainee']);
+    }
+
+    protected function createTrainee(Request $request)
+    {
+        $this->validator($request->all())->validate();
+        $admin = Trainee::create([
+            'name' => $request['name'],
+            'email' => $request['email'],
+            'password' => Hash::make($request['password']),
+        ]);
+        return redirect()->intended('login/trainee');
     }
 }

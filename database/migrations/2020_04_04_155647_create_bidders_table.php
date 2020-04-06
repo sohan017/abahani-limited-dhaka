@@ -20,6 +20,7 @@ class CreateBiddersTable extends Migration
             $table->string('contact_num');
             $table->string('email');
             $table->text('password');
+            $table->rememberToken();
             $table->timestamps();
         });
     }

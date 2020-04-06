@@ -2,10 +2,24 @@
 
 namespace App;
 
-use Illuminate\Database\Eloquent\Model;
+use Illuminate\Notifications\Notifiable;
+use Illuminate\Foundation\Auth\User as Authenticatable;
 
-class Physio extends Model
+class Physio extends Authenticatable
 {
+    use Notifiable;
+
+    protected $guard = 'physio';
+
+    /**
+     * The attributes that should be hidden for arrays.
+     *
+     * @var array
+     */
+    protected $hidden = [
+        'password', 'remember_token',
+    ];
+
      protected $fillable = ["name","img","address","city","state","country","nationality","gender","religion","national_id_number","birth_certificet_number","email","password"];
 
     public function team()

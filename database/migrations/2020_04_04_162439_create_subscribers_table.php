@@ -20,6 +20,7 @@ class CreateSubscribersTable extends Migration
             $table->string('address');
             $table->string('email');
             $table->text('password');
+            $table->rememberToken();
             $table->timestamps();
         });
     }

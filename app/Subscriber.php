@@ -2,10 +2,24 @@
 
 namespace App;
 
-use Illuminate\Database\Eloquent\Model;
+use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Notifications\Notifiable;
 
-class Subscriber extends Model
+class Subscriber extends Authenticatable
 {
+    use Notifiable;
+
+	protected $guard = 'subscriber';
+
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array
+     */
+    protected $fillable = [
+        'name', 'email', 'password',
+    ];
+
     protected $fillable = ["name", "contact_num", "address", "email", "password"];
 
 	 public function buyTickets()
