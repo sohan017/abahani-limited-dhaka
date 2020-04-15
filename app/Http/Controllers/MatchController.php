@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Match;
 use App\Turnament;
 use App\Matchvenue;
+use App\Team;
+use App\OponentClub;
 
 class MatchController extends Controller
 {
@@ -29,7 +31,9 @@ class MatchController extends Controller
     {
         $turnaments = Turnament::latest()->get();
         $matchvenues = Matchvenue::latest()->get();
-        return view('admin.match.create', compact('turnaments', 'matchvenues'));
+        $teams = Team::latest()->get();
+        $oponentclubs = OponentClub::latest()->get();
+        return view('admin.match.create', compact('turnaments', 'matchvenues','teams','oponentclubs'));
     }
 
     /**
@@ -41,7 +45,7 @@ class MatchController extends Controller
     public function store(Request $request)
     {
         Match::create($request->all());
-        return redirect()->route("match.index");
+        return redirect()->route("admin.match.index");
     }
 
     /**
@@ -54,7 +58,11 @@ class MatchController extends Controller
     {
 
         $match = Match::findOrFail($id);
-        return view('admin.match.show', compact('match'));
+        $turnaments = Turnament::latest()->get();
+        $matchvenues = Matchvenue::latest()->get();
+        $teams = Team::latest()->get();
+        $oponentclubs = Team::latest()->get();
+        return view('admin.match.show', compact('match', 'turnaments', 'matchvenues', 'teams', 'oponentclubs'));
     }
 
     /**
@@ -68,7 +76,9 @@ class MatchController extends Controller
         $match=Match::findOrFail($id);
         $turnaments = Turnament::latest()->get();
         $matchvenues = Matchvenue::latest()->get();
-        return view('admin.match.edit',compact('match','turnaments', 'matchvenues'));
+        $teams = Team::latest()->get();
+        $oponentclubs = Oponentclub::latest()->get();
+        return view('admin.match.edit',compact('match','turnaments', 'matchvenues', 'teams' , 'oponentclubs'));
     }
 
     /**
@@ -81,7 +91,7 @@ class MatchController extends Controller
     public function update(Request $request, $id)
     {
         Match::findOrFail($id)->update($request->all());
-        return redirect()->route('match.index');
+        return redirect()->route('admin.match.index');
     }
 
     /**
@@ -93,6 +103,6 @@ class MatchController extends Controller
     public function destroy($id)
     {
         Match::findOrFail($id)->delete();
-        return redirect()->route("match.index");
+        return redirect()->route("admin.match.index");
     }
 }

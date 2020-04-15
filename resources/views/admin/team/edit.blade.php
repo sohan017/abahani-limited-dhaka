@@ -34,7 +34,7 @@
 				</div>
 				<!-- /.box-header -->
 				<!-- form start -->
-				<form role="form" action="{{ route('team.update',$team->id) }}" method="post">
+				<form role="form" action="{{ route('admin.team.update',$team->id) }}" method="post">
 					@csrf
 					@method('PUT')
 					<div class="box-body">
@@ -44,11 +44,17 @@
 						</div>
 
 						<div class="form-group">
+							<label for="logo"> Logo:</label>
+							<input type="text" class="form-control" id="logo" name="logo" placeholder="Enter Logo" value="{{ $team->logo }}">
+						</div>
+						
+
+						<div class="form-group">
 							<label for="captain"> Team captain:</label>
 							<input type="text" class="form-control" id="captain" name="captain" placeholder="Enter Team captain" value="{{ $team->captain }}">
 						</div>
 
-						<div class="form-group">
+						<!-- <div class="form-group">
 							<label for="win"> Team Win:</label>
 							<input type="text" class="form-control" id="win" name="win" placeholder="Enter Team win " value="{{ $team->win }}">
 						</div>
@@ -76,7 +82,7 @@
 						<div class="form-group">
 							<label for="goal_against"> Team all goal against:</label>
 							<input type="text" class="form-control" id="goal_against" name="goal_against" placeholder="Enter Team all goal against" value="{{ $team->goal_against }}">
-						</div>
+						</div> -->
 
 
 						<div class="form-group">

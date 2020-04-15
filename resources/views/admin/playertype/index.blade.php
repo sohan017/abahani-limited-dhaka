@@ -10,7 +10,7 @@
 
 <section class="content-header">
 	<h1> Show Player type page</h1>
-	<a href="{{ route('playertype.create')}}" class="btn btn-primary">Add new Player Type</a>
+	<a href="{{ route('admin.playertype.create')}}" class="btn btn-primary">Add new Player Type</a>
 	<ol class="breadcrumb">
 		<li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
 		<li><a href="#">Player type</a></li>
@@ -43,9 +43,9 @@
                        
                         <td>
                             <div class="btn-group">
-                                <a href="{{ route('playertype.show', $playertype->id) }}" class="btn btn-default">Show</a>
-                                <a href="{{ route('playertype.edit', $playertype->id) }}" class="btn btn-default">Edit</a>
-                               <form role="form" action="{{ route('playertype.destroy', $playertype->id) }}" method="post">
+                                <a href="{{ route('admin.playertype.show', $playertype->id) }}" class="btn btn-default">Show</a>
+                                <a href="{{ route('admin.playertype.edit', $playertype->id) }}" class="btn btn-default">Edit</a>
+                               <form role="form" action="{{ route('admin.playertype.destroy', $playertype->id) }}" method="post">
                                    @csrf
                                     @method('DELETE ')
                                     <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this Category?');">Delete</button>

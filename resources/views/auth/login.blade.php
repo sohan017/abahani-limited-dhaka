@@ -5,7 +5,7 @@
 
     <div class="login-box">
         <div class="login-logo">
-            <a href="{{ route('home')}}"><b>Admin</b>LTE</a>
+            <a href="{{ route('home')}}"><b>Abahani Limited </b>Dhaka</a>
         </div>
         <!-- /.login-logo -->
         <div class="login-box-body">

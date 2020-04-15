@@ -37,7 +37,7 @@ class CoachController extends Controller
     public function store(Request $request)
     {
         Coach::create($request->all());
-        return redirect()->route("coach.index");
+        return redirect()->route("admin.coach.index");
     }
 
     /**
@@ -74,7 +74,7 @@ class CoachController extends Controller
     public function update(Request $request, $id)
     {
         Coach::findOrFail($id)->update($request->all());
-        return redirect()->route("coach.index");
+        return redirect()->route("admin.coach.index");
     }
 
     /**
@@ -86,6 +86,6 @@ class CoachController extends Controller
     public function destroy($id)
     {
           Coach::findOrFail($id)->delete();
-        return redirect()->route("coach.index");
+        return redirect()->route("admin.coach.index");
     }
 }

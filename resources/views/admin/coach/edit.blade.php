@@ -34,7 +34,7 @@
 				</div>
 				<!-- /.box-header -->
 				<!-- form start -->
-				<form role="form" action="{{ route('coach.update', $coach->id) }}" method="post">
+				<form role="form" action="{{ route('admin.coach.update', $coach->id) }}" method="post">
 					@csrf
 					@method('PUT')
 					<div class="box-body">

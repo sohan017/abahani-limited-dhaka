@@ -10,7 +10,7 @@
 
 <section class="content-header">
 	<h1> Show Chach page</h1>
-	<a href="{{ route('physio.create')}}" class="btn btn-primary">Add new Physio</a>
+	<a href="{{ route('admin.physio.create')}}" class="btn btn-primary">Add new Physio</a>
 	<ol class="breadcrumb">
 		<li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
 		<li><a href="#">Physio</a></li>
@@ -44,9 +44,9 @@
                         <td>{{ $physio->img }}</td>
                         <td>
                             <div class="btn-group">
-                                <a href="{{ route('physio.show', $physio->id) }}" class="btn btn-default">Show</a>
-                                <a href="{{ route('physio.edit', $physio->id) }}" class="btn btn-default">Edit</a>
-                               <form role="form" action="{{ route('physio.destroy', $physio->id) }}" method="post">
+                                <a href="{{ route('admin.physio.show', $physio->id) }}" class="btn btn-default">Show</a>
+                                <a href="{{ route('admin.physio.edit', $physio->id) }}" class="btn btn-default">Edit</a>
+                               <form role="form" action="{{ route('admin.physio.destroy', $physio->id) }}" method="post">
                                    @csrf
                                     @method('DELETE ')
                                     <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this Category?');">Delete</button>

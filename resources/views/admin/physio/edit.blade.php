@@ -34,7 +34,7 @@
 				</div>
 				<!-- /.box-header -->
 				<!-- form start -->
-				<form role="form" action="{{ route('physio.update',$physio->id) }}" method="post">
+				<form role="form" action="{{ route('admin.physio.update',$physio->id) }}" method="post">
 					@csrf
 					@method('PUT')
 					<div class="box-body">
@@ -50,6 +50,12 @@
 
 							<p class="help-block">Example block-level help text here.</p>
 						</div>
+
+						<div class="form-group">
+							<label for="spacalize"> Spacalize:</label>
+							<input type="text" class="form-control" id="spacalize" name="spacalize" placeholder="Enter category spacalize" value="{{ $physio->spacalize }}">
+						</div>
+
 					
 						<div class="form-group">
 							<label for="address"> Address: </label>

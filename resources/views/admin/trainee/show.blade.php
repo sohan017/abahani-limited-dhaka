@@ -10,7 +10,7 @@
 
 <section class="content-header">
 	<h1> Show Trainee page</h1>
-	<a href="{{ route('trainee.create')}}" class="btn btn-primary">Add new Trainee</a>
+	<a href="{{ route('admin.trainee.create')}}" class="btn btn-primary">Add new Trainee</a>
 	<ol class="breadcrumb">
 		<li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
 		<li><a href="#">Trainee</a></li>
@@ -54,9 +54,9 @@
 
                 	
                         	<div class="btn-group">
-                        		<a href="{{ route('trainee.show', $trainee->id) }}" class="btn btn-default">Show</a>
-                        		<a href="{{ route('trainee.edit', $trainee->id) }}" class="btn btn-default">Edit</a>
-                        		<form role="form" action="{{ route('trainee.destroy', $trainee->id) }}" method="post">
+                        		<a href="{{ route('admin.trainee.show', $trainee->id) }}" class="btn btn-default">Show</a>
+                        		<a href="{{ route('admin.trainee.edit', $trainee->id) }}" class="btn btn-default">Edit</a>
+                        		<form role="form" action="{{ route('admin.trainee.destroy', $trainee->id) }}" method="post">
                         			@csrf
                         			@method('DELETE ')
                         			<button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this Category?');">Delete</button>

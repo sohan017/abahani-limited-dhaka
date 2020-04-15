@@ -10,7 +10,7 @@
 
 <section class="content-header">
 	<h1> Show Match venue page</h1>
-	<a href="{{ route('matchvenue.create')}}" class="btn btn-primary">Add new Coach</a>
+	<a href="{{ route('admin.matchvenue.create')}}" class="btn btn-primary">Add new Coach</a>
 	<ol class="breadcrumb">
 		<li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
 		<li><a href="#">Match venue</a></li>
@@ -32,7 +32,7 @@
                     <tr>
                         <th>ID</th>
                         <th>Match venue Name</th>
-                        <th>City</th>
+                        <th>Match Venue City</th>
                         <th>Action</th>
                     </tr>
                 </thead>
@@ -45,9 +45,9 @@
                        
                         <td>
                             <div class="btn-group">
-                                <a href="{{ route('matchvenue.show', $matchvenue->id) }}" class="btn btn-default">Show</a>
-                                <a href="{{ route('matchvenue.edit', $matchvenue->id) }}" class="btn btn-default">Edit</a>
-                               <form role="form" action="{{ route('matchvenue.destroy', $matchvenue->id) }}" method="post">
+                                <a href="{{ route('admin.matchvenue.show', $matchvenue->id) }}" class="btn btn-default">Show</a>
+                                <a href="{{ route('admin.matchvenue.edit', $matchvenue->id) }}" class="btn btn-default">Edit</a>
+                               <form role="form" action="{{ route('admin.matchvenue.destroy', $matchvenue->id) }}" method="post">
                                    @csrf
                                     @method('DELETE ')
                                     <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this Category?');">Delete</button>
@@ -62,7 +62,7 @@
                     <tr>
                         <th>ID</th>
                         <th>Match venue Name</th>
-                        <th>City</th>
+                        <th>Match Venue City</th>
                         <th>Action</th>
                     </tr>
                 </tfoot>

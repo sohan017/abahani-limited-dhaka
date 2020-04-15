@@ -37,7 +37,7 @@ class PlayertypeController extends Controller
     public function store(Request $request)
     {
         Playertype::create($request->all());
-        return redirect()->route("playertype.index");
+        return redirect()->route("admin.playertype.index");
     }
 
     /**
@@ -73,7 +73,7 @@ class PlayertypeController extends Controller
     public function update(Request $request, $id)
     {
         Playertype::findOrFail($id)->update($request->all());
-        return redirect()->route("playertype.index");
+        return redirect()->route("admin.playertype.index");
     }
 
     /**
@@ -85,6 +85,6 @@ class PlayertypeController extends Controller
     public function destroy($id)
     {
         Playertype::findOrFail($id)->delete();
-        return redirect()->route("playertype.index");
+        return redirect()->route("admin.playertype.index");
     }
 }

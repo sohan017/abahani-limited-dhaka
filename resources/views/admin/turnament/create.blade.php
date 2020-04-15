@@ -34,12 +34,20 @@
 				</div>
 				<!-- /.box-header -->
 				<!-- form start -->
-				<form role="form" action="{{ route('turnament.store') }}" method="post">
+				<form role="form" action="{{ route('admin.turnament.store') }}" method="post">
 					@csrf
 					<div class="box-body">
 						<div class="form-group">
 							<label for="name">Turnament Name:</label>
 							<input type="text" class="form-control" id="name" name="name" placeholder="Enter Turnament name">
+						</div>
+						<div class="form-group">
+							<label for="start_date">Turnament start date:</label>
+							<input type="date" class="form-control" id="start_date" name="start_date" placeholder="Enter Turnament start date">
+						</div>
+						<div class="form-group">
+							<label for="end_date">Turnament end date:</label>
+							<input type="date" class="form-control" id="end_date" name="end_date" placeholder="Enter Turnament end date">
 						</div>
 					</div>
 					<!-- /.box-body -->

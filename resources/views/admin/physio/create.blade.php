@@ -34,12 +34,12 @@
 				</div>
 				<!-- /.box-header -->
 				<!-- form start -->
-				<form role="form" action="{{ route('physio.store') }}" method="post">
+				<form role="form" action="{{ route('admin.physio.store') }}" method="post">
 					@csrf
 					<div class="box-body">
 						<div class="form-group">
-							<label for="name"> Name:</label>
-							<input type="text" class="form-control" id="name" name="name" placeholder="Enter category name">
+							<label for="name">Physio Name:</label>
+							<input type="text" class="form-control" id="name" name="name" placeholder="Enter physio name">
 						</div>
 					
 						<div class="form-group">
@@ -49,6 +49,11 @@
 
 							<p class="help-block">Example block-level help text here.</p>
 						</div>
+
+						<div class="form-group">
+							<label for="spacalize"> Spacalize:</label>
+							<input type="text" class="form-control" id="spacalize" name="spacalize" placeholder="Enter spacalize">
+						</div>
 					
 						<div class="form-group">
 							<label for="address"> Address: </label>
@@ -57,22 +62,22 @@
 					
 						<div class="form-group">
 							<label for="city"> City:</label>
-							<input type="text" class="form-control" id="city" name="city" placeholder="Enter category city">
+							<input type="text" class="form-control" id="city" name="city" placeholder="Enter city">
 						</div>
 					
 						<div class="form-group">
 							<label for="state"> State:</label>
-							<input type="text" class="form-control" id="state" name="state" placeholder="Enter category state">
+							<input type="text" class="form-control" id="state" name="state" placeholder="Enter state">
 						</div>
 					
 						<div class="form-group">
 							<label for="country"> Country:</label>
-							<input type="text" class="form-control" id="country" name="country" placeholder="Enter category country">
+							<input type="text" class="form-control" id="country" name="country" placeholder="Enter country">
 						</div>
 					
 						<div class="form-group">
 							<label for="nationality"> Nationality:</label>
-							<input type="text" class="form-control" id="nationality" name="nationality" placeholder="Enter category nationality">
+							<input type="text" class="form-control" id="nationality" name="nationality" placeholder="Enter nationality">
 						</div>
 					
 						<div class="form-group">
@@ -97,10 +102,8 @@
 					
 						<div class="form-group">
 							<label for="national_id_number"> National id number:</label>
-							<input type="text" class="form-control" id="national_id_number" name="national_id_number" placeholder="Enter category national id number">
+							<input type="text" class="form-control" id="national_id_number" name="national_id_number" placeholder="Enter NID">
 						</div>
-					
-
 					
 						<div class="form-group">
 							<label for="email">Email address:</label>

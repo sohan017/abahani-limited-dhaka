@@ -34,7 +34,7 @@
 				</div>
 				<!-- /.box-header -->
 				<!-- form start -->
-				<form role="form" action="{{ route('player.update',$player->id) }}" method="post">
+				<form role="form" action="{{ route('admin.player.update',$player->id) }}" method="post">
 					@csrf
 					@method('PUT')
 					<div class="box-body">
@@ -127,24 +127,15 @@
 							<input type="text" class="form-control" id="birth_certificet_number" name="birth_certificet_number" placeholder="Enter category birth certificet number" value="{{ $player->birth_certificet_number }}">
 						</div>
 
-						<div class="form-group">
-							<label for="position"> Position:</label>
-							<input type="text" class="form-control" id="position" name="position" placeholder="Enter Playing Position" value="{{ $player->position }}">
-						</div>
-						
-						<div class="form-group">
-							<label for="coach_id">Coach name:</label>
-							<select name="coach_id" id="coach_id" class="form-control">
-								
-								@foreach($coaches as $coach)
-									<option @if($coach->id == $player->coach_id) selected @endif value="{{ $coach->id }}">{{ $coach->name }}</option>
-								@endforeach
-							</select>
-						</div>
 
 						<div class="form-group">
 							<label for="team_id">Team name:</label>
-							<input type="text" class="form-control" name="team_id" id="team_id" placeholder="team id" value="{{ $player->team_id }}">
+							<select name="team_id" id="team_id" class="form-control">
+								
+								@foreach($teams as $team)
+									<option @if($team->id == $player->team_id) selected @endif value="{{ $team->id }}">{{ $team->name }}</option>
+								@endforeach
+							</select>
 						</div>
 
 						<div class="form-group">
@@ -158,21 +149,15 @@
 						</div>
 
 						<div class="form-group">
-							<label for="physio_id">Physio name:</label>
-							<select name="physio_id" id="physio_id" class="form-control">
-								
-								@foreach($physios as $coach)
-									<option @if($physio->id == $player->physio_id) selected @endif value="{{ $physio->id }}">{{ $physio->name }}</option>
-								@endforeach
-							</select>
+							<label for="email"> Email:</label>
+							<input type="text" class="form-control" id="email" name="email" placeholder="Enter category email" value="{{ $player->email }}">
 						</div>
 
+						<!-- <div class="form-group">
+							<label for="password">Update Password:</label>
+							<input type="password" class="form-control" id="password" name="password" placeholder="Enter category password" value="{{ $player->password }}">
+						</div> -->
 
-						<div class="checkbox">
-							<label>
-								<input type="checkbox"> Check me out
-							</label>
-						</div>
 					</div>
 					<!-- /.box-body -->
 

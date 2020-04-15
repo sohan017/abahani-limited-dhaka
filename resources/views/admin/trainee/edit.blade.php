@@ -34,13 +34,33 @@
 				</div>
 				<!-- /.box-header -->
 				<!-- form start -->
-				<form role="form" action="{{ route('trainee.update', $trainee->id) }}" method="post">
+				<form role="form" action="{{ route('admin.trainee.update', $trainee->id) }}" method="post">
 					@csrf
 					@method('PUT')
 					<div class="box-body">
 						<div class="form-group">
 							<label for="name"> Name:</label>
 							<input type="text" class="form-control" id="name" name="name" placeholder="Enter category name" value="{{ $trainee->name }}">
+						</div>
+
+						<div class="form-group">
+							<label for="playertype_id">Playertype name:</label>
+							<select name="playertype_id" id="playertype_id" class="form-control">
+								
+								@foreach($playerTypes as $playerType)
+									<option @if($playerType->id == $trainee->playertype_id) selected @endif value="{{ $playerType->id }}">{{ $playerType->name }}</option>
+								@endforeach
+							</select>
+						</div>
+
+						<div class="form-group">
+							<label for="coach_id">Playertype name:</label>
+							<select name="coach_id" id="coach_id" class="form-control">
+								
+								@foreach($coaches as $coach)
+									<option @if($coach->id == $trainee->coach_id) selected @endif value="{{ $coach->id }}">{{ $coach->name }}</option>
+								@endforeach
+							</select>
 						</div>
 					
 						<div class="form-group">
@@ -139,27 +159,9 @@
 							<input type="text" class="form-control" name="ap_fee" id="ap_fee" placeholder="ap_fee" value="{{ $trainee->ap_fee }}">
 						</div>
 
-						<div class="form-group">
-							<label for="coach_id">Coach name:</label>
-							<input type="text" class="form-control" name="coach_id" id="coach_id" placeholder="coach_id" value="{{ $trainee->coach_id }}">
-						</div>
-
-						<div class="form-group">
-							<label for="playertype_id">Playertype name:</label>
-							<input type="text" class="form-control" name="playertype_id" id="playertype_id" placeholder="playertype_id" value="{{ $trainee->playertype_id }}">
-						</div>
-
-						<div class="form-group">
-							<label for="physio_id">Physio name:</label>
-							<input type="text" class="form-control" name="physio_id" id="physio_id" placeholder="physio_id" value="{{ $trainee->physio_id }}">
-						</div>
 						
 
-						<div class="checkbox">
-							<label>
-								<input type="checkbox" > Check me out
-							</label>
-						</div>
+
 					</div>
 					<!-- /.box-body -->
 

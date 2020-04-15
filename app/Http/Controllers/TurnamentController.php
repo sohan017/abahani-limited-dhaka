@@ -38,7 +38,7 @@ class TurnamentController extends Controller
     public function store(Request $request)
     {
         Turnament::create($request->all());
-        return redirect()->route("turnament.index");
+        return redirect()->route("admin.turnament.index");
     }
 
     /**
@@ -75,7 +75,7 @@ class TurnamentController extends Controller
     public function update(Request $request, $id)
     {
         Turnament::findOrFail($id)->update($request->all());
-        return redirect()->route("turnament.index");
+        return redirect()->route("admin.turnament.index");
     }
 
     /**
@@ -87,6 +87,6 @@ class TurnamentController extends Controller
     public function destroy($id)
     {
         Turnament::findOrFail($id)->delete();
-        return redirect()->route("turnament.index");
+        return redirect()->route("admin.turnament.index");
     }
 }

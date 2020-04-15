@@ -1,6 +1,6 @@
 @extends('layouts.admin')
 
-@section('title')Show Player Detaile @endsection
+@section('title')Show Team Detaile @endsection
 
 @section('css')
 <link rel="stylesheet" href="{{ asset('admin/bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css') }}">
@@ -9,12 +9,12 @@
 @section('content')
 
 <section class="content-header">
-	<h1> Show Player page</h1>
-	<a href="{{ route('player.create')}}" class="btn btn-primary">Add new Player</a>
+	<h1> Show Team page</h1>
+	<a href="{{ route('admin.team.create')}}" class="btn btn-primary">Add new Team</a>
 	<ol class="breadcrumb">
 		<li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-		<li><a href="#">Player</a></li>
-		<li class="active">Show Player</li>
+		<li><a href="#">Team</a></li>
+		<li class="active">Show Team</li>
 	</ol>
 </section>
 <!-- Main content -->
@@ -42,7 +42,7 @@
                 		<th>Captain</th>
                 		<td>{{ $team->captain }}</td>
                 	</tr>
-                	<tr>
+                	<!-- <tr>
                 		<th>W</th>
                 		<td>{{ $team->win }}</td>
                 	</tr>
@@ -53,11 +53,11 @@
                 	<tr>
                 		<th>D</th>
                 		<td>{{ $team->draw }}</td>
-                	</tr>
+                	</tr> -->
                         	<div class="btn-group">
-                        		<a href="{{ route('team.show', $team->id) }}" class="btn btn-default">Show</a>
-                        		<a href="{{ route('team.edit', $team->id) }}" class="btn btn-default">Edit</a>
-                        		<form role="form" action="{{ route('team.destroy', $team->id) }}" method="post">
+                        		<a href="{{ route('admin.team.show', $team->id) }}" class="btn btn-default">Show</a>
+                        		<a href="{{ route('admin.team.edit', $team->id) }}" class="btn btn-default">Edit</a>
+                        		<form role="form" action="{{ route('admin.team.destroy', $team->id) }}" method="post">
                         			@csrf
                         			@method('DELETE ')
                         			<button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this Category?');">Delete</button>

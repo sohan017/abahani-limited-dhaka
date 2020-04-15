@@ -37,7 +37,7 @@ class MatchvenueController extends Controller
     public function store(Request $request)
     {
         Matchvenue::create($request->all());
-        return redirect()->route("matchvenue.index");
+        return redirect()->route("admin.matchvenue.index");
     }
 
     /**
@@ -74,7 +74,7 @@ class MatchvenueController extends Controller
     public function update(Request $request, $id)
     {
         Matchvenue::findOrFail($id)->update($request->all());
-        return redirect()->route("matchvenue.index");
+        return redirect()->route("admin.matchvenue.index");
     }
 
     /**
@@ -85,6 +85,7 @@ class MatchvenueController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Matchvenue::findOrFail($id)->delete();
+        return redirect()->route("admin.matchvenue.index");
     }
 }

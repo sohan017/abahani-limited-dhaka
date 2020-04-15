@@ -34,12 +34,32 @@
 				</div>
 				<!-- /.box-header -->
 				<!-- form start -->
-				<form role="form" action="{{ route('trainee.store') }}" method="post">
+				<form role="form" action="{{ route('admin.trainee.store') }}" method="post">
 					@csrf
 					<div class="box-body">
 						<div class="form-group">
 							<label for="name"> Name:</label>
 							<input type="text" class="form-control" id="name" name="name" placeholder="Enter Trainee name">
+						</div>
+
+						<div class="form-group">
+							<label for="playertype_id">Playertype name:</label>
+							<select name="playertype_id" id="playertype_id" class="form-control">
+								
+								@foreach($playerTypes as $playerType)
+									<option value="{{ $playerType->id }}">{{ $playerType->name }}</option>
+								@endforeach
+							</select>
+						</div>
+
+						<div class="form-group">
+							<label for="coach_id">Coach name:</label>
+							<select name="coach_id" id="coach_id" class="form-control">
+								
+								@foreach($coaches as $coach)
+									<option value="{{ $coach->id }}">{{ $coach->name }}</option>
+								@endforeach
+							</select>
 						</div>
 					
 						<div class="form-group">
@@ -56,7 +76,7 @@
 					
 						<div class="form-group">
 							<label for="address"> Address: </label>
-							<textarea name="address" id="address" cols="30" rows="10" class="form-control" placeholder="Enter address"></textarea>
+							<textarea name="address" id="address" cols="30" rows="10" class="form-control" placeholder="Enter Trainee address"></textarea>
 						</div>
 					
 						<div class="form-group">
@@ -141,37 +161,6 @@
 							<label for="ap_fee">Application fee:</label>
 							<input type="text" class="form-control" name="ap_fee" id="ap_fee" placeholder="Application fee">
 						</div>
-
-						<div class="form-group">
-							<label for="coach_id">Coach name:</label>
-							<select name="coach_id" id="coach_id" class="form-control">
-								
-								@foreach($coaches as $coach)
-									<option value="{{ $coach->id }}">{{ $coach->name }}</option>
-								@endforeach
-							</select>
-						</div>
-
-						<div class="form-group">
-							<label for="playertype_id">Playertype name:</label>
-							<select name="playertype_id" id="playertype_id" class="form-control">
-								
-								@foreach($playerTypes as $playerType)
-									<option value="{{ $playerType->id }}">{{ $playerType->name }}</option>
-								@endforeach
-							</select>
-						</div>
-
-						<div class="form-group">
-							<label for="physio_id">Physio name:</label>
-							<select name="physio_id" id="physio_id" class="form-control">
-								
-								@foreach($physios as $physio)
-									<option value="{{ $physio->id }}">{{ $physio->name }}</option>
-								@endforeach
-							</select>
-						</div>
-						
 
 						<div class="checkbox">
 							<label>

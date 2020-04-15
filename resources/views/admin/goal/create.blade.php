@@ -34,83 +34,39 @@
 				</div>
 				<!-- /.box-header -->
 				<!-- form start -->
-				<form role="form" action="{{ route('goal.store') }}" method="post">
+				<form role="form" action="{{ route('admin.goal.store') }}" method="post">
 					@csrf
 					<div class="box-body">
 						<div class="form-group">
 							<label for="goal_number">Goal Number:</label>
 							<input type="text" class="form-control" id="goal_number" name="goal_number" placeholder="Enter goal number">
 						</div>
-					</div><div class="box-body">
+					
 						<div class="form-group">
-							<label for="player_name">Player Name:</label>
-
-							<select name="player_name" id="player_name" class="form-control">
+							<label for="player_id">Player Name:</label>
+							<select name="player_id" id="player_id" class="form-control">
 								
 								@foreach($players as $player)
-									<option value="{{ $player->name }}">{{ $player->name }}</option>
+									<option value="{{ $player->id }}">{{ $player->name }}</option>
 								@endforeach
 							</select>
 						</div>
-					</div>
-
-					<div class="box-body">
-						<div class="form-group">
-							<label for="team_name">Team Name:</label>
-							<select name="team_name" id="team_name" class="form-control">
-								
-								@foreach($teams as $team)
-									<option value="{{ $team->name }}">{{ $team->name }}</option>
-								@endforeach
-							</select>
-						</div>
-					</div>
-
-					<div class="box-body">
-						<div class="form-group">
-							<label for="match_name">Match Name:</label>
-							<select name="match_name" id="match_name" class="form-control">
-								
-								<option value="Home">Home</option>
-								<option value="Away">Away</option>
-							
-							</select>
-						</div>
-					</div>
-
-					<div class="box-body">
-						<div class="form-group">
-							<label for="venue_name">Venue Name:</label>
-							<select name="venue_name" id="venue_name" class="form-control">
-								
-								@foreach($matchvenues as $matchvenue)
-									<option value="{{ $matchvenue->name }}">{{ $matchvenue->name }}</option>
-								@endforeach
-							</select>
-						</div>
-					</div>
-
-					<div class="box-body">
-						<div class="form-group">
-							<label for="turnament_name">Turnament Name:</label>
-							<select name="turnament_name" id="turnament_name" class="form-control">
-								
-								@foreach($turnaments as $turnament)
-									<option value="{{ $turnament->name }}">{{ $turnament->name }}</option>
-								@endforeach
-							</select>
-						</div>
-					</div>
 					
-					<div class="box-body">
+						<div class="form-group">
+							<label for="match_id">Match Name:</label>
+							<select name="match_id" id="match_id" class="form-control">
+								
+								@foreach($matchs as $match)
+									<option value="{{ $match->id }}">{{ $match->name }}</option>
+								@endforeach
+							</select>
+						</div>
+					
 						<div class="form-group">
 							<label for="goal_time">Goal time:</label>
 							<input type="text" class="form-control" id="goal_time" name="goal_time" placeholder="Enter  time">
 						</div>
-					</div>
-					
-
-					<div class="box-body">
+				
 						<div class="form-group">
 							<label for="goal_type">Goal Type:</label>
 							<select class="form-control select2" name="goal_type" style="width: 100%;">
@@ -119,13 +75,15 @@
 								<option value="On_Goal">On Goal</option>
 							</select>
 						</div>
-					</div>
-
 					
-					<div class="box-body">
+						<div class="form-group">
+							<label for="goal_team">Team goal:</label>
+							<input type="text" class="form-control" id="goal_team" name="goal_team" placeholder="Enter Team goal">
+						</div>
+					
 						<div class="form-group">
 							<label for="goal_half">Goal half:</label>
-							<input type="goal_half" class="form-control" id="goal_half" name="goal_half" placeholder="Enter goal half">
+							<input type="text" class="form-control" id="goal_half" name="goal_half" placeholder="Enter goal half">
 						</div>
 					</div>
 					

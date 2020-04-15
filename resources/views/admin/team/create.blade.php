@@ -34,12 +34,19 @@
 				</div>
 				<!-- /.box-header -->
 				<!-- form start -->
-				<form role="form" action="{{ route('team.store') }}" method="post">
+				<form role="form" action="{{ route('admin.team.store') }}" method="post">
 					@csrf
 					<div class="box-body">
 						<div class="form-group">
 							<label for="name"> Name:</label>
 							<input type="text" class="form-control" id="name" name="name" placeholder="Enter Team name">
+						</div>
+
+						<div class="form-group">
+							<label for="logo">Logo upload:</label>
+							<input type="file" class="form-control" id="logo" name="logo">
+
+							<p class="help-block">Example block-level help text here.</p>
 						</div>
 					
 						<div class="form-group">
@@ -48,6 +55,28 @@
 						</div>
 
 						<div class="form-group">
+							<label for="coach_id">Coach name:</label>
+
+							<select name="coach_id" id="coach_id" class="form-control">
+								
+								@foreach($coaches as $coach)
+									<option value="{{ $coach->id }}">{{ $coach->name }}</option>
+								@endforeach
+							</select>
+						</div>
+
+						
+						<div class="form-group">
+							<label for="physio_id">Physio name:</label>
+							<select name="physio_id" id="physio_id" class="form-control">
+								
+								@foreach($physios as $physio)
+									<option value="{{ $physio->id }}">{{ $physio->name }}</option>
+								@endforeach
+							</select>
+						</div>
+
+						<!-- <div class="form-group">
 							<label for="win"> Team Win:</label>
 							<input type="text" class="form-control" id="win" name="win" placeholder="Enter Team win">
 						</div>
@@ -70,14 +99,14 @@
 						<div class="form-group">
 							<label for="goal_for"> Team all goal for:</label>
 							<input type="text" class="form-control" id="goal_for" name="goal_for" placeholder="Enter Team all goal for">
-						</div>
+						</div> -->
 
-						<div class="form-group">
+						<!-- <div class="form-group">
 							<label for="goal_against"> Team all goal against:</label>
 							<input type="text" class="form-control" id="goal_against" name="goal_against" placeholder="Enter Team all goal against">
 						</div>
-
-						<div class="form-group">
+ -->
+						<!-- <div class="form-group">
 							<label for="coach_name">Coach name:</label>
 
 							<select name="coach_name" id="coach_name" class="form-control">
@@ -97,7 +126,7 @@
 									<option value="{{ $physio->id }}">{{ $physio->name }}</option>
 								@endforeach
 							</select>
-						</div>
+						</div> -->
 					</div>
 					<!-- /.box-body -->
 

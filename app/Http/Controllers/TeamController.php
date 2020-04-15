@@ -41,7 +41,7 @@ class TeamController extends Controller
     public function store(Request $request)
     {
         Team::create($request->all());
-        return redirect()->route("team.index");
+        return redirect()->route("admin.team.index");
     }
 
     /**
@@ -82,7 +82,7 @@ class TeamController extends Controller
     public function update(Request $request, $id)
     {
         Team::findOrFail($id)->update($request->all());
-        return redirect()->route('team.index');
+        return redirect()->route('admin.team.index');
     }
 
     /**
@@ -94,6 +94,6 @@ class TeamController extends Controller
     public function destroy($id)
     {
         Team::findOrFail($id)->delete();
-        return redirect()->route("team.index");
+        return redirect()->route("admin.team.index");
     }
 }

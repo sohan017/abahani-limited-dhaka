@@ -10,7 +10,7 @@
 
 <section class="content-header">
 	<h1> Show Player page</h1>
-	<a href="{{ route('player.create')}}" class="btn btn-primary">Add new Player</a>
+	<a href="{{ route('admin.player.create')}}" class="btn btn-primary">Add new Player</a>
 	<ol class="breadcrumb">
 		<li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
 		<li><a href="#">Player</a></li>
@@ -40,7 +40,7 @@
                 	</tr>
                 	<tr>
                 		<th>Photo</th>
-                		<td>{{ $player->img }}</td>
+                		<td>{{ asset($player->img) }}</td>
                 	</tr>
                 	<tr>
                 		<th>Address</th>
@@ -51,13 +51,10 @@
                 		<td>{{ $player->city }}</td>
                 	</tr>
                 	
-                    
-
-                	
                         	<div class="btn-group">
-                        		<a href="{{ route('player.show', $player->id) }}" class="btn btn-default">Show</a>
-                        		<a href="{{ route('player.edit', $player->id) }}" class="btn btn-default">Edit</a>
-                        		<form role="form" action="{{ route('player.destroy', $player->id) }}" method="post">
+                        		<a href="{{ route('admin.player.show', $player->id) }}" class="btn btn-default">Show</a>
+                        		<a href="{{ route('admin.player.edit', $player->id) }}" class="btn btn-default">Edit</a>
+                        		<form role="form" action="{{ route('admin.player.destroy', $player->id) }}" method="post">
                         			@csrf
                         			@method('DELETE ')
                         			<button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this Category?');">Delete</button>
@@ -68,24 +65,7 @@
                     </tr>
 
                 </tbody>
-             <!--    <tfoot>
-                	<tr>
-                		<th>ID</th>
-                		<th>Name</th>
-                		<th>DoB</th>
-                		<th>Photo</th>
-                		<th>Address</th>
-                		<th>City</th>
-                		<th>State</th>
-                		<th>Nationality</th>
-                		<th>Gender</th>
-                		<th>Hight</th>
-                        <th>Religion</th>
-                        <th>NID NO</th>
-                        <th>Email</th>
-                        <th>Action</th>
-                    </tr>
-                </tfoot> -->
+            
             </table>
         </div>
         <!-- /.box-body -->

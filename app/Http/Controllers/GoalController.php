@@ -5,10 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Goal;
 use App\Player;
-use App\Team;
 use App\Match;
-use App\Matchvenue;
-use App\Turnament;
+
 
 class GoalController extends Controller
 {
@@ -32,11 +30,9 @@ class GoalController extends Controller
     {
          
          $players = Player::latest()->get();
-         $teams = Team::latest()->get();
          $matchs = Match::latest()->get();
-         $matchvenues = Matchvenue::latest()->get();
-         $turnaments = Turnament::latest()->get();
-        return view('admin.goal.create', compact('players', 'teams', 'matchs', 'matchvenues', 'turnaments'));
+         
+        return view('admin.goal.create', compact('players', 'matchs'));
     }
 
     /**
@@ -48,7 +44,7 @@ class GoalController extends Controller
     public function store(Request $request)
     {
         Goal::create($request->all());
-        return redirect()->route("goal.index");
+        return redirect()->route("admin.goal.index");
     }
 
     /**
@@ -73,11 +69,8 @@ class GoalController extends Controller
     {
         $goal=Goal::findOrFail($id);
         $players = Player::latest()->get();
-        $teams = Team::latest()->get();
         $matchs = Match::latest()->get();
-        $matchvenues = Matchvenue::latest()->get();
-        $turnaments = Turnament::latest()->get();
-        return view('admin.goal.edit',compact('goal', 'players', 'teams', 'matchs', 'matchvenues', 'turnaments'));
+        return view('admin.goal.edit',compact('goal', 'players', 'matchs'));
     }
 
     /**
@@ -90,7 +83,7 @@ class GoalController extends Controller
     public function update(Request $request, $id)
     {
         Goal::findOrFail($id)->update($request->all());
-        return redirect()->route('goal.index');
+        return redirect()->route('admin.goal.index');
     }
 
     /**
@@ -102,6 +95,6 @@ class GoalController extends Controller
     public function destroy($id)
     {
         Goal::findOrFail($id)->delete();
-        return redirect()->route("goal.index");
+        return redirect()->route("admin.goal.index");
     }
 }

@@ -10,7 +10,7 @@
 
 <section class="content-header">
 	<h1> Show Turnament page</h1>
-	<a href="{{ route('turnament.create')}}" class="btn btn-primary">Add new Coach</a>
+	<a href="{{ route('admin.turnament.create')}}" class="btn btn-primary">Add new Coach</a>
 	<ol class="breadcrumb">
 		<li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
 		<li><a href="#">Turnament</a></li>
@@ -31,7 +31,9 @@
                 <thead>
                     <tr>
                         <th>ID</th>
-                        <th>Name</th>
+                        <th>Turnament Name</th>
+                        <th>Turnament start date</th>
+                        <th>Turnament end date</th>
                         <th>Action</th>
                     </tr>
                 </thead>
@@ -40,12 +42,14 @@
                     <tr>
                         <td>{{ $turnament->id }}</td>
                         <td>{{ $turnament->name }}</td>
+                        <td>{{ $turnament->start_date }}</td>
+                        <td>{{ $turnament->end_date }}</td>
                        
                         <td>
                             <div class="btn-group">
-                                <a href="{{ route('turnament.show', $turnament->id) }}" class="btn btn-default">Show</a>
-                                <a href="{{ route('turnament.edit', $turnament->id) }}" class="btn btn-default">Edit</a>
-                               <form role="form" action="{{ route('turnament.destroy', $turnament->id) }}" method="post">
+                                <a href="{{ route('admin.turnament.show', $turnament->id) }}" class="btn btn-default">Show</a>
+                                <a href="{{ route('admin.turnament.edit', $turnament->id) }}" class="btn btn-default">Edit</a>
+                               <form role="form" action="{{ route('admin.turnament.destroy', $turnament->id) }}" method="post">
                                    @csrf
                                     @method('DELETE ')
                                     <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this Category?');">Delete</button>
@@ -59,7 +63,9 @@
                 <tfoot>
                     <tr>
                         <th>ID</th>
-                        <th>Name</th>
+                        <th>Turnament Name</th>
+                        <th>Turnament start date</th>
+                        <th>Turnament end date</th>
                         <th>Action</th>
                     </tr>
                 </tfoot>

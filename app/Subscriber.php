@@ -16,7 +16,7 @@ class Subscriber extends Authenticatable
      *
      * @var array
      */
-    protected $fillable = [
+    protected $hidden = [
         'name', 'email', 'password',
     ];
 

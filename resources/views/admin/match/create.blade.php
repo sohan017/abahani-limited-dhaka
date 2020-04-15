@@ -34,34 +34,60 @@
 				</div>
 				<!-- /.box-header -->
 				<!-- form start -->
-				<form role="form" action="{{ route('match.store') }}" method="post">
+				<form role="form" action="{{ route('admin.match.store') }}" method="post">
 					@csrf
 					<div class="box-body">
-						<div class="form-group">
-							<label for="turnament_name">Turnament Name:</label>
 
-							<select name="turnament_name" id="turnament_name" class="form-control">
+						<div class="form-group">
+							<label for="name">Match Name :</label>
+							<input type="text" class="form-control" id="name" name="name" placeholder="Enter Match name">
+						</div>
+
+						<div class="form-group">
+							<label for="match_number">Match match_number :</label>
+							<input type="text" class="form-control" id="match_number" name="match_number" placeholder="Enter Match match_number">
+						</div>
+
+						<div class="form-group">
+							<label for="turnament_id">Turnament Name:</label>
+
+							<select name="turnament_id" id="turnament_id" class="form-control">
 								
 								@foreach($turnaments as $turnament)
 									<option value="{{ $turnament->id }}">{{ $turnament->name }}</option>
 								@endforeach
 							</select>
 						</div>
-					</div>
-
-					<div class="box-body">
+				
 						<div class="form-group">
-							<label for="vanue_name">Vanue Name:</label>
-							<select name="vanue_name" id="vanue_name" class="form-control">
+							<label for="match_vanue_id">Vanue Name:</label>
+							<select name="match_vanue_id" id="match_vanue_id" class="form-control">
 								
 								@foreach($matchvenues as $matchvenue)
 									<option value="{{ $matchvenue->id }}">{{ $matchvenue->name }}</option>
 								@endforeach
 							</select>
 						</div>
-					</div>
-
-					<div class="box-body">
+						<div class="form-group">
+							<label for="team_id">Team Name:</label>
+							<select name="team_id" id="team_id" class="form-control">
+								
+								@foreach($teams as $team)
+									<option value="{{ $team->id }}">{{ $team->name }}</option>
+								@endforeach
+							</select>
+						</div>
+						<div class="form-group">
+							<label for="oponent_club_id">Oponent Team Name:</label>
+							<select name="oponent_club_id" id="oponent_club_id" class="form-control">
+								
+								@foreach($oponentclubs as $oponentclub)
+									<option value="{{ $oponentclub->id }}">{{ $oponentclub->name }}</option>
+								@endforeach
+							</select>
+						</div>
+						
+					
 						<div class="form-group">
 							<label for="home_away">Home or Away</label>
 							<select class="form-control select2" name="home_away" style="width: 100%;">
@@ -69,47 +95,37 @@
 								<option value="Away">Away</option>
 							</select>
 						</div>
-					</div>
-
-					<div class="box-body">
+					
 						<div class="form-group">
 							<label for="date">Match Date :</label>
 							<input type="date" class="form-control" id="date" name="date" placeholder="Enter Match Date">
 						</div>
-					</div>
-
-					<div class="box-body">
+					
 						<div class="form-group">
 							<label for="time">Match Time :</label>
 							<input type="time" class="form-control" id="time" name="time" placeholder="Enter Match Time">
 						</div>
-					</div>
-
-					<div class="box-body">
+					
 						<div class="form-group">
 							<label for="result">Match Result :</label>
 							<input type="result" class="form-control" id="result" name="result" placeholder="Enter Match result">
 						</div>
-					</div>
 					
-					<div class="box-body">
 						<div class="form-group">
 							<label for="decided_by">Match decided by :</label>
 							<input type="decided_by" class="form-control" id="decided_by" name="decided_by" placeholder="Enter Match decided by">
 						</div>
-					</div>
-					<div class="box-body">
+					
 						<div class="form-group">
 							<label for="gd_point">Match GD point :</label>
 							<input type="gd_point" class="form-control" id="gd_point" name="gd_point" placeholder="Enter Match GD point">
 						</div>
-					</div>
-					<div class="box-body">
+					
 						<div class="form-group">
-							<label for="match_point">Match Point :</label>
-							<input type="match_point" class="form-control" id="match_point" name="match_point" placeholder="Enter Match  point">
+							<label for="pts">Match Point :</label>
+							<input type="pts" class="form-control" id="pts" name="pts" placeholder="Enter Match  point">
 						</div>
-					</div>
+					
 					
 
 					<!-- /.box-body -->

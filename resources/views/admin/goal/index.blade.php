@@ -10,7 +10,7 @@
 
 <section class="content-header">
 	<h1> Show Goal page</h1>
-	<a href="{{ route('goal.create')}}" class="btn btn-primary">Add new Goal</a>
+	<a href="{{ route('admin.goal.create')}}" class="btn btn-primary">Add new Goal</a>
 	<ol class="breadcrumb">
 		<li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
 		<li><a href="#">Goal</a></li>
@@ -34,7 +34,6 @@
                         <th>goal number</th>
                         <th>player name</th>
                         <th>match name</th>
-                        <th>vanue name</th>
                         <th>Action</th>
                     </tr>
                 </thead>
@@ -43,14 +42,14 @@
                     <tr>
                         <td>{{ $goal->id }}</td>
                         <td>{{ $goal->goal_number }}</td>
-                        <td>{{ $goal->player_name }}</td>
-                        <td>{{ $goal->match_name }}</td>
-                        <td>{{ $goal->venue_name }}</td>
+                        <td>{{ $goal->player_id }}</td>
+                        <td>{{ $goal->match_id }}</td>
+                        <td>{{ $goal->goal_type }}</td>
                         <td>
                             <div class="btn-group">
-                                <a href="{{ route('goal.show', $goal->id) }}" class="btn btn-default">Show</a>
-                                <a href="{{ route('goal.edit', $goal->id) }}" class="btn btn-default">Edit</a>
-                               <form role="form" action="{{ route('goal.destroy', $goal->id) }}" method="post">
+                                <a href="{{ route('admin.goal.show', $goal->id) }}" class="btn btn-default">Show</a>
+                                <a href="{{ route('admin.goal.edit', $goal->id) }}" class="btn btn-default">Edit</a>
+                               <form role="form" action="{{ route('admin.goal.destroy', $goal->id) }}" method="post">
                                    @csrf
                                     @method('DELETE ')
                                     <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this Category?');">Delete</button>
@@ -67,7 +66,6 @@
                         <th>goal number</th>
                         <th>player name</th>
                         <th>match name</th>
-                        <th>vanue name</th>
                         <th>Action</th>
                     </tr>
                 </tfoot>

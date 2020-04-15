@@ -10,7 +10,7 @@
 
 <section class="content-header">
 	<h1> Show Match page</h1>
-	<a href="{{ route('match.create')}}" class="btn btn-primary">Add new Match</a>
+	<a href="{{ route('admin.match.create')}}" class="btn btn-primary">Add new Match</a>
 	<ol class="breadcrumb">
 		<li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
 		<li><a href="#">Match</a></li>
@@ -40,13 +40,13 @@
                     @foreach($matchs as $match)
                     <tr>
                         <td>{{ $match->id }}</td>
-                        <td>{{ $match->turnament_name }}</td>
-                        <td>{{ $match->vanue_name }}</td>
+                        <td>{{ $match->turnament_id }}</td>
+                        <td>{{ $match->matchVanue->name }}</td>
                         <td>
                             <div class="btn-group">
-                                <a href="{{ route('match.show', $match->id) }}" class="btn btn-default">Show</a>
-                                <a href="{{ route('match.edit', $match->id) }}" class="btn btn-default">Edit</a>
-                               <form role="form" action="{{ route('match.destroy', $match->id) }}" method="post">
+                                <a href="{{ route('admin.match.show', $match->id) }}" class="btn btn-default">Show</a>
+                                <a href="{{ route('admin.match.edit', $match->id) }}" class="btn btn-default">Edit</a>
+                               <form role="form" action="{{ route('admin.match.destroy', $match->id) }}" method="post">
                                    @csrf
                                     @method('DELETE ')
                                     <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this Category?');">Delete</button>

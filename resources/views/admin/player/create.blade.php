@@ -34,7 +34,7 @@
 				</div>
 				<!-- /.box-header -->
 				<!-- form start -->
-				<form role="form" action="{{ route('player.store') }}" method="post">
+				<form role="form" action="{{ route('admin.player.store') }}" method="post">
 					@csrf
 					<div class="box-body">
 						<div class="form-group">
@@ -126,21 +126,6 @@
 							<input type="text" class="form-control" id="birth_certificet_number" name="birth_certificet_number" placeholder="Enter birth certificet number">
 						</div>
 
-						<div class="form-group">
-							<label for="position"> Position:</label>
-							<input type="text" class="form-control" id="position" name="position" placeholder="Enter Playing Position">
-						</div>
-						
-						<div class="form-group">
-							<label for="coach_id">Coach name:</label>
-
-							<select name="coach_id" id="coach_id" class="form-control">
-								
-								@foreach($coaches as $coach)
-									<option value="{{ $coach->id }}">{{ $coach->name }}</option>
-								@endforeach
-							</select>
-						</div>
 
 						<div class="form-group">
 							<label for="team_id">Team name:</label>
@@ -150,44 +135,26 @@
 									<option value="{{ $team->id }}">{{ $team->name }}</option>
 								@endforeach
 							</select>
-
-
-							<input type="text" class="form-control" name="team_id" id="team_id" placeholder="team_id">
 						</div>
 
 						<div class="form-group">
 							<label for="playertype_id">Playertype name:</label>
 							<select name="playertype_id" id="playertype_id" class="form-control">
-								
+								<option value="0">No Playertype</option>
 								@foreach($playerTypes as $playerType)
 									<option value="{{ $playerType->id }}">{{ $playerType->name }}</option>
 								@endforeach
 							</select>
 						</div>
-
-						<div class="form-group">
-							<label for="physio_id">Physio name:</label>
-							<select name="physio_id" id="physio_id" class="form-control">
-								
-								@foreach($physios as $physio)
-									<option value="{{ $physio->id }}">{{ $physio->name }}</option>
-								@endforeach
-							</select>
-						</div>
-
+						
 						<div class="form-group">
 							<label for="email">Email address:</label>
 							<input type="email" class="form-control" name="email" id="email" placeholder="Enter email">
 						</div>
+						
 						<div class="form-group">
 							<label for="password">Password:</label>
 							<input type="text" class="form-control" name="password" id="password" placeholder="Password">
-						</div>
-
-						<div class="checkbox">
-							<label>
-								<input type="checkbox"> Check me out
-							</label>
 						</div>
 					</div>
 					<!-- /.box-body -->

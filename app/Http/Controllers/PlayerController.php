@@ -5,9 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Player;
 use App\Playertype;
-use App\Coach;
-use App\Physio;
 use App\Team;
+use App\Coach;
 
 class PlayerController extends Controller
 {
@@ -30,10 +29,8 @@ class PlayerController extends Controller
     public function create()
     {
         $playerTypes = Playertype::latest()->get();
-        $coaches = Coach::latest()->get();
-        $physios = Physio::latest()->get();
         $teams = Team::latest()->get();
-        return view('admin.player.create', compact('playerTypes','coaches','physios','teams'));
+        return view('admin.player.create', compact('playerTypes','teams'));
     }
 
     /**
@@ -46,7 +43,7 @@ class PlayerController extends Controller
     {
 
         Player::create($request->all());
-        return redirect()->route("player.index");
+        return redirect()->route("admin.player.index");
     }
 
     /**
@@ -59,8 +56,9 @@ class PlayerController extends Controller
     {
         $player = Player::findOrFail($id);
         $playerTypes = Playertype::latest()->get();
-        $coaches = Coach::latest()->get();
-        return view('admin.player.show', compact('player', 'playerTypes','coaches'));
+        $teams = Team::latest()->get();
+        
+        return view('admin.player.show', compact('player', 'playerTypes', 'teams'));
     }
 
     /**
@@ -73,9 +71,9 @@ class PlayerController extends Controller
     {
         $player=Player::findOrFail($id);
         $playerTypes = Playertype::latest()->get();
-        $coaches = Coach::latest()->get();
-        $physios = Physio::latest()->get();
-        return view('admin.player.edit',compact('player', 'playerTypes','coaches','physios'));
+        $teams = Team::latest()->get();
+        
+        return view('admin.player.edit',compact('player', 'playerTypes', 'teams'));
     }
 
     /**
@@ -88,7 +86,7 @@ class PlayerController extends Controller
     public function update(Request $request, $id)
     {
         Player::findOrFail($id)->update($request->all());
-        return redirect()->route('player.index');
+        return redirect()->route('admin.player.index');
     }
 
     /**
@@ -100,6 +98,6 @@ class PlayerController extends Controller
     public function destroy($id)
     {
         Player::findOrFail($id)->delete();
-        return redirect()->route("player.index");
+        return redirect()->route("admin.player.index");
     }
 }

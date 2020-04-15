@@ -34,7 +34,7 @@
 				</div>
 				<!-- /.box-header -->
 				<!-- form start -->
-				<form role="form" action="{{ route('coach.store') }}" method="post">
+				<form role="form" action="{{ route('admin.coach.store') }}" method="post">
 					@csrf
 					<div class="box-body">
 						<div class="form-group">

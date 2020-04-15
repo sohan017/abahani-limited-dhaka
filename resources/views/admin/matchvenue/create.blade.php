@@ -30,11 +30,11 @@
 			<!-- general form elements -->
 			<div class="box box-primary">
 				<div class="box-header with-border">
-					<h3 class="box-title">Matchvenue Entry</h3>
+					<h3 class="box-title">Match venue Entry</h3>
 				</div>
 				<!-- /.box-header -->
 				<!-- form start -->
-				<form role="form" action="{{ route('matchvenue.store') }}" method="post">
+				<form role="form" action="{{ route('admin.matchvenue.store') }}" method="post">
 					@csrf
 					<div class="box-body">
 						<div class="form-group">

@@ -37,7 +37,7 @@ class PhysioController extends Controller
     public function store(Request $request)
     {
         Physio::create($request->all());
-        return redirect()->route("physio.index");
+        return redirect()->route("admin.physio.index");
     }
 
     /**
@@ -74,7 +74,7 @@ class PhysioController extends Controller
     public function update(Request $request, $id)
     {
         Physio::findOrFail($id)->update($request->all());
-        return redirect()->route('physio.index');
+        return redirect()->route('admin.physio.index');
     }
 
     /**
@@ -86,6 +86,6 @@ class PhysioController extends Controller
     public function destroy($id)
     {
         Physio::findOrFail($id)->delete();
-        return redirect()->route("physio.index");
+        return redirect()->route("admin.physio.index");
     }
 }

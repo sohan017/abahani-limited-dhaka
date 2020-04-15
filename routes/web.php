@@ -40,7 +40,7 @@ Route::post('/register/trainee', 'Auth\RegisterController@createTrainee');
 
 
 
-Route::prefix('admin')->name('admin.')->group(function () {
+Route::middleware("auth")->prefix('admin')->name('admin.')->group(function () {
 
 	Route::get('/dashboard', 'HomeController@index')->name('admin.dashboard');
 
@@ -55,43 +55,48 @@ Route::prefix('admin')->name('admin.')->group(function () {
 	Route::resource("match", "MatchController");
 	Route::resource("goal", "GoalController");
 	Route::resource("fitness", "FitnessController");
+	Route::resource("playerfitness", "PlayerfitnessController");
+	Route::resource("traineefitness", "TraineefitnessController");
+	Route::resource("oponentclub", "OponentclubController");
+	Route::resource("ticket", "TicketController");
+	Route::resource("subscriber", "SubscriberController");
+	Route::resource("discount", "DiscountController");
+	Route::resource("buyticket", "BuyticketController");
+	Route::resource("auction", "AuctionController");
+	Route::resource("bidder", "BidderController");
+	Route::resource("playerauction", "PlayerauctionController");
+	Route::resource("bid", "BidController");
     
 });
 
-Route::namespace('Bidder')->prefix('bidder')->name('bidder.')->group(function () {
-    Route::get('/', function () {
-	    return view('welcome');
-	})->name("dashboard");
+Route::middleware("auth:bidder")->namespace('Bidder')->prefix('bidder')->name('bidder.')->group(function () {
+
+	Route::get('/', 'DashboardController@index')->name('dashboard');
 });
 
-Route::namespace('Coach')->prefix('coach')->name('coach.')->group(function () {
-    Route::get('/', function () {
-	    return view('welcome');
-	})->name("dashboard");
+Route::middleware("auth:coach")->namespace('Coach')->prefix('coach')->name('coach.')->group(function () {
+
+	Route::get('/', 'DashboardController@index')->name('dashboard');
 });
 
-Route::namespace('Physio')->prefix('physio')->name('physio.')->group(function () {
-    Route::get('/', function () {
-	    return view('welcome');
-	})->name("dashboard");
+Route::middleware("auth:physio")->namespace('Physio')->prefix('physio')->name('physio.')->group(function () {
+
+	Route::get('/', 'DashboardController@index')->name('dashboard');
 });
 
-Route::namespace('Player')->prefix('player')->name('player.')->group(function () {
-    Route::get('/', function () {
-	    return view('welcome');
-	})->name("dashboard");
+Route::middleware("auth:player")->namespace('Player')->prefix('player')->name('player.')->group(function () {
+
+	Route::get('/', 'DashboardController@index')->name('dashboard');
 });
 
-Route::namespace('Subscriber')->prefix('subscriber')->name('subscriber.')->group(function () {
-    Route::get('/', function () {
-	    return view('welcome');
-	})->name("dashboard");
+Route::middleware("auth:subscriber")->namespace('Subscriber')->prefix('subscriber')->name('subscriber.')->group(function () {
+
+	Route::get('/', 'DashboardController@index')->name('dashboard');
 });
 
-Route::namespace('Trainee')->prefix('trainee')->name('trainee.')->group(function () {
-    Route::get('/', function () {
-	    return view('welcome');
-	})->name("dashboard");
+Route::middleware("auth:trainee")->namespace('Trainee')->prefix('trainee')->name('trainee.')->group(function () {
+	
+	Route::get('/', 'DashboardController@index')->name('dashboard');
 });
 
 

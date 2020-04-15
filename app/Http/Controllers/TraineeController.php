@@ -6,7 +6,6 @@ use Illuminate\Http\Request;
 use App\Trainee;
 use App\Playertype;
 use App\Coach;
-use App\Physio;
 
 class TraineeController extends Controller
 {
@@ -30,9 +29,7 @@ class TraineeController extends Controller
     {
         $playerTypes = Playertype::latest()->get();
         $coaches = Coach::latest()->get();
-        $physios = Physio::latest()->get();
-
-         return view('admin.trainee.create', compact('playerTypes','coaches','physios'));
+         return view('admin.trainee.create', compact('playerTypes','coaches'));
     }
 
     /**
@@ -44,7 +41,7 @@ class TraineeController extends Controller
     public function store(Request $request)
     {
         Trainee::create($request->all());
-        return redirect()->route("trainee.index");
+        return redirect()->route("admin.trainee.index");
     }
 
     /**
@@ -56,7 +53,9 @@ class TraineeController extends Controller
     public function show($id)
     {
         $trainee = Trainee::findOrFail($id);
-        return view('admin.trainee.show', compact('trainee'));
+        $playerTypes = Playertype::latest()->get();
+        $coaches = Coach::latest()->get();
+        return view('admin.trainee.show', compact('trainee', 'playerTypes', 'coaches'));
     }
 
     /**
@@ -68,7 +67,9 @@ class TraineeController extends Controller
     public function edit($id)
     {
         $trainee=Trainee::findOrFail($id);
-        return view('admin.trainee.edit',compact('trainee'));
+        $playerTypes = Playertype::latest()->get();
+        $coaches = Coach::latest()->get();
+        return view('admin.trainee.edit',compact('trainee','playerTypes','coaches'));
     }
 
     /**
@@ -81,7 +82,7 @@ class TraineeController extends Controller
     public function update(Request $request, $id)
     {
         Trainee::findOrFail($id)->update($request->all());
-        return redirect()->route('trainee.index');
+        return redirect()->route('admin.trainee.index');
     }
 
     /**
@@ -93,6 +94,6 @@ class TraineeController extends Controller
     public function destroy($id)
     {
          Trainee::findOrFail($id)->delete();
-        return redirect()->route("trainee.index");
+        return redirect()->route("admin.trainee.index");
     }
 }
