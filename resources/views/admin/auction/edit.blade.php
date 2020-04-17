@@ -14,8 +14,8 @@
 		<small>it all starts here</small>
 	</h1>
 	<ol class="breadcrumb">
-		<li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-		<li><a href="#">auction</a></li>
+		<li><a href="{{ route('admin.admin.dashboard') }}"><i class="fa fa-dashboard"></i> Home</a></li>
+		<li><a href="{{ route('admin.auction.index') }}">auction</a></li>
 		<li class="active"> Update auction </li>
 	</ol>
 </section>
@@ -33,28 +33,30 @@
 					<h3 class="box-title">Update auction</h3>
 				</div>
 				<!-- /.box-header -->
+				@include("partial.notification")
 				<!-- form start -->
 				<form role="form" action="{{ route('admin.auction.update',$auction->id) }}" method="post">
 					@csrf
 					@method('PUT')
 					<div class="box-body">
+						<small>required = *</small>
 						<div class="form-group">
-							<label for="name"> Name:</label>
+							<label for="name"> Name: *</label>
 							<input type="text" class="form-control" id="name" name="name" placeholder="Enter name" value="{{ $auction->name }}">
 						</div>
 					
 						<div class="form-group">
-							<label for="start_time"> Auction start time:</label>
+							<label for="start_time"> Auction start time: *</label>
 							<input type="time" class="form-control" id="start_time" name="start_time" placeholder="Enter Auction start timeh" value="{{ $auction->start_time }}">
 						</div>
 
 						<div class="form-group">
-							<label for="end_time"> Auction End time:</label>
+							<label for="end_time"> Auction End time: *</label>
 							<input type="time" class="form-control" id="end_time" name="end_time" placeholder="Enter Auction End timeh" value="{{ $auction->end_time }}">
 						</div>
 					
 						<div class="form-group">
-							<label for="auction_detail"> Auction detail: </label>
+							<label for="auction_detail"> Auction detail: * </label>
 							<textarea name="auction_detail" id="auction_detail" cols="30" rows="10" class="form-control" placeholder="Enter auction detail">{{ $auction->auction_detail }}</textarea>
 						</div>
 

@@ -12,8 +12,7 @@
 	<h1> Show Buy ticket page</h1>
 	<a href="{{ route('admin.buyticket.create')}}" class="btn btn-primary">Add new Buy ticket</a>
 	<ol class="breadcrumb">
-		<li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-		<li><a href="#">Buy ticket</a></li>
+		<li><a href="{{ route('admin.admin.dashboard') }}"><i class="fa fa-dashboard"></i> Home</a></li>
 		<li class="active">All Buy ticket</li>
 	</ol>
 </section>

@@ -14,8 +14,8 @@
 		<small>it all starts here</small>
 	</h1>
 	<ol class="breadcrumb">
-		<li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-		<li><a href="#">Oponent Club</a></li>
+		<li><a href="{{ route('admin.admin.dashboard') }}"><i class="fa fa-dashboard"></i> Home</a></li>
+		<li><a href="{{ route('admin.oponentclub.index') }}">Oponent Club</a></li>
 		<li class="active">Update Oponent Club</li>
 	</ol>
 </section>
@@ -33,34 +33,36 @@
 					<h3 class="box-title">Update Oponent Club Entry</h3>
 				</div>
 				<!-- /.box-header -->
+				@include("partial.notification")
 				<!-- form start -->
-				<form role="form" action="{{ route('admin.oponentclub.update', $oponentclub->id) }}" method="post">
+				<form role="form" action="{{ route('admin.oponentclub.update', $oponentclub->id) }}" method="post" enctype="multipart/form-data">
 					@csrf
 					@method('PUT')
 					<div class="box-body">
+						<small>required = *</small>
 						<div class="form-group">
-							<label for="name">Oponent Club Name:</label>
+							<label for="name">Oponent Club Name: *</label>
 							<input type="text" class="form-control" id="name" name="name" placeholder="Enter  name" value="{{ $oponentclub->name }}">
 						</div>
 					</div>
 
 					<div class="box-body">
 						<div class="form-group">
-							<label for="logo">Oponent Club Logo:</label>
-							<input type="file" class="form-control" id="logo" name="logo" placeholder="Enter  logo" value="{{ $oponentclub->logo }}">
+							<label for="logo">Oponent Club Logo: *</label>
+							<input type="file" class="form-control" id="logo" name="logo" placeholder="Enter  logo">
 						</div>
 					</div>
 
 					<div class="box-body">
 						<div class="form-group">
-							<label for="country">Country Name:</label>
+							<label for="country">Country Name: *</label>
 							<input type="text" class="form-control" id="country" name="country" placeholder="Enter country" value="{{ $oponentclub->country }}">
 						</div>
 					</div>
 
 					<div class="box-body">
 						<div class="form-group">
-							<label for="state">City Name:</label>
+							<label for="state">City Name: *</label>
 							<input type="text" class="form-control" id="state" name="state" placeholder="Enter  state" value="{{ $oponentclub->state }}">
 						</div>
 					</div>

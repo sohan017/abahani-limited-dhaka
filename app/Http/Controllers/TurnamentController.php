@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Turnament;
+use Illuminate\Support\Facades\Validator;
 
 class TurnamentController extends Controller
 {
@@ -25,8 +26,16 @@ class TurnamentController extends Controller
      */
     public function create()
     {
-        
         return view('admin.turnament.create');
+    }
+
+     protected function validator(array $data)
+    {
+        return Validator::make($data, [
+            'name' => 'required|max:100',
+            'start_date' => 'required',
+            'end_date' => 'required',
+        ]);
     }
 
     /**
@@ -37,8 +46,17 @@ class TurnamentController extends Controller
      */
     public function store(Request $request)
     {
-        Turnament::create($request->all());
-        return redirect()->route("admin.turnament.index");
+        $validator = $this->validator($request->all());
+        if ($validator->fails()) {
+            return redirect()->back()->withInput()->withErrors($validator);
+        }
+        Turnament::create([
+            'name' => $request->name,
+            'start_date' => $request->start_date,
+            'end_date' => $request->end_date,
+            
+        ]);
+        return redirect()->route("admin.turnament.index")->withSuccess("Turnament create success.");
     }
 
     /**
@@ -74,8 +92,18 @@ class TurnamentController extends Controller
      */
     public function update(Request $request, $id)
     {
-        Turnament::findOrFail($id)->update($request->all());
-        return redirect()->route("admin.turnament.index");
+        $validator = $this->validator($request->all());
+        if ($validator->fails()) {
+            return redirect()->back()->withInput()->withErrors($validator);
+        }
+
+        Turnament::findOrFail($id)->update([
+            'name' => $request->name,
+            'start_date' => $request->start_date,
+            'end_date' => $request->end_date,
+            
+        ]);
+        return redirect()->route("admin.turnament.index")->withSuccess("Turnament update success.");
     }
 
     /**

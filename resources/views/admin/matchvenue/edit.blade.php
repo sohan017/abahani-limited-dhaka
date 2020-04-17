@@ -14,8 +14,8 @@
 		<small>it all starts here</small>
 	</h1>
 	<ol class="breadcrumb">
-		<li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-		<li><a href="#">Match venue</a></li>
+		<li><a href="{{ route('admin.admin.dashboard') }}"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li><a href="{{ route('admin.matchvenue.index') }}">Match venue</a></li>
 		<li class="active">Update Match venue</li>
 	</ol>
 </section>
@@ -33,27 +33,29 @@
 					<h3 class="box-title">Update Match venue Entry</h3>
 				</div>
 				<!-- /.box-header -->
+				@include("partial.notification")
 				<!-- form start -->
 				<form role="form" action="{{ route('admin.matchvenue.update', $matchvenue->id) }}" method="post">
 					@csrf
 					@method('PUT')
 					<div class="box-body">
+						<small>required = *</small>
 						<div class="form-group">
-							<label for="name">Natch Venue Name:</label>
+							<label for="name">Natch Venue Name: *</label>
 							<input type="text" class="form-control" id="name" name="name" placeholder="Enter  name" value="{{ $matchvenue->name }}">
 						</div>
 					</div>
 
 					<div class="box-body">
 						<div class="form-group">
-							<label for="city">City Name:</label>
+							<label for="city">City Name: *</label>
 							<input type="text" class="form-control" id="city" name="city" placeholder="Enter  city" value="{{ $matchvenue->city }}">
 						</div>
 					</div>
 
 					<div class="box-body">
 						<div class="form-group">
-							<label for="country">Country Name:</label>
+							<label for="country">Country Name: *</label>
 							<input type="text" class="form-control" id="country" name="country" placeholder="Enter country" value="{{ $matchvenue->country }}">
 						</div>
 					</div>

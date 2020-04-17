@@ -12,8 +12,8 @@
 	<h1> Show Trainee Fitness page</h1>
 	<a href="{{ route('admin.traineefitness.create')}}" class="btn btn-primary">Add new Trainee Fitness</a>
 	<ol class="breadcrumb">
-		<li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-		<li><a href="#">Trainee Fitness</a></li>
+		<li><a href="{{ route('admin.admin.dashboard') }}"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li><a href="{{ route('admin.trainee.index') }}">Trainee fitness</a></li>
 		<li class="active">Show Trainee Fitness</li>
 	</ol>
 </section>

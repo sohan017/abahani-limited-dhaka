@@ -12,9 +12,8 @@
 	<h1> Show Trainee fitness page</h1>
 	<a href="{{ route('admin.traineefitness.create')}}" class="btn btn-primary">Add new Trainee fitness</a>
 	<ol class="breadcrumb">
-		<li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-		<li><a href="#">Trainee fitness</a></li>
-		<li class="active">Show Trainee fitness</li>
+		<li><a href="{{ route('admin.admin.dashboard') }}"><i class="fa fa-dashboard"></i> Home</a></li>
+		<li class="active">Show Trainee fitnesses</li>
 	</ol>
 </section>
 <!-- Main content -->
@@ -41,9 +40,9 @@
                     @foreach($traineefitnesses as $traineefitness)
                     <tr>
                         <td>{{ $traineefitness->id }}</td>
-                        <td>{{ $traineefitness->trainee_id }}</td>
-                        <td>{{ $traineefitness->physio_id }}</td>
-                        <td>{{ $traineefitness->is_feet }}</td>
+                        <td>{{ $traineefitness->trainee->name }}</td>
+                        <td>{{ $traineefitness->physio->name }}</td>
+                        <td>{{ $traineefitness->is_feet ? "True" : "False" }}</td>
                         <td>
                             <div class="btn-group">
                                 <a href="{{ route('admin.traineefitness.show', $traineefitness->id) }}" class="btn btn-default">Show</a>

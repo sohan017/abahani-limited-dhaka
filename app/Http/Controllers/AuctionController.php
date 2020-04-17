@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Auction;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Hash;
 
 class AuctionController extends Controller
 {
@@ -28,6 +30,16 @@ class AuctionController extends Controller
         return view('admin.auction.create');
     }
 
+     protected function validator(array $data)
+    {
+        return Validator::make($data, [
+            'name' => 'required|max:100|string',
+            'start_time' => 'required',
+            'end_time' => 'required',
+            'auction_detail' => 'required',
+        ]);
+    }
+
     /**
      * Store a newly created resource in storage.
      *
@@ -36,8 +48,18 @@ class AuctionController extends Controller
      */
     public function store(Request $request)
     {
-        Auction::create($request->all());
-        return redirect()->route("admin.auction.index");
+        $validator = $this->validator($request->all());
+        if ($validator->fails()) {
+            return redirect()->back()->withInput()->withErrors($validator);
+        }
+
+        Auction::create([
+            'name' => $request->name,
+            'start_time' => $request->start_time,
+            'end_time' => $request->end_time,
+            'auction_detail' => $request->auction_detail,
+        ]);
+        return redirect()->route("admin.auction.index")->withSuccess("Auction create success.");;
     }
 
     /**
@@ -73,8 +95,17 @@ class AuctionController extends Controller
      */
     public function update(Request $request, $id)
     {
-        Auction::findOrFail($id)->update($request->all());
-        return redirect()->route('admin.auction.index');
+        $validator = $this->validator($request->all());
+        if ($validator->fails()) {
+            return redirect()->back()->withInput()->withErrors($validator);
+        }
+        Auction::findOrFail($id)->update([
+            'name' => $request->name,
+            'start_time' => $request->start_time,
+            'end_time' => $request->end_time,
+            'auction_detail' => $request->auction_detail,
+        ]);
+        return redirect()->route('admin.auction.index')->withSuccess("Auction update success.");
     }
 
     /**

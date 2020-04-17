@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\PlayerFitness;
 use App\Player;
 use App\Physio;
+use Illuminate\Support\Facades\Validator;
 
 class PlayerfitnessController extends Controller
 {
@@ -32,6 +33,15 @@ class PlayerfitnessController extends Controller
         return view('admin.playerfitness.create', compact('playeres','physios'));
     }
 
+    protected function validator(array $data)
+    {
+        return Validator::make($data, [
+            'player_id' => 'required',
+            'physio_id' => 'required',
+            'physio_note' => 'required',
+        ]);
+    }
+
     /**
      * Store a newly created resource in storage.
      *
@@ -40,8 +50,19 @@ class PlayerfitnessController extends Controller
      */
     public function store(Request $request)
     {
-        PlayerFitness::create($request->all());
-        return redirect()->route("admin.playerfitness.index");
+        $validator = $this->validator($request->all());
+        if ($validator->fails()) {
+            return redirect()->back()->withInput()->withErrors($validator);
+        }
+
+        PlayerFitness::create([
+            'player_id' => $request->player_id,
+            'physio_id' => $request->physio_id,
+            'is_feet' => $request->is_feet ? true : false,
+            'physio_note' => $request->physio_note,
+            
+        ]);
+        return redirect()->route("admin.playerfitness.index")->withSuccess("Player Feetness create success.");
     }
 
     /**
@@ -83,8 +104,19 @@ class PlayerfitnessController extends Controller
      */
     public function update(Request $request, $id)
     {
-         PlayerFitness::findOrFail($id)->update($request->all());
-        return redirect()->route('admin.playerfitness.index');
+        $validator = $this->validator($request->all());
+        if ($validator->fails()) {
+            return redirect()->back()->withInput()->withErrors($validator);
+        }
+
+        PlayerFitness::findOrFail($id)->update([
+            'player_id' => $request->player_id,
+            'physio_id' => $request->physio_id,
+            'is_feet' => $request->is_feet ? true : false,
+            'physio_note' => $request->physio_note,
+            
+        ]);
+        return redirect()->route('admin.playerfitness.index')->withSuccess("Player Feetness update success.");
     }
 
     /**

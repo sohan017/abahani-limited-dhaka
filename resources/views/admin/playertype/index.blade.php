@@ -12,8 +12,7 @@
 	<h1> Show Player type page</h1>
 	<a href="{{ route('admin.playertype.create')}}" class="btn btn-primary">Add new Player Type</a>
 	<ol class="breadcrumb">
-		<li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-		<li><a href="#">Player type</a></li>
+		<li><a href="{{ route('admin.admin.dashboard') }}"><i class="fa fa-dashboard"></i> Home</a></li>
 		<li class="active">Show Player type</li>
 	</ol>
 </section>

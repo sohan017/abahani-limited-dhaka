@@ -14,8 +14,8 @@
 		<small>it all starts here</small>
 	</h1>
 	<ol class="breadcrumb">
-		<li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-		<li><a href="#">Trainee fitness</a></li>
+		<li><a href="{{ route('admin.admin.dashboard') }}"><i class="fa fa-dashboard"></i> Home</a></li>
+		<li><a href="{{ route('admin.trainee.index') }}">Trainee fitness</a></li>
 		<li class="active">Trainee fitness Update</li>
 	</ol>
 </section>
@@ -38,8 +38,9 @@
 					@csrf
 					@method('PUT')
 					<div class="box-body">
+						<small>required = *</small>
 						<div class="form-group">
-							<label for="trainee_id">Trainee name:</label>
+							<label for="trainee_id">Trainee name: *</label>
 							<select name="trainee_id" id="trainee_id" class="form-control">
 								
 								@foreach($trainees as $trainee)
@@ -49,7 +50,7 @@
 						</div>
 
 						<div class="form-group">
-							<label for="physio_id">Physio name:</label>
+							<label for="physio_id">Physio name: *</label>
 							<select name="physio_id" id="physio_id" class="form-control">
 								
 								@foreach($physios as $physio)
@@ -59,12 +60,15 @@
 						</div>
 
 						<div class="form-group">
-							<label for="is_feet"> IS feet:</label>
-							<input type="text" class="form-control" id="is_feet" name="is_feet" placeholder="Enter is_feet"  value="{{ $traineefitness->is_feet }}">
+							<label for="is_feet"> 
+								<input type="checkbox" name="is_feet" id="" value="1">
+								Is this trainee feet ? 
+							</label>
+							
 						</div>
 					
 						<div class="form-group">
-							<label for="physio_note"> Physio note: </label>
+							<label for="physio_note"> Physio note: *</label>
 							<textarea name="physio_note" id="physio_note" cols="30" rows="10" class="form-control" placeholder="Enter physio note">{{ $traineefitness->physio_note }}</textarea>
 						</div>
 					
@@ -72,7 +76,7 @@
 					<!-- /.box-body -->
 
 					<div class="box-footer">
-						<button type="submit" class="btn btn-primary">Submit</button>
+						<button type="submit" class="btn btn-primary">Update</button>
 					</div>
 				</form>
 			</div>

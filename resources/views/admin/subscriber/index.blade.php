@@ -12,8 +12,7 @@
 	<h1> Show Subscriber page</h1>
 	<a href="{{ route('admin.subscriber.create')}}" class="btn btn-primary">Add new Subscriber</a>
 	<ol class="breadcrumb">
-		<li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-		<li><a href="#">Subscriber</a></li>
+		<li><a href="{{ route('admin.admin.dashboard') }}"><i class="fa fa-dashboard"></i> Home</a></li>
 		<li class="active">Show Subscriber</li>
 	</ol>
 </section>
@@ -22,9 +21,7 @@
 
 
     <div class="box">
-        <div class="box-header">
-            <h3 class="box-title">All Subscriber Data Table With Full Features</h3>
-        </div>
+        
         <!-- /.box-header -->
         <div class="box-body">
             <table id="example1" class="table table-bordered table-striped">

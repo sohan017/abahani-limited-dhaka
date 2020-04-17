@@ -14,8 +14,8 @@
 		<small>it all starts here</small>
 	</h1>
 	<ol class="breadcrumb">
-		<li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-		<li><a href="#">Bidder</a></li>
+		<li><a href="{{ route('admin.admin.dashboard') }}"><i class="fa fa-dashboard"></i> Dashbaord</a></li>
+		<li><a href="{{ route('admin.bidder.index') }}">Bidder</a></li>
 		<li class="active">Bidder Create</li>
 	</ol>
 </section>
@@ -33,32 +33,34 @@
 					<h3 class="box-title">Bidder Entry</h3>
 				</div>
 				<!-- /.box-header -->
+				@include("partial.notification")
 				<!-- form start -->
 				<form role="form" action="{{ route('admin.bidder.store') }}" method="post">
 					@csrf
 					<div class="box-body">
+						<small>required = *</small>
 						<div class="form-group">
-							<label for="name"> Name:</label>
-							<input type="text" class="form-control" id="name" name="name" placeholder="Enter name">
+							<label for="name"> Name: *</label>
+							<input type="text" class="form-control" id="name" name="name" placeholder="Enter name" value="{{old('name')}}">
 						</div>
 
 						<div class="form-group">
-							<label for="club_name">Club Name:</label>
-							<input type="text" class="form-control" id="club_name" name="club_name" placeholder="Enter club name">
+							<label for="club_name">Club Name: *</label>
+							<input type="text" class="form-control" id="club_name" name="club_name" placeholder="Enter club name" value="{{old('club_name')}}">
 						</div>
 
 						<div class="form-group">
-							<label for="contact_num">Contact Number:</label>
-							<input type="text" class="form-control" id="contact_num" name="contact_num" placeholder="Enter Contact Number">
+							<label for="contact_num">Contact Number: *</label>
+							<input type="text" class="form-control" id="contact_num" name="contact_num" placeholder="Enter Contact Number" value="{{old('contact_num')}}">
 						</div>
 
 						<div class="form-group">
-							<label for="email">Contact Number:</label>
-							<input type="email" class="form-control" id="email" name="email" placeholder="Enter email">
+							<label for="email">Email: *</label>
+							<input type="email" class="form-control" id="email" name="email" placeholder="Enter email" value="{{old('email')}}">
 						</div>
 
 						<div class="form-group">
-							<label for="password">Password:</label>
+							<label for="password">Password: *</label>
 							<input type="password" class="form-control" id="password" name="password" placeholder="Enter password">
 						</div>
 						

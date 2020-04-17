@@ -7,6 +7,7 @@ use App\BuyTicket;
 use App\Ticket;
 use App\Subscriber;
 use App\Discount;
+use Illuminate\Support\Facades\Validator;
 
 class BuyticketController extends Controller
 {
@@ -36,6 +37,23 @@ class BuyticketController extends Controller
         return view('admin.buyticket.create', compact('tickets', 'subscribers', 'discounts'));
     }
 
+    protected function validator(array $data)
+    {
+        return Validator::make($data, [
+            'ticket_id' => 'required|max:11',
+            'subscriber_id' => 'required|max:11',
+            'vip_qty' => 'required|min:1|regex:/^\d+(\.\d{1,2})?$/',
+            'normal_qty' => 'required|min:1|regex:/^\d+(\.\d{1,2})?$/',
+            'classic_qty' => 'required|min:1|regex:/^\d+(\.\d{1,2})?$/',
+            'vip_price' => 'required|min:1|regex:/^\d+(\.\d{1,2})?$/',
+            'normal_price' => 'required|min:3',
+            'classic_price' => 'required|min:3|regex:/^\d+(\.\d{1,2})?$/',
+            'sub_total_price' => 'required|regex:/^\d+(\.\d{1,2})?$/',
+            'discount_id' => 'required',
+            'total_price' => 'required|regex:/^\d+(\.\d{1,2})?$/',
+        ]);
+    }
+
     /**
      * Store a newly created resource in storage.
      *
@@ -44,8 +62,24 @@ class BuyticketController extends Controller
      */
     public function store(Request $request)
     {
-        BuyTicket::create($request->all());
-        return redirect()->route("admin.buyticket.index");
+        $validator = $this->validator($request->all());
+        if ($validator->fails()) {
+            return redirect()->back()->withInput()->withErrors($validator);
+        }
+        BuyTicket::create([
+            'ticket_id' => $request->ticket_id,
+            'subscriber_id' => $request->subscriber_id,
+            'vip_qty' => $request->vip_qty,
+            'normal_qty' => $request->normal_qty,
+            'classic_qty' => $request->classic_qty,
+            'vip_price' => $request->vip_price,
+            'normal_price' => $request->classic_price,
+            'classic_price' => $request->classic_price,
+            'sub_total_price' => $request->sub_total_price,
+            'discount_id' => $request->discount_id,
+            'total_price' => $request->total_price,
+        ]);
+        return redirect()->route("admin.buyticket.index")->withSuccess("Buy Ticket create success.");
     }
 
     /**
@@ -84,8 +118,25 @@ class BuyticketController extends Controller
      */
     public function update(Request $request, $id)
     {
-        BuyTicket::findOrFail($id)->update($request->all());
-        return redirect()->route('admin.buyticket.index');
+        $validator = $this->validator($request->all());
+        if ($validator->fails()) {
+            return redirect()->back()->withInput()->withErrors($validator);
+        }
+
+        BuyTicket::findOrFail($id)->update([
+            'ticket_id' => $request->ticket_id,
+            'subscriber_id' => $request->subscriber_id,
+            'vip_qty' => $request->vip_qty,
+            'normal_qty' => $request->normal_qty,
+            'classic_qty' => $request->classic_qty,
+            'vip_price' => $request->vip_price,
+            'normal_price' => $request->classic_price,
+            'classic_price' => $request->classic_price,
+            'sub_total_price' => $request->sub_total_price,
+            'discount_id' => $request->discount_id,
+            'total_price' => $request->total_price,
+        ]);
+        return redirect()->route('admin.buyticket.index')->withSuccess("Buy Ticket update success.");
     }
 
     /**

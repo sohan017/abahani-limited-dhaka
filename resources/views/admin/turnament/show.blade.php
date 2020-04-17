@@ -12,8 +12,8 @@
 	<h1> Show turnament page</h1>
 	<a href="{{ route('admin.turnament.create')}}" class="btn btn-primary">Add new turnament</a>
 	<ol class="breadcrumb">
-		<li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-		<li><a href="#">turnament</a></li>
+		<li><a href="{{ route('admin.admin.dashboard') }}"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li><a href="{{ route('admin.turnament.index') }}">Turnament</a></li>
 		<li class="active">Show turnament</li>
 	</ol>
 </section>

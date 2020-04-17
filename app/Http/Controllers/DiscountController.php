@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Discount;
 use App\Match;
+use Illuminate\Support\Facades\Validator;
 
 class DiscountController extends Controller
 {
@@ -31,6 +32,16 @@ class DiscountController extends Controller
         return view('admin.discount.create', compact('matchs'));
     }
 
+     protected function validator(array $data)
+    {
+        return Validator::make($data, [
+            'name' => 'required|max:100',
+            'match_id' => 'required|max:20',
+            'percent' => 'required|max:3',
+           
+        ]);
+    }
+
     /**
      * Store a newly created resource in storage.
      *
@@ -39,8 +50,16 @@ class DiscountController extends Controller
      */
     public function store(Request $request)
     {
-        discount::create($request->all());
-        return redirect()->route("admin.discount.index");
+        $validator = $this->validator($request->all());
+        if ($validator->fails()) {
+            return redirect()->back()->withInput()->withErrors($validator);
+        }
+        discount::create([
+            'name' => $request->name,
+            'match_id' => $request->match_id,
+            'percent' => $request->percent,
+        ]);
+        return redirect()->route("admin.discount.index")->withSuccess("Discount create success.");
     }
 
     /**
@@ -77,8 +96,17 @@ class DiscountController extends Controller
      */
     public function update(Request $request, $id)
     {
-        discount::findOrFail($id)->update($request->all());
-        return redirect()->route('admin.discount.index');
+        $validator = $this->validator($request->all());
+        if ($validator->fails()) {
+            return redirect()->back()->withInput()->withErrors($validator);
+        }
+
+        discount::findOrFail($id)->update([
+            'name' => $request->name,
+            'match_id' => $request->match_id,
+            'percent' => $request->percent,
+        ]);
+        return redirect()->route('admin.discount.index')->withSuccess("Discount udate success.");
     }
 
     /**

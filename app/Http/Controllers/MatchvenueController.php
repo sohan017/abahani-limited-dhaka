@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Matchvenue;
-
+use Illuminate\Support\Facades\Validator;
 class MatchvenueController extends Controller
 {
     /**
@@ -28,6 +28,15 @@ class MatchvenueController extends Controller
         return view('admin.matchvenue.create');
     }
 
+    protected function validator(array $data)
+    {
+        return Validator::make($data, [
+            'name' => 'required|max:100|string',
+            'city' => 'required|string',
+            'country' => 'required|string',
+        ]);
+    }
+
     /**
      * Store a newly created resource in storage.
      *
@@ -36,8 +45,16 @@ class MatchvenueController extends Controller
      */
     public function store(Request $request)
     {
-        Matchvenue::create($request->all());
-        return redirect()->route("admin.matchvenue.index");
+        $validator = $this->validator($request->all());
+        if ($validator->fails()) {
+            return redirect()->back()->withInput()->withErrors($validator);
+        }
+        Matchvenue::create([
+            'name' => $request->name,
+            'city' => $request->city,
+            'country' => $request->country,
+        ]);
+        return redirect()->route("admin.matchvenue.index")->withSuccess("Match venue create success.");
     }
 
     /**
@@ -73,8 +90,17 @@ class MatchvenueController extends Controller
      */
     public function update(Request $request, $id)
     {
-        Matchvenue::findOrFail($id)->update($request->all());
-        return redirect()->route("admin.matchvenue.index");
+        $validator = $this->validator($request->all());
+        if ($validator->fails()) {
+            return redirect()->back()->withInput()->withErrors($validator);
+        }
+
+        Matchvenue::findOrFail($id)->update([
+            'name' => $request->name,
+            'city' => $request->city,
+            'country' => $request->country,
+        ]);
+        return redirect()->route("admin.matchvenue.index")->withSuccess("Match venue Update success.");
     }
 
     /**

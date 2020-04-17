@@ -12,8 +12,8 @@
 	<h1> Show Match page</h1>
 	<a href="{{ route('admin.match.create')}}" class="btn btn-primary">Add new Match</a>
 	<ol class="breadcrumb">
-		<li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-		<li><a href="#">Match</a></li>
+		<li><a href="{{ route('admin.admin.dashboard') }}"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li><a href="{{ route('admin.match.index') }}">Match venue</a></li>
 		<li class="active">Show Match</li>
 	</ol>
 </section>

@@ -12,8 +12,7 @@
 	<h1> Show Turnament page</h1>
 	<a href="{{ route('admin.turnament.create')}}" class="btn btn-primary">Add new Coach</a>
 	<ol class="breadcrumb">
-		<li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-		<li><a href="#">Turnament</a></li>
+		<li><a href="{{ route('admin.admin.dashboard') }}"><i class="fa fa-dashboard"></i> Home</a></li>
 		<li class="active">Show Turnament</li>
 	</ol>
 </section>

@@ -5,7 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Ticket;
 use App\Match;
-
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Hash;
 
 class TicketController extends Controller
 {
@@ -31,6 +32,19 @@ class TicketController extends Controller
         return view('admin.ticket.create', compact('matchs'));
     }
 
+    protected function validator(array $data)
+    {
+        return Validator::make($data, [
+            'match_id' => 'required|max:11',
+            'vip_qty' => 'required|max:10',
+            'normal_qty' => 'required|max:10',
+            'classic_qty' => 'required|max:10',
+            'vip_price' => 'required|max:5',
+            'normal_price' => 'required|max:3',
+            'classic_price' => 'required|max:4',
+        ]);
+    }
+
     /**
      * Store a newly created resource in storage.
      *
@@ -38,9 +52,23 @@ class TicketController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {
-        Ticket::create($request->all());
-        return redirect()->route("admin.ticket.index");
+    {  
+        $validator = $this->validator($request->all());
+        if ($validator->fails()) {
+            return redirect()->back()->withInput()->withErrors($validator);
+        }
+
+        Ticket::create([
+            'match_id' => $request->match_id,
+            'vip_qty' => $request->vip_qty,
+            'normal_qty' => $request->normal_qty,
+            'classic_qty' => $request->classic_qty,
+            'vip_price' => $request->vip_price,
+            'normal_price' => $request->normal_price,
+            'classic_price' => $request->classic_price,
+            
+        ]);
+        return redirect()->route("admin.ticket.index")->withSuccess("Ticket create success.");
     }
 
     /**
@@ -77,8 +105,21 @@ class TicketController extends Controller
      */
     public function update(Request $request, $id)
     {
-        Ticket::findOrFail($id)->update($request->all());
-        return redirect()->route('admin.ticket.index');
+        $validator = $this->validator($request->all());
+        if ($validator->fails()) {
+            return redirect()->back()->withInput()->withErrors($validator);
+        }
+        Ticket::findOrFail($id)->update([
+            'match_id' => $request->match_id,
+            'vip_qty' => $request->vip_qty,
+            'normal_qty' => $request->normal_qty,
+            'classic_qty' => $request->classic_qty,
+            'vip_price' => $request->vip_price,
+            'normal_price' => $request->normal_price,
+            'classic_price' => $request->classic_price,
+            
+        ]);
+        return redirect()->route('admin.ticket.index')->withSuccess("Ticket Update success.");
     }
 
     /**

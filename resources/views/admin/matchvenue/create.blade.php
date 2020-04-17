@@ -14,8 +14,8 @@
 		<small>it all starts here</small>
 	</h1>
 	<ol class="breadcrumb">
-		<li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-		<li><a href="#">Match venue</a></li>
+		<li><a href="{{ route('admin.admin.dashboard') }}"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li><a href="{{ route('admin.matchvenue.index') }}">Match venue</a></li>
 		<li class="active">Match venue Create</li>
 	</ol>
 </section>
@@ -33,23 +33,25 @@
 					<h3 class="box-title">Match venue Entry</h3>
 				</div>
 				<!-- /.box-header -->
+				@include("partial.notification")
 				<!-- form start -->
 				<form role="form" action="{{ route('admin.matchvenue.store') }}" method="post">
 					@csrf
 					<div class="box-body">
+						<small>required = *</small>
 						<div class="form-group">
-							<label for="name">Match venue Name:</label>
-							<input type="text" class="form-control" id="name" name="name" placeholder="Enter Match venue name">
+							<label for="name">Match venue Name: *</label>
+							<input type="text" class="form-control" id="name" name="name" placeholder="Enter Match venue name"  value="{{old('name')}}">
 						</div>
 
 						<div class="form-group">
-							<label for="city">City Name:</label>
-							<input type="text" class="form-control" id="city" name="city" placeholder="Enter city name">
+							<label for="city">City Name: *</label>
+							<input type="text" class="form-control" id="city" name="city" placeholder="Enter city name"  value="{{old('city')}}">
 						</div>
 
 						<div class="form-group">
-							<label for="country">Country Name:</label>
-							<input type="text" class="form-control" id="country" name="country" placeholder="Enter Country name">
+							<label for="country">Country Name: *</label>
+							<input type="text" class="form-control" id="country" name="country" placeholder="Enter Country name"  value="{{old('country')}}">
 						</div>
 						
 					</div>

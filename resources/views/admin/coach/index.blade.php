@@ -12,9 +12,8 @@
 	<h1> Show Chach page</h1>
 	<a href="{{ route('admin.coach.create')}}" class="btn btn-primary">Add new Coach</a>
 	<ol class="breadcrumb">
-		<li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-		<li><a href="#">Category</a></li>
-		<li class="active">Show Category</li>
+		<li><a href="{{ route('admin.admin.dashboard') }}"><i class="fa fa-dashboard"></i> Home</a></li>
+		<li class="active">Show Coachs</li>
 	</ol>
 </section>
 <!-- Main content -->
@@ -41,7 +40,7 @@
                     <tr>
                         <td>{{ $coach->id }}</td>
                         <td>{{ $coach->name }}</td>
-                        <td>{{ $coach->img }}</td>
+                        <td><img src="{{ asset($coach->img) }}" alt="img"></td>
                         <td>
                             <div class="btn-group">
                                 <a href="{{ route('admin.coach.show', $coach->id) }}" class="btn btn-default">Show</a>

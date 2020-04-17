@@ -14,8 +14,8 @@
 		<small>it all starts here</small>
 	</h1>
 	<ol class="breadcrumb">
-		<li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-		<li><a href="#">Player fitness</a></li>
+		<li><a href="{{ route('admin.admin.dashboard') }}"><i class="fa fa-dashboard"></i> Home</a></li>
+		<li><a href="{{ route('admin.playerfitmess.index') }}">Player fitness</a></li>
 		<li class="active">Player fitness Update</li>
 	</ol>
 </section>
@@ -33,13 +33,15 @@
 					<h3 class="box-title">Player fitness Update</h3>
 				</div>
 				<!-- /.box-header -->
+				@include("partial.notification")
 				<!-- form start -->
 				<form role="form" action="{{ route('admin.playerfitness.update', $playerfitness->id) }}" method="post">
 					@csrf
 					@method('PUT')
 					<div class="box-body">
+						<small>required = *</small>
 						<div class="form-group">
-							<label for="player_id">Player name:</label>
+							<label for="player_id">Player name: *</label>
 							<select name="player_id" id="player_id" class="form-control">
 								
 								@foreach($playeres as $player)
@@ -49,7 +51,7 @@
 						</div>
 
 						<div class="form-group">
-							<label for="physio_id">Physio name:</label>
+							<label for="physio_id">Physio name: *</label>
 							<select name="physio_id" id="physio_id" class="form-control">
 								
 								@foreach($physios as $physio)
@@ -59,12 +61,12 @@
 						</div>
 
 						<div class="form-group">
-							<label for="is_feet"> IS feet:</label>
+							<label for="is_feet"> IS feet: *</label>
 							<input type="text" class="form-control" id="is_feet" name="is_feet" placeholder="Enter is_feet"  value="{{ $playerfitness->is_feet }}">
 						</div>
 					
 						<div class="form-group">
-							<label for="physio_note"> Physio note: </label>
+							<label for="physio_note">Physio note: *</label>
 							<textarea name="physio_note" id="physio_note" cols="30" rows="10" class="form-control" placeholder="Enter physio note">{{ $playerfitness->physio_note }}</textarea>
 						</div>
 					

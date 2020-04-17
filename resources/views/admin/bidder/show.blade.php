@@ -12,8 +12,8 @@
 	<h1> Show bidder page</h1>
 	<a href="{{ route('admin.bidder.create')}}" class="btn btn-primary">Add new bidder</a>
 	<ol class="breadcrumb">
-		<li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-		<li><a href="#">bidder</a></li>
+		<li><a href="{{ route('admin.admin.dashboard')}}"><i class="fa fa-dashboard"></i> Home</a></li>
+		<li><a href="{{ route('admin.bidder.index')}}">bidder</a></li>
 		<li class="active">Show bidder</li>
 	</ol>
 </section>

@@ -12,8 +12,8 @@
 	<h1> Show Physio page</h1>
 	<a href="{{ route('admin.physio.create')}}" class="btn btn-primary">Add new Physio</a>
 	<ol class="breadcrumb">
-		<li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-		<li><a href="#">Physio</a></li>
+		<li><a href="{{ route('admin.admin.dashboard') }}"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li><a href="{{ route('admin.team.index') }}">Physio</a></li>
 		<li class="active">Show Physio</li>
 	</ol>
 </section>
@@ -40,7 +40,7 @@
                 	</tr>
                 	<tr>
                 		<th>Photo</th>
-                		<td>{{ $physio->img }}</td>
+                		<td><img src="{{ asset($physio->img) }}" alt="img"></td>
                 	</tr>
                 	<tr>
                 		<th>Address</th>

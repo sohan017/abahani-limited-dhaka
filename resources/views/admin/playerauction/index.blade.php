@@ -12,8 +12,7 @@
 	<h1> Show player auction page</h1>
 	<a href="{{ route('admin.playerauction.create')}}" class="btn btn-primary">Add new playerauction</a>
 	<ol class="breadcrumb">
-		<li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-		<li><a href="#">player auction</a></li>
+		<li><a href="{{ route('admin.admin.dashboard') }}"><i class="fa fa-dashboard"></i> Home</a></li>
 		<li class="active">Show player auction</li>
 	</ol>
 </section>

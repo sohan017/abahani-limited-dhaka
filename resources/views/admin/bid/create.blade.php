@@ -14,8 +14,8 @@
 		<small>it all starts here</small>
 	</h1>
 	<ol class="breadcrumb">
-		<li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-		<li><a href="#">Bid</a></li>
+		<li><a href="{{ route('admin.admin.dashboard') }}"><i class="fa fa-dashboard"></i> Home</a></li>
+		<li><a href="{{ route('admin.bid.index') }}">Bid</a></li>
 		<li class="active">Bid Create</li>
 	</ol>
 </section>
@@ -33,13 +33,15 @@
 					<h3 class="box-title">Bid Entry</h3>
 				</div>
 				<!-- /.box-header -->
+				@include("partial.notification")
 				<!-- form start -->
 				<form role="form" action="{{ route('admin.bid.store') }}" method="post">
 					@csrf
 					<div class="box-body">
+						<small>required = *</small>
 						<div class="form-group">
-							<label for="player_auction_id">Player Auction Id:</label>
-							<select name="player_auction_id" id="player_auction_id" class="form-control">
+							<label for="player_auction_id">Player Auction Name: *</label>
+							<select name="player_auction_id" id="player_auction_id" class="form-control" value="{{old('player_auction_id')}}">
 								
 								@foreach($playerauctions as $playerauction)
 									<option value="{{ $playerauction->id }}">{{ $playerauction->id }}</option>
@@ -48,8 +50,8 @@
 						</div>
 
 						<div class="form-group">
-							<label for="bidder_id">Player Name:</label>
-							<select name="bidder_id" id="bidder_id" class="form-control">
+							<label for="bidder_id">Player Name: *</label>
+							<select name="bidder_id" id="bidder_id" class="form-control" value="{{old('bidder_id')}}">
 								
 								@foreach($bidders as $bidder)
 									<option value="{{ $bidder->id }}">{{ $bidder->name }}</option>
@@ -59,14 +61,14 @@
 
 
 						<div class="form-group">
-							<label for="price">Player price:</label>
-							<input type="text" class="form-control" id="price" name="price" placeholder="Enter Player price">
+							<label for="price">Player price: *</label>
+							<input type="text" class="form-control" id="price" name="price" placeholder="Enter Player price" value="{{old('price')}}">
 						</div>
 
-						<div class="form-group">
-							<label for="date_time">Date & Time:</label>
+						<!-- <div class="form-group">
+							<label for="date_time">Date & Time: *</label>
 							<input type="text" class="form-control" id="date_time" name="date_time" placeholder="Enter date & time">
-						</div>
+						</div> -->
 						
 					</div>
 					<!-- /.box-body -->

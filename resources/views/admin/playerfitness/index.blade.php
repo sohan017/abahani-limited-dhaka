@@ -12,9 +12,8 @@
 	<h1> Show Player fitness page</h1>
 	<a href="{{ route('admin.playerfitness.create')}}" class="btn btn-primary">Add new Player fitness</a>
 	<ol class="breadcrumb">
-		<li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-		<li><a href="#">Player fitness</a></li>
-		<li class="active">Show Player fitness</li>
+		<li><a href="{{ route('admin.admin.dashboard') }}"><i class="fa fa-dashboard"></i> Home</a></li>		
+        <li class="active">Show Player fitness</li>
 	</ol>
 </section>
 <!-- Main content -->
@@ -40,10 +39,10 @@
                 <tbody>
                     @foreach($playerfitnesses as $playerfitness)
                     <tr>
-                        <td>{{ $playerfitness->player_id }}</td>
                         <td>{{ $playerfitness->id }}</td>
-                        <td>{{ $playerfitness->physio_id }}</td>
-                        <td>{{ $playerfitness->is_feet }}</td>
+                        <td>{{ $playerfitness->player->name }}</td>
+                        <td>{{ $playerfitness->physio->name }}</td>
+                        <td>{{ $playerfitness->is_feet ? "True" : "False" }}</td>
                         <td>
                             <div class="btn-group">
                                 <a href="{{ route('admin.playerfitness.show', $playerfitness->id) }}" class="btn btn-default">Show</a>

@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Goal;
 use App\Player;
 use App\Match;
+use Illuminate\Support\Facades\Validator;
+
 
 
 class GoalController extends Controller
@@ -35,6 +37,19 @@ class GoalController extends Controller
         return view('admin.goal.create', compact('players', 'matchs'));
     }
 
+    protected function validator(array $data)
+    {
+        return Validator::make($data, [
+            'goal_number' => 'required|max:2',
+            'player_id' => 'required',
+            'match_id' => 'required',
+            'goal_time' => 'required',
+            'goal_type' => 'required',
+            'goal_team' => 'required',
+            'goal_half' => 'required',
+        ]);
+    }
+
     /**
      * Store a newly created resource in storage.
      *
@@ -43,8 +58,21 @@ class GoalController extends Controller
      */
     public function store(Request $request)
     {
-        Goal::create($request->all());
-        return redirect()->route("admin.goal.index");
+        $validator = $this->validator($request->all());
+        if ($validator->fails()) {
+            return redirect()->back()->withInput()->withErrors($validator);
+        }
+
+        Goal::create([
+            'goal_number' => $request->goal_number,
+            'player_id' => $request->player_id,
+            'match_id' => $request->match_id,
+            'goal_time' => $request->goal_time,
+            'goal_type' => $request->goal_type,
+            'goal_team' => $request->goal_team,
+            'goal_half' => $request->goal_half,
+        ]);
+        return redirect()->route("admin.goal.index")->withSuccess("Goal create success.");
     }
 
     /**
@@ -82,8 +110,21 @@ class GoalController extends Controller
      */
     public function update(Request $request, $id)
     {
-        Goal::findOrFail($id)->update($request->all());
-        return redirect()->route('admin.goal.index');
+          $validator = $this->validator($request->all());
+        if ($validator->fails()) {
+            return redirect()->back()->withInput()->withErrors($validator);
+        }
+
+        Goal::findOrFail($id)->update([
+            'goal_number' => $request->goal_number,
+            'player_id' => $request->player_id,
+            'match_id' => $request->match_id,
+            'goal_time' => $request->goal_time,
+            'goal_type' => $request->goal_type,
+            'goal_team' => $request->goal_team,
+            'goal_half' => $request->goal_half,
+        ]);
+        return redirect()->route('admin.goal.index')->withSuccess("Goal update success.");
     }
 
     /**

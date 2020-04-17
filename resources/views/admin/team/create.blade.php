@@ -14,8 +14,8 @@
 		<small>it all starts here</small>
 	</h1>
 	<ol class="breadcrumb">
-		<li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-		<li><a href="#">Team</a></li>
+		<li><a href="{{ route('admin.admin.dashboard') }}"><i class="fa fa-dashboard"></i> Home</a></li>
+		<li><a href="{{ route('admin.team.index') }}">Team</a></li>
 		<li class="active">Team Create</li>
 	</ol>
 </section>
@@ -33,31 +33,33 @@
 					<h3 class="box-title">Team Entry</h3>
 				</div>
 				<!-- /.box-header -->
+				@include("partial.notification")
 				<!-- form start -->
-				<form role="form" action="{{ route('admin.team.store') }}" method="post">
+				<form role="form" action="{{ route('admin.team.store') }}" method="post" enctype="multipart/form-data">
 					@csrf
 					<div class="box-body">
+						<small>required = *</small>
 						<div class="form-group">
-							<label for="name"> Name:</label>
-							<input type="text" class="form-control" id="name" name="name" placeholder="Enter Team name">
+							<label for="name"> Name: *</label>
+							<input type="text" class="form-control" id="name" name="name" placeholder="Enter Team name"value="{{old('name')}}">
 						</div>
 
 						<div class="form-group">
-							<label for="logo">Logo upload:</label>
+							<label for="logo">Logo upload: *</label>
 							<input type="file" class="form-control" id="logo" name="logo">
 
 							<p class="help-block">Example block-level help text here.</p>
 						</div>
 					
 						<div class="form-group">
-							<label for="captain"> Team captain:</label>
-							<input type="text" class="form-control" id="captain" name="captain" placeholder="Enter Team captain">
+							<label for="captain"> Team captain: *</label>
+							<input type="text" class="form-control" id="captain" name="captain" placeholder="Enter Team captain"value="{{old('captain')}}">
 						</div>
 
 						<div class="form-group">
-							<label for="coach_id">Coach name:</label>
+							<label for="coach_id">Coach name: *</label>
 
-							<select name="coach_id" id="coach_id" class="form-control">
+							<select name="coach_id" id="coach_id" class="form-control"value="{{old('coach_id')}}">
 								
 								@foreach($coaches as $coach)
 									<option value="{{ $coach->id }}">{{ $coach->name }}</option>
@@ -67,8 +69,8 @@
 
 						
 						<div class="form-group">
-							<label for="physio_id">Physio name:</label>
-							<select name="physio_id" id="physio_id" class="form-control">
+							<label for="physio_id">Physio name: *</label>
+							<select name="physio_id" id="physio_id" class="form-control"value="{{old('physio_id')}}">
 								
 								@foreach($physios as $physio)
 									<option value="{{ $physio->id }}">{{ $physio->name }}</option>

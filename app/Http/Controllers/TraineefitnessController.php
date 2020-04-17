@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\TraineeFitness;
 use App\Trainee;
 use App\Physio;
+use Illuminate\Support\Facades\Validator;
 
 class TraineefitnessController extends Controller
 {
@@ -32,6 +33,15 @@ class TraineefitnessController extends Controller
         return view('admin.traineefitness.create', compact('trainees','physios'));
     }
 
+    protected function validator(array $data)
+    {
+        return Validator::make($data, [
+            'trainee_id' => 'required',
+            'physio_id' => 'required',
+            'physio_note' => 'required',
+        ]);
+    }
+
     /**
      * Store a newly created resource in storage.
      *
@@ -40,8 +50,19 @@ class TraineefitnessController extends Controller
      */
     public function store(Request $request)
     {
-        TraineeFitness::create($request->all());
-        return redirect()->route("admin.traineefitness.index");
+          $validator = $this->validator($request->all());
+        if ($validator->fails()) {
+            return redirect()->back()->withInput()->withErrors($validator);
+        }
+
+        TraineeFitness::create([
+            'trainee_id' => $request->trainee_id,
+            'physio_id' => $request->physio_id,
+            'is_feet' => $request->is_feet ? true : false,
+            'physio_note' => $request->physio_note,
+            
+        ]);
+        return redirect()->route("admin.traineefitness.index")->withSuccess("Trainee Feetness create success.");
     }
 
     /**
@@ -83,8 +104,18 @@ class TraineefitnessController extends Controller
      */
     public function update(Request $request, $id)
     {
-         TraineeFitness::findOrFail($id)->update($request->all());
-        return redirect()->route('admin.traineefitness.index');
+        $validator = $this->validator($request->all());
+        if ($validator->fails()) {
+            return redirect()->back()->withInput()->withErrors($validator);
+        }
+         TraineeFitness::findOrFail($id)->update([
+            'trainee_id' => $request->trainee_id,
+            'physio_id' => $request->physio_id,
+            'is_feet' => $request->is_feet ? true : false,
+            'physio_note' => $request->physio_note,
+            
+        ]);
+        return redirect()->route('admin.traineefitness.index')->withSuccess("Trainee Feetness update success.");
     }
 
     /**

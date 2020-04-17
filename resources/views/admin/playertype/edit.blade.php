@@ -14,8 +14,8 @@
 		<small>it all starts here</small>
 	</h1>
 	<ol class="breadcrumb">
-		<li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-		<li><a href="#">Coach</a></li>
+		<li><a href="{{ route('admin.admin.dashboard') }}"><i class="fa fa-dashboard"></i> Home</a></li>
+		<li><a href="{{ route('admin.playerauction.index') }}">Player type</a></li>
 		<li class="active">Update Coach</li>
 	</ol>
 </section>
@@ -33,13 +33,15 @@
 					<h3 class="box-title">Update Coach Entry</h3>
 				</div>
 				<!-- /.box-header -->
+				@include("partial.notification")
 				<!-- form start -->
 				<form role="form" action="{{ route('admin.playertype.update', $playertype->id) }}" method="post">
 					@csrf
 					@method('PUT')
 					<div class="box-body">
+						<small>required = *</small>
 						<div class="form-group">
-							<label for="name"> Name:</label>
+							<label for="name"> Name: *</label>
 							<input type="text" class="form-control" id="name" name="name" placeholder="Enter category name" value="{{ $playertype->name }}">
 						</div>
 					</div>

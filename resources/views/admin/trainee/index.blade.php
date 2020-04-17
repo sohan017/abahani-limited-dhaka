@@ -12,9 +12,8 @@
 	<h1> Show Trainee page</h1>
 	<a href="{{ route('admin.trainee.create')}}" class="btn btn-primary">Add new Trainee</a>
 	<ol class="breadcrumb">
-		<li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-		<li><a href="#">Trainee</a></li>
-		<li class="active">Show Trainee</li>
+		<li><a href="{{ route('admin.admin.dashboard') }}"><i class="fa fa-dashboard"></i> Home</a></li>
+		<li class="active">Show Trainees</li>
 	</ol>
 </section>
 <!-- Main content -->
@@ -41,7 +40,7 @@
                     <tr>
                         <td>{{ $trainee->id }}</td>
                         <td>{{ $trainee->name }}</td>
-                        <td>{{ $trainee->img }}</td>
+                       <td><img src="{{ asset($trainee->img) }}" alt="img"></td>
                         <td>
                             <div class="btn-group">
                                 <a href="{{ route('admin.trainee.show', $trainee->id) }}" class="btn btn-default">Show</a>

@@ -12,8 +12,8 @@
 	<h1> Show discount page</h1>
 	<a href="{{ route('admin.discount.create')}}" class="btn btn-primary">Add new discount</a>
 	<ol class="breadcrumb">
-		<li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-		<li><a href="#">discount</a></li>
+		<li><a href="{{ route('admin.admin.dashboard') }}"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li><a href="{{ route('admin.subscriber.index') }}">Discount</a></li>
 		<li class="active">Show discount</li>
 	</ol>
 </section>

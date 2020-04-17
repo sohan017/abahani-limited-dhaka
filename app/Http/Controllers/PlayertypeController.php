@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Playertype;
+use Illuminate\Support\Facades\Validator;
 
 class PlayertypeController extends Controller
 {
@@ -28,6 +29,13 @@ class PlayertypeController extends Controller
          return view('admin.playertype.create');
     }
 
+     protected function validator(array $data)
+    {
+        return Validator::make($data, [
+            'name' => 'required|max:100',
+        ]);
+    }
+
     /**
      * Store a newly created resource in storage.
      *
@@ -36,8 +44,15 @@ class PlayertypeController extends Controller
      */
     public function store(Request $request)
     {
-        Playertype::create($request->all());
-        return redirect()->route("admin.playertype.index");
+        $validator = $this->validator($request->all());
+        if ($validator->fails()) {
+            return redirect()->back()->withInput()->withErrors($validator);
+        }
+
+        Playertype::create([
+            'name' => $request->name,
+        ]);
+        return redirect()->route("admin.playertype.index")->withSuccess("Player type create success.");
     }
 
     /**
@@ -48,8 +63,11 @@ class PlayertypeController extends Controller
      */
     public function show($id)
     {
-        //
+        $playertype = Playertype::findOrFail($id);
+        
+        return view('admin.playertype.show', compact('playertype'));
     }
+    
 
     /**
      * Show the form for editing the specified resource.
@@ -72,8 +90,15 @@ class PlayertypeController extends Controller
      */
     public function update(Request $request, $id)
     {
-        Playertype::findOrFail($id)->update($request->all());
-        return redirect()->route("admin.playertype.index");
+         $validator = $this->validator($request->all());
+        if ($validator->fails()) {
+            return redirect()->back()->withInput()->withErrors($validator);
+        }
+
+        Playertype::findOrFail($id)->update([
+            'name' => $request->name,
+        ]);
+        return redirect()->route("admin.playertype.index")->withSuccess("Player type udate success.");
     }
 
     /**

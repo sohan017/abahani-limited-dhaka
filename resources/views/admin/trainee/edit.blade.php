@@ -14,8 +14,8 @@
 		<small>it all starts here</small>
 	</h1>
 	<ol class="breadcrumb">
-		<li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-		<li><a href="#">Trainee</a></li>
+		<li><a href="{{ route('admin.admin.dashboard') }}"><i class="fa fa-dashboard"></i> Home</a></li>
+		<li><a href="{{ route('admin.trainee.index') }}">Trainee</a></li>
 		<li class="active">Update Trainee</li>
 	</ol>
 </section>
@@ -33,18 +33,20 @@
 					<h3 class="box-title">Update Trainee Entry</h3>
 				</div>
 				<!-- /.box-header -->
+				@include("partial.notification")
 				<!-- form start -->
-				<form role="form" action="{{ route('admin.trainee.update', $trainee->id) }}" method="post">
+				<form role="form" action="{{ route('admin.trainee.update', $trainee->id) }}" method="post" enctype="multipart/form-data">
 					@csrf
 					@method('PUT')
 					<div class="box-body">
+						<small>required = *</small>
 						<div class="form-group">
-							<label for="name"> Name:</label>
+							<label for="name">Name: *</label>
 							<input type="text" class="form-control" id="name" name="name" placeholder="Enter category name" value="{{ $trainee->name }}">
 						</div>
 
 						<div class="form-group">
-							<label for="playertype_id">Playertype name:</label>
+							<label for="playertype_id">Playertype name: *</label>
 							<select name="playertype_id" id="playertype_id" class="form-control">
 								
 								@foreach($playerTypes as $playerType)
@@ -54,7 +56,7 @@
 						</div>
 
 						<div class="form-group">
-							<label for="coach_id">Playertype name:</label>
+							<label for="coach_id">Playertype name: *</label>
 							<select name="coach_id" id="coach_id" class="form-control">
 								
 								@foreach($coaches as $coach)
@@ -64,44 +66,44 @@
 						</div>
 					
 						<div class="form-group">
-							<label for="dob"> Date of birth:</label>
+							<label for="dob">Date of birth: *</label>
 							<input type="date" class="form-control" id="dob" name="dob" placeholder="Enter Date of birth" value="{{ $trainee->dob }}">
 						</div>
 					
 						<div class="form-group">
-							<label for="img">Image upload:</label>
+							<label for="img">Image upload: *</label>
 							<input type="text" class="form-control" id="img" name="img" value="{{ $trainee->img }}">
 
 							<p class="help-block">Example block-level help text here.</p>
 						</div>
 					
 						<div class="form-group">
-							<label for="address"> Address: </label>
+							<label for="address">Address: *</label>
 							<textarea name="address" id="address" cols="30" rows="10" class="form-control" placeholder="Enter address">{{ $trainee->address }}</textarea>
 						</div>
 					
 						<div class="form-group">
-							<label for="city"> City:</label>
+							<label for="city">City: *</label>
 							<input type="text" class="form-control" id="city" name="city" placeholder="Enter category city" value="{{ $trainee->city }}">
 						</div>
 					
 						<div class="form-group">
-							<label for="state"> State:</label>
+							<label for="state">State: *</label>
 							<input type="text" class="form-control" id="state" name="state" placeholder="Enter category state" value="{{ $trainee->state }}">
 						</div>
 					
 						<div class="form-group">
-							<label for="country"> Country:</label>
+							<label for="country">Country: *</label>
 							<input type="text" class="form-control" id="country" name="country" placeholder="Enter category country" value="{{ $trainee->country }}">
 						</div>
 					
 						<div class="form-group">
-							<label for="nationality"> Nationality:</label>
+							<label for="nationality">Nationality: *</label>
 							<input type="text" class="form-control" id="nationality" name="nationality" placeholder="Enter category nationality" value="{{ $trainee->nationality }}">
 						</div>
 					
 						<div class="form-group">
-							<label>Gender:</label>
+							<label>Gender: *</label>
 							<select class="form-control select2" name="gender" value="{{ $trainee->gender }}" style="width: 100%;">
 								<option selected="selected" value="Male">Male</option>
 								<option value="Female">Female</option>
@@ -111,17 +113,17 @@
 						</div>
 					
 						<div class="form-group">
-							<label for="hight"> Hight:</label>
+							<label for="hight">Hight: *</label>
 							<input type="text" class="form-control" id="hight" name="hight" placeholder="Enter category hight" value="{{ $trainee->hight }}">
 						</div>
 
 						<div class="form-group">
-							<label for="weight"> Weight:</label>
+							<label for="weight">Weight: *</label>
 							<input type="text" class="form-control" id="weight" name="weight" placeholder="Enter category weight" value="{{ $trainee->weight }}">
 						</div>
 					
 						<div class="form-group">
-							<label for="religion"> Religion:</label>
+							<label for="religion">Religion: *</label>
 							<select class="form-control select2" name="religion" value="{{ $trainee->religion }}" style="width: 100%;">
 								<option selected="selected" value="Muslim">Muslim</option>
 								<option value="Hindu">Hindu</option>
@@ -131,31 +133,31 @@
 						</div>
 					
 						<div class="form-group">
-							<label for="national_id_number"> National id number:</label>
+							<label for="national_id_number">National id number: *</label>
 							<input type="text" class="form-control" id="national_id_number" name="national_id_number" placeholder="Enter category national id number" value="{{ $trainee->national_id_number }}">
 						</div>
 					
 						<div class="form-group">
-							<label for="email">Email address:</label>
+							<label for="email">Email address: *</label>
 							<input type="text" class="form-control" name="email" id="email" placeholder="Enter email" value="{{ $trainee->email }}">
 						</div>
 						<div class="form-group">
-							<label for="password">Password:</label>
-							<input type="text" class="form-control" name="password" id="password" placeholder="Password" value="{{ $trainee->password }}">
+							<label for="password">Password: *</label>
+							<input type="password" class="form-control" name="password" id="password" placeholder="Password" value="{{ $trainee->password }}">
 						</div>
 
 						<div class="form-group">
-							<label for="verification_no">Verification no:</label>
-							<input type="text" class="form-control" name="verification_no" id="verification_no" placeholder="verification_no" value="{{ $trainee->verification_no }}">
+							<label for="is_verified">Verification no: *</label>
+							<input type="text" class="form-control" name="is_verified" id="is_verified" placeholder="is_verified" value="{{ $trainee->is_verified }}">
 						</div>
 
 						<div class="form-group">
-							<label for="is_played">Is played:</label>
+							<label for="is_played">Is played: *</label>
 							<input type="text" class="form-control" name="is_played" id="is_played" placeholder="is_played" value="{{ $trainee->is_played }}">
 						</div>
 
 						<div class="form-group">
-							<label for="ap_fee">Application fee:</label>
+							<label for="ap_fee">Application fee: *</label>
 							<input type="text" class="form-control" name="ap_fee" id="ap_fee" placeholder="ap_fee" value="{{ $trainee->ap_fee }}">
 						</div>
 

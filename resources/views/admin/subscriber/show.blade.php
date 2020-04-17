@@ -12,8 +12,8 @@
 	<h1> Show subscriber page</h1>
 	<a href="{{ route('admin.subscriber.create')}}" class="btn btn-primary">Add new subscriber</a>
 	<ol class="breadcrumb">
-		<li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-		<li><a href="#">subscriber</a></li>
+		<li><a href="{{ route('admin.admin.dashboard') }}"><i class="fa fa-dashboard"></i> Home</a></li>
+		<li><a href="{{ route('admin.subscriber.index') }}">subscriber</a></li>
 		<li class="active">Show subscriber</li>
 	</ol>
 </section>

@@ -6,6 +6,9 @@ use Illuminate\Http\Request;
 use App\Bid;
 use App\PlayerAuction;
 use App\Bidder;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Hash;
+use Carbon\Carbon;
 
 class BidController extends Controller
 {
@@ -32,6 +35,16 @@ class BidController extends Controller
         return view('admin.bid.create', compact('playerauctions', 'bidders'));
     }
 
+    protected function validator(array $data)
+    {
+        return Validator::make($data, [
+            'player_auction_id' => 'required|max:100',
+            'bidder_id' => 'required|max:200',
+            'price' => 'required|max:35',
+        ]);
+    }
+
+
     /**
      * Store a newly created resource in storage.
      *
@@ -39,9 +52,20 @@ class BidController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {
-        Bid::create($request->all());
-        return redirect()->route("admin.bid.index");
+    {   
+        $validator = $this->validator($request->all());
+        if ($validator->fails()) {
+            return redirect()->back()->withInput()->withErrors($validator);
+        }
+
+        Bid::create([
+            'player_auction_id' => $request->player_auction_id,
+            'bidder_id' => $request->bidder_id,
+            'price' => $request->price,
+            'date_time'=>Carbon::now(),
+            
+        ]);
+        return redirect()->route("admin.bid.index")->withSuccess("Bid create success.");
     }
 
     /**
@@ -79,8 +103,19 @@ class BidController extends Controller
      */
     public function update(Request $request, $id)
     {
-        Bid::findOrFail($id)->update($request->all());
-        return redirect()->route('admin.bid.index');
+        $validator = $this->validator($request->all());
+        if ($validator->fails()) {
+            return redirect()->back()->withInput()->withErrors($validator);
+        }
+
+        Bid::findOrFail($id)->update([
+            'player_auction_id' => $request->player_auction_id,
+            'bidder_id' => $request->bidder_id,
+            'price' => $request->price,
+            'date_time'=>Carbon::now(),
+            
+        ]);
+        return redirect()->route('admin.bid.index')->withSuccess("Bid Update success.");;
     }
 
     /**

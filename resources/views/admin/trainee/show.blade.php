@@ -12,8 +12,8 @@
 	<h1> Show Trainee page</h1>
 	<a href="{{ route('admin.trainee.create')}}" class="btn btn-primary">Add new Trainee</a>
 	<ol class="breadcrumb">
-		<li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-		<li><a href="#">Trainee</a></li>
+		<li><a href="{{ route('admin.admin.dashboard') }}"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li><a href="{{ route('admin.trainee.index') }}">Trainee</a></li>
 		<li class="active">Show Trainee</li>
 	</ol>
 </section>
@@ -40,7 +40,7 @@
                 	</tr>
                 	<tr>
                 		<th>Photo</th>
-                		<td>{{ $trainee->img }}</td>
+                		<td><img src="{{ asset($trainee->img) }}" alt="img"></td>
                 	</tr>
                 	<tr>
                 		<th>Address</th>

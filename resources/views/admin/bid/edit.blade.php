@@ -14,8 +14,8 @@
 		<small>it all starts here</small>
 	</h1>
 	<ol class="breadcrumb">
-		<li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-		<li><a href="#">Bid</a></li>
+		<li><a href="{{ route('admin.admin.dashboard')}}"><i class="fa fa-dashboard"></i> Home</a></li>
+		<li><a href="{ route('admin.bid.index') }">Bid</a></li>
 		<li class="active">Update Bid</li>
 	</ol>
 </section>
@@ -33,6 +33,7 @@
 					<h3 class="box-title">Update Bid</h3>
 				</div>
 				<!-- /.box-header -->
+				@include("partial.notification")
 				<!-- form start -->
 				<form role="form" action="{{ route('admin.bid.update',$bid->id) }}" method="post">
 					@csrf
@@ -63,10 +64,10 @@
 							<input type="text" class="form-control" id="price" name="price" placeholder="Enter  player price" value="{{ $bid->price }}">
 						</div>
 
-						<div class="form-group">
-							<label for="date_time"> Player Price:</label>
+						<!-- <div class="form-group">
+							<label for="date_time">Date & Time:</label>
 							<input type="text" class="form-control" id="date_time" name="date_time" placeholder="Enter Date Time" value="{{ $bid->date_time }}">
-						</div>
+						</div> -->
 					</div>
 					
 

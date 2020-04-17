@@ -12,8 +12,7 @@
 	<h1> Show Player page</h1>
 	<a href="{{ route('admin.player.create')}}" class="btn btn-primary">Add new Player</a>
 	<ol class="breadcrumb">
-		<li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-		<li><a href="#">Player</a></li>
+		<li><a href="{{ route('admin.admin.dashboard') }}"><i class="fa fa-dashboard"></i> Home</a></li>
 		<li class="active">Show Player</li>
 	</ol>
 </section>
@@ -41,7 +40,7 @@
                     <tr>
                         <td>{{ $player->id }}</td>
                         <td>{{ $player->name }}</td>
-                        <td>{{ $player->img }}</td>
+                        <td><img src="{{ asset($player->img) }}" alt="img"></td>
                         <td>
                             <div class="btn-group">
                                 <a href="{{ route('admin.player.show', $player->id) }}" class="btn btn-default">Show</a>

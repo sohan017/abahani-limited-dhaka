@@ -12,8 +12,8 @@
 	<h1> Show Player Fitness page</h1>
 	<a href="{{ route('admin.playerfitness.create')}}" class="btn btn-primary">Add new Player Fitness</a>
 	<ol class="breadcrumb">
-		<li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-		<li><a href="#">Player Fitness</a></li>
+		<li><a href="{{ route('admin.admin.dashboard') }}"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li><a href="{{ route('admin.playerfitness.index') }}">Player fitness</a></li>
 		<li class="active">Show Player Fitness</li>
 	</ol>
 </section>
@@ -36,15 +36,15 @@
                 	</tr>
                 	<tr>
                 		<th>Player Name</th>
-                		<td>{{ $playerfitness->player_id }}</td>
+                		<td>{{ $playerfitness->player->name }}</td>
                 	</tr>
                 	<tr>
                 		<th>Physio name</th>
-                		<td>{{ $playerfitness->physio_id }}</td>
+                		<td>{{ $playerfitness->physio->name }}</td>
                 	</tr>
                 	<tr>
                 		<th>Is Feet</th>
-                		<td>{{ $playerfitness->is_feet }}</td>
+                		<td>{{ $playerfitness->is_feet ? "True" : "False" }}</td>
                 	</tr>
                 	<tr>
                 		<th>City</th>

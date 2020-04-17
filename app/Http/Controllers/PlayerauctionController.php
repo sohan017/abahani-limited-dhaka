@@ -6,6 +6,11 @@ use Illuminate\Http\Request;
 use App\PlayerAuction;
 use App\Auction;
 use App\Player;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Hash;
+
+
+
 
 
 class PlayerauctionController extends Controller
@@ -33,6 +38,16 @@ class PlayerauctionController extends Controller
         return view('admin.playerauction.create', compact('auctions', 'players'));
     }
 
+    protected function validator(array $data)
+    {
+        return Validator::make($data, [
+            'auction_id' => 'required|max:20',
+            'player_id' => 'required|max:20',
+            'player_price' => 'required|max:35',
+        ]);
+    }
+
+
     /**
      * Store a newly created resource in storage.
      *
@@ -41,8 +56,18 @@ class PlayerauctionController extends Controller
      */
     public function store(Request $request)
     {
-        PlayerAuction::create($request->all());
-        return redirect()->route("admin.playerauction.index");
+        $validator = $this->validator($request->all());
+        if ($validator->fails()) {
+            return redirect()->back()->withInput()->withErrors($validator);
+        }
+
+        PlayerAuction::create([
+            'auction_id' => $request->auction_id,
+            'player_id' => $request->player_id,
+            'player_price' => $request->player_price,
+            
+        ]);
+        return redirect()->route("admin.playerauction.index")->withSuccess("Player auction create success.");;
     }
 
     /**
@@ -80,8 +105,18 @@ class PlayerauctionController extends Controller
      */
     public function update(Request $request, $id)
     {
-        PlayerAuction::findOrFail($id)->update($request->all());
-        return redirect()->route('admin.playerauction.index');
+        $validator = $this->validator($request->all());
+        if ($validator->fails()) {
+            return redirect()->back()->withInput()->withErrors($validator);
+        }
+ 
+        PlayerAuction::findOrFail($id)->update([
+            'auction_id' => $request->auction_id,
+            'player_id' => $request->player_id,
+            'player_price' => $request->player_price,
+            
+        ]);
+        return redirect()->route('admin.playerauction.index')->withSuccess("Player auction Update success.");;;
     }
 
     /**

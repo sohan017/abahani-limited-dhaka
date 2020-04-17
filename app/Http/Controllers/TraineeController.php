@@ -4,8 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Trainee;
-use App\Playertype;
 use App\Coach;
+use App\Playertype;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Hash;
 
 class TraineeController extends Controller
 {
@@ -32,6 +34,33 @@ class TraineeController extends Controller
          return view('admin.trainee.create', compact('playerTypes','coaches'));
     }
 
+    protected function validator(array $data)
+    {
+        return Validator::make($data, [
+            'name' => 'required|max:100',
+            'playertype_id' => 'required',
+            'coach_id' => 'required',
+            'dob' => 'required',
+            'img' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
+            'address' => 'required',
+            'city' => 'required|max:100',
+            'state' => 'required|max:100',
+            'country' => 'required|max:100',
+            'nationality' => 'required|max:100',
+            'gender' => 'required|max:30',
+            'hight' => 'required|max:9',
+            'weight' => 'required|max:9',
+            'religion' => 'required|max:10',
+            'national_id_number' => 'required|max:30',
+            'birth_certificet_number' => 'required|max:30',
+            'email' => 'required|email|unique:App\Bidder,email',
+            'password' => 'required|min:6',
+            // 'is_verified' => 'required',
+            // 'is_played' => 'required|max:11',
+            'ap_fee' => 'max:11',
+        ]);
+    }
+
     /**
      * Store a newly created resource in storage.
      *
@@ -40,8 +69,41 @@ class TraineeController extends Controller
      */
     public function store(Request $request)
     {
-        Trainee::create($request->all());
-        return redirect()->route("admin.trainee.index");
+         $validator = $this->validator($request->all());
+        if ($validator->fails()) {
+            return redirect()->back()->withInput()->withErrors($validator);
+        }
+
+
+        if ($request->has('img')) {
+            $uploadsLocation = $request->img->store('uploads/images/trainee');
+        }
+
+        Trainee::create([
+            'name' => $request->name,
+            'playertype_id' => $request->playertype_id,
+            'coach_id' => $request->coach_id,
+            'dob' => $request->dob,
+            'img' => $uploadsLocation,
+            'address' => $request->address,
+            'city' => $request->city,
+            'state' => $request->state,
+            'country' => $request->country,
+            'nationality' => $request->nationality,
+            'gender' => $request->gender,
+            'hight' => $request->hight,
+            'weight' => $request->weight,
+            'religion' => $request->religion,
+            'national_id_number' => $request->national_id_number,
+            'birth_certificet_number' => $request->birth_certificet_number,
+            'email' => $request->email,
+            'password' => $request->password,
+            'is_verified' => $request->is_verified ? true : false,
+            'is_played' => $request->is_played ? true : false,
+            'ap_fee' => $request->ap_fee,
+            
+        ]);
+        return redirect()->route("admin.trainee.index")->withSuccess("Trainee create success.");
     }
 
     /**
@@ -81,8 +143,36 @@ class TraineeController extends Controller
      */
     public function update(Request $request, $id)
     {
-        Trainee::findOrFail($id)->update($request->all());
-        return redirect()->route('admin.trainee.index');
+         $validator = $this->validator($request->all());
+        if ($validator->fails()) {
+            return redirect()->back()->withInput()->withErrors($validator);
+        }
+
+        $trainee = Trainee::findOrFail($id);
+        $trainee->name = $request->name;
+        $trainee->playertype_id = $request->playertype_id;
+        $trainee->coach_id = $request->coach_id;
+        $trainee->dob = $request->dob;
+        if ($request->has('img')) {
+            $trainee->img = $request->img->store('uploads/images/trainee');
+        }
+        $trainee->address = $request->address;
+        $trainee->city = $request->city;
+        $trainee->state = $request->state;
+        $trainee->country = $request->country;
+        $trainee->nationality = $request->nationality;
+        $trainee->gender = $request->gender;
+        $trainee->hight = $request->hight;
+        $trainee->weight = $request->weight;
+        $trainee->religion = $request->religion;
+        $trainee->national_id_number = $request->national_id_number;
+        $trainee->email = $request->email;
+        $trainee->password = $request->password;
+        $trainee->is_verified = $request->is_verified ? true : false;
+        $trainee->is_played = $request->is_played ? true : false;
+        $trainee->ap_fee = $request->ap_fee;
+        $trainee->save();
+        return redirect()->route('admin.trainee.index')->withSuccess("Trainee Update success.");
     }
 
     /**

@@ -12,8 +12,8 @@
 	<h1> Show Coach page</h1>
 	<a href="{{ route('admin.coach.create')}}" class="btn btn-primary">Add new Coach</a>
 	<ol class="breadcrumb">
-		<li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-		<li><a href="#">Coach</a></li>
+		<li><a href="{{ route('admin.admin.dashboard') }}"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li><a href="{{ route('admin.coach.index') }}">Coach</a></li>
 		<li class="active">Show Coach</li>
 	</ol>
 </section>
@@ -52,7 +52,7 @@
                         <td>{{ $coach->id }}</td>
                         <td>{{ $coach->name }}</td>
                         <td>{{ $coach->dob }}</td>
-                        <td>{{ $coach->img }}</td>
+                        <td><img src="{{ asset($coach->img) }}" alt="img"></td>
                         <td>{{ $coach->address }}</td>
                         <td>{{ $coach->city }}</td>
                         <td>{{ $coach->state }}</td>

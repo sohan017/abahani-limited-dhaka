@@ -14,8 +14,8 @@
 		<small>it all starts here</small>
 	</h1>
 	<ol class="breadcrumb">
-		<li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-		<li><a href="#">subscriber</a></li>
+		<li><a href="{{ route('admin.admin.dashboard') }}"><i class="fa fa-dashboard"></i> Home</a></li>
+		<li><a href="{{ route('admin.subscriber.index') }}">subscriber</a></li>
 		<li class="active"> Update subscriber </li>
 	</ol>
 </section>
@@ -33,30 +33,38 @@
 					<h3 class="box-title">Update subscriber</h3>
 				</div>
 				<!-- /.box-header -->
+				@include("partial.notification")
 				<!-- form start -->
 				<form role="form" action="{{ route('admin.subscriber.update',$subscriber->id) }}" method="post">
 					@csrf
 					@method('PUT')
 					<div class="box-body">
+						<small>required = *</small>
 						<div class="form-group">
-							<label for="name"> Name:</label>
+							<label for="name"> Name: *</label>
 							<input type="text" class="form-control" id="name" name="name" placeholder="Enter category name" value="{{ $subscriber->name }}">
 						</div>
 					
 						<div class="form-group">
-							<label for="contact_num"> Contact Number:</label>
+							<label for="contact_num"> Contact Number: *</label>
 							<input type="text" class="form-control" id="contact_num" name="contact_num" placeholder="Enter Contact Number" value="{{ $subscriber->contact_num }}">
 						</div>
 					
 						<div class="form-group">
-							<label for="address"> Address: </label>
+							<label for="address"> Address: * </label>
 							<textarea name="address" id="address" cols="30" rows="10" class="form-control" placeholder="Enter address">{{ $subscriber->address }}</textarea>
 						</div>
 					
 						<div class="form-group">
-							<label for="email"> Email:</label>
+							<label for="email"> Email: *</label>
 							<input type="text" class="form-control" id="email" name="email" placeholder="Enter category email" value="{{ $subscriber->email }}">
 						</div>
+
+						<div class="form-group">
+							<label for="password"> Password: *</label>
+							<input type="password" class="form-control" id="password" name="password" placeholder="Enter category password" value="{{ $subscriber->password }}">
+						</div>
+
 					</div>
 					<!-- /.box-body -->
 

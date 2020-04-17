@@ -12,9 +12,8 @@
 	<h1> Show bidder page</h1>
 	<a href="{{ route('admin.bidder.create')}}" class="btn btn-primary">Add new bidder</a>
 	<ol class="breadcrumb">
-		<li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-		<li><a href="#">bidder</a></li>
-		<li class="active">Show bidder</li>
+		<li><a href="{{route('admin.admin.dashboard')}}"><i class="fa fa-dashboard"></i> Home</a></li>
+		<li class="active">Bidders</li>
 	</ol>
 </section>
 <!-- Main content -->
@@ -22,9 +21,9 @@
 
 
     <div class="box">
-        <div class="box-header">
-            <h3 class="box-title">Data Table With Full Features</h3>
-        </div>
+
+        @include("partial.notification")
+
         <!-- /.box-header -->
         <div class="box-body">
             <table id="example1" class="table table-bordered table-striped">

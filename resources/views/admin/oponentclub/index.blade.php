@@ -12,8 +12,7 @@
 	<h1> Show Oponent Club page</h1>
 	<a href="{{ route('admin.oponentclub.create')}}" class="btn btn-primary">Add new Coach</a>
 	<ol class="breadcrumb">
-		<li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-		<li><a href="#">Oponent Club</a></li>
+		<li><a href="{{ route('admin.admin.dashboard') }}"><i class="fa fa-dashboard"></i> Home</a></li>
 		<li class="active">Show Oponent Club</li>
 	</ol>
 </section>
@@ -42,7 +41,7 @@
                     <tr>
                         <td>{{ $oponentclub->id }}</td>
                         <td>{{ $oponentclub->name }}</td>
-                        <td>{{ $oponentclub->logo }}</td>
+                        <td><img src="{{ asset($oponentclub->logo) }}" alt="logo"></td>
                         <td>{{ $oponentclub->country }}</td>
                        
                         <td>

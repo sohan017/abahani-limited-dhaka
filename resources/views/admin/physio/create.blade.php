@@ -14,8 +14,8 @@
 		<small>it all starts here</small>
 	</h1>
 	<ol class="breadcrumb">
-		<li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-		<li><a href="#">Physio</a></li>
+		<li><a href="{{ route('admin.admin.dashboard') }}"><i class="fa fa-dashboard"></i> Home</a></li>
+		<li><a href="{{ route('admin.team.index') }}">Physio</a></li>
 		<li class="active">Physio Create</li>
 	</ol>
 </section>
@@ -33,57 +33,59 @@
 					<h3 class="box-title">Physio Entry</h3>
 				</div>
 				<!-- /.box-header -->
+				@include("partial.notification")
 				<!-- form start -->
-				<form role="form" action="{{ route('admin.physio.store') }}" method="post">
+				<form role="form" action="{{ route('admin.physio.store') }}" method="post" enctype="multipart/form-data">
 					@csrf
 					<div class="box-body">
+						<small>required = *</small>
 						<div class="form-group">
-							<label for="name">Physio Name:</label>
-							<input type="text" class="form-control" id="name" name="name" placeholder="Enter physio name">
+							<label for="name">Physio Name: *</label>
+							<input type="text" class="form-control" id="name" name="name" placeholder="Enter physio name" value="{{old('name')}}">
 						</div>
 					
 						<div class="form-group">
-							<label for="img">Image upload:</label>
-							<input type="file" class="form-control" id="img" name="img">
+							<label for="img">Image upload: *</label>
+							<input type="file" class="form-control" id="img" name="img" value="{{old('img')}}">
 
 
 							<p class="help-block">Example block-level help text here.</p>
 						</div>
 
 						<div class="form-group">
-							<label for="spacalize"> Spacalize:</label>
-							<input type="text" class="form-control" id="spacalize" name="spacalize" placeholder="Enter spacalize">
+							<label for="spacalize"> Spacalize: *</label>
+							<input type="text" class="form-control" id="spacalize" name="spacalize" placeholder="Enter spacalize" value="{{old('spacalize')}}">
 						</div>
 					
 						<div class="form-group">
-							<label for="address"> Address: </label>
-							<textarea name="address" id="address" cols="30" rows="10" class="form-control" placeholder="Enter address"></textarea>
+							<label for="address"> Address: * </label>
+							<textarea name="address" id="address" cols="30" rows="10" class="form-control" placeholder="Enter address" value="{{old('address')}}"></textarea>
 						</div>
 					
 						<div class="form-group">
-							<label for="city"> City:</label>
-							<input type="text" class="form-control" id="city" name="city" placeholder="Enter city">
+							<label for="city"> City: *</label>
+							<input type="text" class="form-control" id="city" name="city" placeholder="Enter city" value="{{old('city')}}">
 						</div>
 					
 						<div class="form-group">
-							<label for="state"> State:</label>
-							<input type="text" class="form-control" id="state" name="state" placeholder="Enter state">
+							<label for="state"> State: *</label>
+							<input type="text" class="form-control" id="state" name="state" placeholder="Enter state" value="{{old('state')}}">
 						</div>
 					
 						<div class="form-group">
-							<label for="country"> Country:</label>
-							<input type="text" class="form-control" id="country" name="country" placeholder="Enter country">
+							<label for="country"> Country: *</label>
+							<input type="text" class="form-control" id="country" name="country" placeholder="Enter country" value="{{old('country')}}">
 						</div>
 					
 						<div class="form-group">
-							<label for="nationality"> Nationality:</label>
-							<input type="text" class="form-control" id="nationality" name="nationality" placeholder="Enter nationality">
+							<label for="nationality"> Nationality: *</label>
+							<input type="text" class="form-control" id="nationality" name="nationality" placeholder="Enter nationality" value="{{old('nationality')}}">
 						</div>
 					
 						<div class="form-group">
-							<label>Gender:</label>
+							<label>Gender: *</label>
 							
-							<select class="form-control select2" name="gender" style="width: 100%;">
+							<select class="form-control select2" name="gender" value="{{old('gender')}}" style="width: 100%;">
 								<option selected="selected" value="Male">Male</option>
 								<option value="Female">Female</option>
 								<option value="Othe">Other</option>
@@ -92,8 +94,8 @@
 					
 					
 						<div class="form-group">
-							<label for="religion"> Religion:</label>
-							<select class="form-control select2" name="religion" style="width: 100%;">
+							<label for="religion"> Religion: *</label>
+							<select class="form-control select2" name="religion" style="width: 100%;" value="{{old('religion')}}">
 								<option selected="selected" value="Muslim">Muslim</option>
 								<option value="Hindu">Hindu</option>
 								<option value="Othe">Other</option>
@@ -102,24 +104,16 @@
 					
 						<div class="form-group">
 							<label for="national_id_number"> National id number:</label>
-							<input type="text" class="form-control" id="national_id_number" name="national_id_number" placeholder="Enter NID">
+							<input type="text" class="form-control" id="national_id_number" name="national_id_number" placeholder="Enter NID" value="{{old('national_id_number')}}">
 						</div>
 					
 						<div class="form-group">
-							<label for="email">Email address:</label>
-							<input type="email" class="form-control" name="email" id="email" placeholder="Enter email">
+							<label for="email">Email address: *</label>
+							<input type="email" class="form-control" name="email" id="email" placeholder="Enter email" value="{{old('email')}}">
 						</div>
 						<div class="form-group">
-							<label for="password">Password:</label>
-							<input type="text" class="form-control" name="password" id="password" placeholder="Password">
-						</div>
-
-						
-
-						<div class="checkbox">
-							<label>
-								<input type="checkbox"> Check me out
-							</label>
+							<label for="password">Password: *</label>
+							<input type="text" class="form-control" name="password" id="password" placeholder="Password" value="{{old('password')}}">
 						</div>
 					</div>
 					<!-- /.box-body -->

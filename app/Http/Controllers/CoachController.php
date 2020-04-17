@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Coach;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Hash;
 
 class CoachController extends Controller
 {
@@ -28,6 +30,26 @@ class CoachController extends Controller
         return view('admin.coach.create');
     }
 
+    protected function validator(array $data)
+    {
+        return Validator::make($data, [
+            'name' => 'required|max:100',
+            'dob' => 'required',
+            'img' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
+            'address' => 'required',
+            'city' => 'required|max:100',
+            'state' => 'required|max:100',
+            'country' => 'required|max:100',
+            'nationality' => 'required|max:100',
+            'gender' => 'required|max:30',
+            'hight' => 'required|max:9',
+            'religion' => 'required|max:10',
+            'national_id_number' => 'required|max:30',
+            'email' => 'required|email|unique:App\Bidder,email',
+            'password' => 'required|min:6',
+        ]);
+    }
+
     /**
      * Store a newly created resource in storage.
      *
@@ -36,8 +58,33 @@ class CoachController extends Controller
      */
     public function store(Request $request)
     {
-        Coach::create($request->all());
-        return redirect()->route("admin.coach.index");
+        $validator = $this->validator($request->all());
+        if ($validator->fails()) {
+            return redirect()->back()->withInput()->withErrors($validator);
+        }
+
+
+        if ($request->has('img')) {
+            $uploadsLocation = $request->img->store('uploads/images/coach');
+        }
+        Coach::create([
+            'name' => $request->name,
+            'dob' => $request->dob,
+            'img' => $uploadsLocation,
+            'address' => $request->address,
+            'city' => $request->city,
+            'state' => $request->state,
+            'country' => $request->country,
+            'nationality' => $request->nationality,
+            'gender' => $request->gender,
+            'hight' => $request->hight,
+            'religion' => $request->religion,
+            'national_id_number' => $request->national_id_number,
+            'email' => $request->email,
+            'password' => $request->password,
+            
+        ]);
+        return redirect()->route("admin.coach.index")->withSuccess("Coach create success.");;
     }
 
     /**
@@ -73,8 +120,30 @@ class CoachController extends Controller
      */
     public function update(Request $request, $id)
     {
-        Coach::findOrFail($id)->update($request->all());
-        return redirect()->route("admin.coach.index");
+        $validator = $this->validator($request->all());
+        if ($validator->fails()) {
+            return redirect()->back()->withInput()->withErrors($validator);
+        }
+
+        $coach = Coach::findOrFail($id);
+        $coach->name = $request->name;
+        $coach->dob = $request->dob;
+        if ($request->has('img')) {
+            $coach->img = $request->img->store('uploads/images/coach');
+        }
+        $coach->address = $request->address;
+        $coach->city = $request->city;
+        $coach->state = $request->state;
+        $coach->country = $request->country;
+        $coach->nationality = $request->nationality;
+        $coach->gender = $request->gender;
+        $coach->hight = $request->hight;
+        $coach->religion = $request->religion;
+        $coach->national_id_number = $request->national_id_number;
+        $coach->email = $request->email;
+        $coach->password = $request->password;
+        $coach->save();
+        return redirect()->route("admin.coach.index")->withSuccess("Coach Update success.");
     }
 
     /**

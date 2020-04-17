@@ -12,8 +12,7 @@
 	<h1> Show auction page</h1>
 	<a href="{{ route('admin.auction.create')}}" class="btn btn-primary">Add new auction</a>
 	<ol class="breadcrumb">
-		<li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-		<li><a href="#">auction</a></li>
+		<li><a href="{{ route('admin.admin.dashboard') }}"><i class="fa fa-dashboard"></i> Home</a></li>
 		<li class="active">Show auction</li>
 	</ol>
 </section>
@@ -65,7 +64,6 @@
                       	<th>Name</th>
                         <th>Auction start time</th>
                         <th>Auction end time</th>>
-                        <th>Photo</th>
                         <th>Action</th>
                     </tr>
                 </tfoot>

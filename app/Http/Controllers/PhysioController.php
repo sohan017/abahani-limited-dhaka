@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Physio;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Validator;
 
 class PhysioController extends Controller
 {
@@ -28,6 +30,25 @@ class PhysioController extends Controller
         return view('admin.physio.create');
     }
 
+     protected function validator(array $data)
+    {
+        return Validator::make($data, [
+            'name' => 'required|max:100',
+            'img' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
+            'spacalize' => 'required|max:100',
+            'address' => 'required',
+            'city' => 'required|max:100',
+            'state' => 'required|max:100',
+            'country' => 'required|max:100',
+            'nationality' => 'required|max:100',
+            'gender' => 'required|max:100',
+            'religion' => 'required|max:100',
+            'national_id_number' => 'required|max:30',
+            'email' => 'required|email|unique:App\Bidder,email',
+            'password' => 'required|min:6',
+        ]);
+    }
+
     /**
      * Store a newly created resource in storage.
      *
@@ -36,8 +57,33 @@ class PhysioController extends Controller
      */
     public function store(Request $request)
     {
-        Physio::create($request->all());
-        return redirect()->route("admin.physio.index");
+        $validator = $this->validator($request->all());
+        if ($validator->fails()) {
+            return redirect()->back()->withInput()->withErrors($validator);
+        }
+
+        $uploadsLocation ="";
+        if ($request->has('img')) {
+            $uploadsLocation = $request->img->store('uploads/images/physio');
+        }
+
+        Physio::create([
+            'name' => $request->name,
+            'img' => $uploadsLocation,
+            'spacalize' => $request->spacalize,
+            'address' => $request->address,
+            'city' => $request->city,
+            'state' => $request->state,
+            'country' => $request->country,
+            'nationality' => $request->nationality,
+            'gender' => $request->gender,
+            'religion' => $request->religion,
+            'national_id_number' => $request->national_id_number,
+            'email' => $request->email,
+            'password' => $request->password,
+            
+        ]);
+        return redirect()->route("admin.physio.index")->withSuccess("Physio create success.");
     }
 
     /**
@@ -73,8 +119,29 @@ class PhysioController extends Controller
      */
     public function update(Request $request, $id)
     {
-        Physio::findOrFail($id)->update($request->all());
-        return redirect()->route('admin.physio.index');
+        $validator = $this->validator($request->all());
+        if ($validator->fails()) {
+            return redirect()->back()->withInput()->withErrors($validator);
+        }
+
+        $physio = Physio::findOrFail($id);
+        if ($request->has('img')) {
+            $physio->img = $request->img->store('uploads/images/physio');
+        }
+        $team->name = $request->name;
+        $team->spacalize = $request->spacalize;
+        $team->address = $request->address;
+        $team->city = $request->city;
+        $team->state = $request->state;
+        $team->country = $request->country;
+        $team->nationality = $request->nationality;
+        $team->gender = $request->gender;
+        $team->religion = $request->religion;
+        $team->national_id_number = $request->national_id_number;
+        $team->email = $request->email;
+        $team->password = $request->password;
+        $team->save();
+        return redirect()->route('admin.physio.index')->withSuccess("Physio update success.");
     }
 
     /**

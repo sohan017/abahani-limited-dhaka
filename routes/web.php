@@ -17,6 +17,14 @@ Route::get('/', function () {
     return view('welcome');
 })->name("home");
 
+Route::get('/clr', function () {
+    Artisan::call('cache:clear');
+    Artisan::call('config:clear');
+    Artisan::call('route:clear');
+    Artisan::call('view:clear');
+    return 'Cleared!';
+ });
+
 Auth::routes(['register' => false]);
 Route::get('/login/bidder', 'Auth\LoginController@showBidderLoginForm');
 Route::get('/login/coach', 'Auth\LoginController@showCoachLoginForm');
@@ -66,6 +74,9 @@ Route::middleware("auth")->prefix('admin')->name('admin.')->group(function () {
 	Route::resource("bidder", "BidderController");
 	Route::resource("playerauction", "PlayerauctionController");
 	Route::resource("bid", "BidController");
+	Route::get("profile", "ProfileController@edit")->name('profile');
+	Route::post("profile", "ProfileController@update")->name("profile.update");
+	Route::post("profile/change-password", "ProfileController@changePassword")->name("profile.change.password");
     
 });
 

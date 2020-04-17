@@ -12,8 +12,7 @@
 	<h1> Show Bid page</h1>
 	<a href="{{ route('admin.bid.create')}}" class="btn btn-primary">Add new bid</a>
 	<ol class="breadcrumb">
-		<li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-		<li><a href="#">Bid</a></li>
+		<li><a href="{{ route('admin.admin.dashboard')}}"><i class="fa fa-dashboard"></i> Home</a></li>
 		<li class="active">Show Bid</li>
 	</ol>
 </section>

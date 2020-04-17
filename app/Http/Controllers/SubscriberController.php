@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Subscriber;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Hash;
 
 class SubscriberController extends Controller
 {
@@ -28,6 +30,17 @@ class SubscriberController extends Controller
         return view('admin.subscriber.create');
     }
 
+    protected function validator(array $data)
+    {
+        return Validator::make($data, [
+            'name' => 'required|max:100',
+            'contact_num' => 'required|max:20',
+            'address' => 'required',
+            'email' => 'required|email|unique:App\Subscriber,email',
+            'password' => 'required|min:6',
+        ]);
+    }
+
     /**
      * Store a newly created resource in storage.
      *
@@ -36,8 +49,19 @@ class SubscriberController extends Controller
      */
     public function store(Request $request)
     {
-        Subscriber::create($request->all());
-        return redirect()->route("admin.subscriber.index");
+        $validator = $this->validator($request->all());
+        if ($validator->fails()) {
+            return redirect()->back()->withInput()->withErrors($validator);
+        }
+
+        Subscriber::create([
+            'name' => $request->name,
+            'contact_num' => $request->contact_num,
+            'address' => $request->address,
+            'email' => $request->email,
+            'password' => Hash::make($request->password),
+        ]);
+        return redirect()->route("admin.subscriber.index")->withSuccess("Subscriber create success.");
     }
 
     /**
@@ -73,8 +97,19 @@ class SubscriberController extends Controller
      */
     public function update(Request $request, $id)
     {
-        Subscriber::findOrFail($id)->update($request->all());
-        return redirect()->route('admin.subscriber.index');
+        $validator = $this->validator($request->all());
+        if ($validator->fails()) {
+            return redirect()->back()->withInput()->withErrors($validator);
+        }
+
+        Subscriber::findOrFail($id)->update([
+            'name' => $request->name,
+            'contact_num' => $request->contact_num,
+            'address' => $request->address,
+            'email' => $request->email,
+            'password' => Hash::make($request->password),
+        ]);
+        return redirect()->route('admin.subscriber.index')->withSuccess("Subscriber Update success.");
     }
 
     /**

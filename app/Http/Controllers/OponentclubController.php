@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\OponentClub;
+use Illuminate\Support\Facades\Validator;
 
 class OponentclubController extends Controller
 {
@@ -28,6 +29,17 @@ class OponentclubController extends Controller
         return view('admin.oponentclub.create');
     }
 
+    protected function validator(array $data)
+    {
+        return Validator::make($data, [
+            'name' => 'required|max:100',
+            'logo' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
+            'country' => 'required',
+            'state' => 'required',
+        ]);
+    }
+
+
     /**
      * Store a newly created resource in storage.
      *
@@ -36,8 +48,23 @@ class OponentclubController extends Controller
      */
     public function store(Request $request)
     {
-        OponentClub::create($request->all());
-        return redirect()->route("admin.oponentclub.index");
+        $validator = $this->validator($request->all());
+        if ($validator->fails()) {
+            return redirect()->back()->withInput()->withErrors($validator);
+        }
+        $uploadsLocation = "";
+        if ($request->has('logo')) {
+            $uploadsLocation = $request->logo->store('uploads/images/team');
+        }
+
+        OponentClub::create([
+            'name' => $request->name,
+            'logo' => $uploadsLocation,
+            'country' => $request->country,
+            'state' => $request->state,
+            
+        ]);
+        return redirect()->route("admin.oponentclub.index")->withSuccess("Oponent Club create success.");
     }
 
     /**
@@ -73,8 +100,20 @@ class OponentclubController extends Controller
      */
     public function update(Request $request, $id)
     {
-        OponentClub::findOrFail($id)->update($request->all());
-        return redirect()->route("admin.oponentclub.index");
+        $validator = $this->validator($request->all());
+        if ($validator->fails()) {
+            return redirect()->back()->withInput()->withErrors($validator);
+        }
+
+        $oponentclub = OponentClub::findOrFail($id);
+        $oponentclub->name = $request->name;
+        if ($request->has('logo')) {
+            $oponentclub->logo = $request->logo->store('uploads/images/oponentclub');
+        }
+        $oponentclub->country = $request->country;
+        $oponentclub->state = $request->state;
+
+        return redirect()->route("admin.oponentclub.index")->withSuccess("Oponent Club create success.");
     }
 
     /**

@@ -9,11 +9,10 @@
 @section('content')
 
 <section class="content-header">
-	<h1> Show Chach page</h1>
+	<h1> Show Physio page</h1>
 	<a href="{{ route('admin.physio.create')}}" class="btn btn-primary">Add new Physio</a>
 	<ol class="breadcrumb">
-		<li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-		<li><a href="#">Physio</a></li>
+		<li><a href="{{ route('admin.admin.dashboard') }}"><i class="fa fa-dashboard"></i> Home</a></li>
 		<li class="active">Show Physio</li>
 	</ol>
 </section>
@@ -41,7 +40,7 @@
                     <tr>
                         <td>{{ $physio->id }}</td>
                         <td>{{ $physio->name }}</td>
-                        <td>{{ $physio->img }}</td>
+                        <td><img src="{{ asset($physio->img) }}" alt="img"></td>
                         <td>
                             <div class="btn-group">
                                 <a href="{{ route('admin.physio.show', $physio->id) }}" class="btn btn-default">Show</a>

@@ -14,8 +14,8 @@
 		<small>it all starts here</small>
 	</h1>
 	<ol class="breadcrumb">
-		<li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-		<li><a href="#">Player fitness</a></li>
+		<li><a href="{{ route('admin.admin.dashboard') }}"><i class="fa fa-dashboard"></i> Home</a></li>
+		<li><a href="{{ route('admin.playerfitness.index') }}">Player fitness</a></li>
 		<li class="active">Player fitness Create</li>
 	</ol>
 </section>
@@ -33,13 +33,15 @@
 					<h3 class="box-title">Player fitness Entry</h3>
 				</div>
 				<!-- /.box-header -->
+				@include("partial.notification")
 				<!-- form start -->
 				<form role="form" action="{{ route('admin.playerfitness.store') }}" method="post">
 					@csrf
 					<div class="box-body">
+						<small>required = *</small>
 						<div class="form-group">
-							<label for="player_id">Player name:</label>
-							<select name="player_id" id="player_id" class="form-control">
+							<label for="player_id">Player name: *</label>
+							<select name="player_id" id="player_id" class="form-control" value="{{old('player_id')}}">
 								<option value="0">No Player</option>
 								@foreach($playeres as $player)
 									<option value="{{ $player->id }}">{{ $player->name }}</option>
@@ -48,8 +50,8 @@
 						</div>
 
 						<div class="form-group">
-							<label for="physio_id">Physio name:</label>
-							<select name="physio_id" id="physio_id" class="form-control">
+							<label for="physio_id">Physio name: *</label>
+							<select name="physio_id" id="physio_id" class="form-control" value="{{old('physio_id')}}">
 								<option value="0">No Physio</option>
 								@foreach($physios as $physio)
 									<option value="{{ $physio->id }}">{{ $physio->name }}</option>
@@ -58,13 +60,16 @@
 						</div>
 
 						<div class="form-group">
-							<label for="is_feet"> IS feet:</label>
-							<input type="text" class="form-control" id="is_feet" name="is_feet" placeholder="Enter is_feet">
+							<label for="is_feet"> 
+								<input type="checkbox" name="is_feet" id="" value="1">
+								Is this trainee feet ? 
+							</label>
+							
 						</div>
 					
 						<div class="form-group">
-							<label for="physio_note"> Physio note: </label>
-							<textarea name="physio_note" id="physio_note" cols="30" rows="10" class="form-control" placeholder="Enter physio note"></textarea>
+							<label for="physio_note">Physio note: *</label>
+							<textarea name="physio_note" id="physio_note" cols="30" rows="10" class="form-control" placeholder="Enter physio note">{{old('physio_note')}}</textarea>
 						</div>
 					
 					</div>

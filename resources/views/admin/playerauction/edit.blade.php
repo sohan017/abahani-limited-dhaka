@@ -14,8 +14,8 @@
 		<small>it all starts here</small>
 	</h1>
 	<ol class="breadcrumb">
-		<li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-		<li><a href="#">Player Auction</a></li>
+		<li><a href="{{ route('admin.admin.dashboard') }}"><i class="fa fa-dashboard"></i> Home</a></li>
+		<li><a href="{{ route('admin.playerauction.index') }}">Player Auction</a></li>
 		<li class="active">Update Player Auction</li>
 	</ol>
 </section>
@@ -33,13 +33,15 @@
 					<h3 class="box-title">Update Player Auction</h3>
 				</div>
 				<!-- /.box-header -->
+				@include("partial.notification")
 				<!-- form start -->
 				<form role="form" action="{{ route('admin.playerauction.update',$playerauction->id) }}" method="post">
 					@csrf
 					@method('PUT')
 					<div class="box-body">
+						<small>required = *</small>
 						<div class="form-group">
-							<label for="auction_id">Auction Name:</label>
+							<label for="auction_id">Auction Name: *</label>
 							<select name="auction_id" id="auction_id" class="form-control">
 								
 								@foreach($auctions as $auction)
@@ -49,7 +51,7 @@
 						</div>
 
 						<div class="form-group">
-							<label for="player_id">Player Name:</label>
+							<label for="player_id">Player Name: *</label>
 							<select name="player_id" id="player_id" class="form-control">
 								
 								@foreach($players as $player)
@@ -59,7 +61,7 @@
 						</div>
 					
 						<div class="form-group">
-							<label for="player_price"> Player Price:</label>
+							<label for="player_price"> Player Price: *</label>
 							<input type="text" class="form-control" id="player_price" name="player_price" placeholder="Enter  player price" value="{{ $playerauction->player_price }}">
 						</div>
 					</div>

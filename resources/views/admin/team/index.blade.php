@@ -12,8 +12,7 @@
 	<h1> Show Team page</h1>
 	<a href="{{ route('admin.team.create')}}" class="btn btn-primary">Add new Team</a>
 	<ol class="breadcrumb">
-		<li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-		<li><a href="#">Team</a></li>
+        <li><a href="{{ route('admin.admin.dashboard') }}"><i class="fa fa-dashboard"></i> Home</a></li>
 		<li class="active">Show Team</li>
 	</ol>
 </section>
@@ -32,7 +31,7 @@
                     <tr>
                         <th>ID</th>
                         <th>Name</th>
-                        <th>Captaon</th>
+                        <th>Photo</th>
                         <th>Action</th>
                     </tr>
                 </thead>
@@ -41,7 +40,7 @@
                     <tr>
                         <td>{{ $team->id }}</td>
                         <td>{{ $team->name }}</td>
-                        <td>{{ $team->captain }}</td>
+                        <td><img src="{{ asset($team->logo) }}" alt="img"></td>
                         <td>
                             <div class="btn-group">
                                 <a href="{{ route('admin.team.show', $team->id) }}" class="btn btn-default">Show</a>
