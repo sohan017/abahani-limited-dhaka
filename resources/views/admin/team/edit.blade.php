@@ -56,36 +56,6 @@
 							<input type="text" class="form-control" id="captain" name="captain" placeholder="Enter Team captain" value="{{ $team->captain }}">
 						</div>
 
-						<!-- <div class="form-group">
-							<label for="win"> Team Win:</label>
-							<input type="text" class="form-control" id="win" name="win" placeholder="Enter Team win " value="{{ $team->win }}">
-						</div>
-						
-						<div class="form-group">
-							<label for="loss"> Team Loss:</label>
-							<input type="text" class="form-control" id="loss" name="loss" placeholder="Enter Team loss" value="{{ $team->name }}">
-						</div>
-						
-						<div class="form-group">
-							<label for="draw"> Team Draw:</label>
-							<input type="text" class="form-control" id="draw" name="draw" placeholder="Enter Team draw" value="{{ $team->loss }}">
-						</div>
-						
-						<div class="form-group">
-							<label for="match_played"> Team all match:</label>
-							<input type="text" class="form-control" id="match_played" name="match_played" placeholder="Enter Team all match" value="{{ $team->match_played }}">
-						</div>
-						
-						<div class="form-group">
-							<label for="goal_for"> Team all goal for:</label>
-							<input type="text" class="form-control" id="goal_for" name="goal_for" placeholder="Enter Team all goal for" value="{{ $team->goal_for }}">
-						</div>
-
-						<div class="form-group">
-							<label for="goal_against"> Team all goal against:</label>
-							<input type="text" class="form-control" id="goal_against" name="goal_against" placeholder="Enter Team all goal against" value="{{ $team->goal_against }}">
-						</div> -->
-
 
 						<div class="form-group">
 							<label for="coach_id">Coach name: *</label>

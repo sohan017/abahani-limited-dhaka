@@ -21,7 +21,7 @@ class Player extends Authenticatable
         'password', 'remember_token',
     ];
 
-    protected $fillable = ["name", "dob", "img", "jersy_no", "address", "city", "state", "country", "nationality", "gender", "hight", "weight", "religion", "national_id_number", "birth_certificet_number", "team_id", "playertype_id", "email", "password"];
+    protected $fillable = ["name", "dob", "img", "jersy_no", "con_num", "address", "city", "state", "country", "nationality", "gender", "hight", "weight", "religion", "national_id_number", "birth_certificet_number", "team_id", "playertype_id", "email", "password"];
 
     
     public function playerType()

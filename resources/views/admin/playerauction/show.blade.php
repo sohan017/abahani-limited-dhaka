@@ -4,6 +4,20 @@
 
 @section('css')
 <link rel="stylesheet" href="{{ asset('admin/bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css') }}">
+<style>
+    img {
+      border-radius: 50%;
+      height: 130px;
+  }
+  button.btn.btn-danger {
+     margin-left: 141px;
+     margin-top: -57px;
+ }
+
+ .btn-group.a {
+     padding: 66px;
+ }
+</style>
 @endsection
 
 @section('content')
@@ -19,55 +33,49 @@
 </section>
 <!-- Main content -->
 <section class="content">
+  <div class="row">
+   <div class="col-md-1"></div>
+   <div class="col-md-6">
+     <div class="box">
+         <div class="box-header">
+             <h3 class="box-title">Player auction Detail</h3>
+         </div>
+         <div class="box-body">
+            <table id="example1s" class="table table-bordered table-striped table-responsive">
 
-
-	<div class="box">
-		<div class="box-header">
-			<h3 class="box-title">Data Table With Full Features</h3>
-		</div>
-		<!-- /.box-header -->
-		<div class="box-body">
-			<table id="example1s" class="table table-bordered table-striped table-responsive">
-		
                 <tbody>
-                	<tr>
-                		<th>ID</th>
-                		<td>{{ $playerauction->id }}</td>
-                	</tr>
-                	<tr>
-                		<th>Auction Name</th>
-                		<td>{{ $playerauction->auction_id }}</td>
-                	</tr>
-                	<tr>
-                		<th>Player Name</th>
-                		<td>{{ $playerauction->player_id }}</td>
-                	</tr>
-                	<tr>
-                		<th>Player Price </th>
-                		<td>{{ $playerauction->player_price }}</td>
-                	</tr>
-                	
-                	
-                        	<div class="btn-group">
-                        		<a href="{{ route('admin.playerauction.show', $playerauction->id) }}" class="btn btn-default">Show</a>
-                        		<a href="{{ route('admin.playerauction.edit', $playerauction->id) }}" class="btn btn-default">Edit</a>
-                        		<form role="form" action="{{ route('admin.playerauction.destroy', $playerauction->id) }}" method="post">
-                        			@csrf
-                        			@method('DELETE ')
-                        			<button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this Category?');">Delete</button>
-                        		</form>
-
-                        	</div>
-                        </td>
+                    <tr>
+                        <th>ID</th>
+                        <td>{{ $playerauction->id }}</td>
                     </tr>
-
+                    <tr>
+                        <th>Auction Name</th>
+                        <td>{{ $playerauction->auction->name }}</td>
+                    </tr>
+                    <tr>
+                        <th>Player Name</th>
+                        <td>{{ $playerauction->player->name }}</td>
+                    </tr>
+                    <tr>
+                        <th>Player Price </th>
+                        <td>{{ $playerauction->player_price }}</td>
+                    </tr>
                 </tbody>
-            
             </table>
-        </div>
-        <!-- /.box-body -->
-    </div>
-
+            <div class="btn-group">
+                <a href="{{ route('admin.playerauction.show', $playerauction->id) }}" class="btn btn-info"><i class="fa fa-eye"></i> Show</a>
+                <a href="{{ route('admin.playerauction.edit', $playerauction->id) }}" class="btn btn-success"><i class="fa fa-edit"> Edit</i></a>
+                <form role="form" action="{{ route('admin.playerauction.destroy', $playerauction->id) }}" method="post">
+                   @csrf
+                   @method('DELETE ')
+                   <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this Category?');"><i class="fa  fa-trash"></i> Delete</button>
+               </form>
+           </div>
+       </div>
+   </div>
+</div>
+<div class="col-md-5"></div>
+</div>
 </section>
 <!-- /.content -->
 

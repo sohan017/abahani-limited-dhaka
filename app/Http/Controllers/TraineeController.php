@@ -38,6 +38,7 @@ class TraineeController extends Controller
     {
         return Validator::make($data, [
             'name' => 'required|max:100',
+            'con_num' => 'required|max:20',
             'playertype_id' => 'required',
             'coach_id' => 'required',
             'dob' => 'required',
@@ -74,13 +75,14 @@ class TraineeController extends Controller
             return redirect()->back()->withInput()->withErrors($validator);
         }
 
-
+         $uploadsLocation ="";
         if ($request->has('img')) {
             $uploadsLocation = $request->img->store('uploads/images/trainee');
         }
 
         Trainee::create([
             'name' => $request->name,
+            'con_num' => $request->con_num,
             'playertype_id' => $request->playertype_id,
             'coach_id' => $request->coach_id,
             'dob' => $request->dob,
@@ -97,7 +99,7 @@ class TraineeController extends Controller
             'national_id_number' => $request->national_id_number,
             'birth_certificet_number' => $request->birth_certificet_number,
             'email' => $request->email,
-            'password' => $request->password,
+            'password' =>Hash::make($request->password),
             'is_verified' => $request->is_verified ? true : false,
             'is_played' => $request->is_played ? true : false,
             'ap_fee' => $request->ap_fee,
@@ -150,6 +152,7 @@ class TraineeController extends Controller
 
         $trainee = Trainee::findOrFail($id);
         $trainee->name = $request->name;
+        $trainee->con_num = $request->con_num;
         $trainee->playertype_id = $request->playertype_id;
         $trainee->coach_id = $request->coach_id;
         $trainee->dob = $request->dob;
@@ -167,7 +170,7 @@ class TraineeController extends Controller
         $trainee->religion = $request->religion;
         $trainee->national_id_number = $request->national_id_number;
         $trainee->email = $request->email;
-        $trainee->password = $request->password;
+        $trainee->password =  Hash::make($request->get('password'));
         $trainee->is_verified = $request->is_verified ? true : false;
         $trainee->is_played = $request->is_played ? true : false;
         $trainee->ap_fee = $request->ap_fee;

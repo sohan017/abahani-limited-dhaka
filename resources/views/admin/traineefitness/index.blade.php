@@ -4,6 +4,16 @@
 
 @section("css")
 <link rel="stylesheet" href="{{ asset('admin/bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css') }}">
+
+<style>
+   
+  button.btn.btn-danger {
+    margin-left: 108px;
+    margin-top: -57px;
+}
+
+
+</style>
 @endsection
 
 @section('content')
@@ -45,8 +55,8 @@
                         <td>{{ $traineefitness->is_feet ? "True" : "False" }}</td>
                         <td>
                             <div class="btn-group">
-                                <a href="{{ route('admin.traineefitness.show', $traineefitness->id) }}" class="btn btn-default">Show</a>
-                                <a href="{{ route('admin.traineefitness.edit', $traineefitness->id) }}" class="btn btn-default">Edit</a>
+                                <a href="{{ route('admin.traineefitness.show', $traineefitness->id) }}" class="btn btn-info">Show</a>
+                                <a href="{{ route('admin.traineefitness.edit', $traineefitness->id) }}" class="btn btn-success">Edit</a>
                                <form role="form" action="{{ route('admin.traineefitness.destroy', $traineefitness->id) }}" method="post">
                                    @csrf
                                     @method('DELETE ')

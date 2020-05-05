@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Match extends Model
 {
-    protected $fillable = ["name", "match_number", "turnament_id", "match_vanue_id", "team_id", "oponent_club_id", "home_away","date", "time", "result", "decided_by", "gd_point", "pts"];
+    protected $fillable = ["name", "match_number", "turnament_id", "match_vanue_id", "team_id", "oponent_club_id", "home_away","date", "time", "result", "decided_by", "gf", "ga", "pts"];
 
 
     public function turnament()

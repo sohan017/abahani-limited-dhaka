@@ -4,6 +4,20 @@
 
 @section('css')
 <link rel="stylesheet" href="{{ asset('admin/bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css') }}">
+<style>
+    img {
+      border-radius: 50%;
+      height: 130px;
+  }
+  button.btn.btn-danger {
+     margin-left: 141px;
+     margin-top: -57px;
+ }
+
+ .btn-group.a {
+     padding: 66px;
+ }
+</style>
 @endsection
 
 @section('content')
@@ -14,59 +28,51 @@
 	<ol class="breadcrumb">
 		<li><a href="{{ route('admin.admin.dashboard') }}"><i class="fa fa-dashboard"></i> Home</a></li>
         <li><a href="{{ route('admin.turnament.index') }}">Turnament</a></li>
-		<li class="active">Show turnament</li>
-	</ol>
+        <li class="active">Show turnament</li>
+    </ol>
 </section>
 <!-- Main content -->
 <section class="content">
+    <div class="row">
+       <div class="col-md-1"></div>
+       <div class="col-md-6">
+         <div class="box">
+             <div class="box-header">
+                 <h3 class="box-title">Turnament Table With Full Features</h3>
+             </div>
+             <div class="box-body">
+                <table id="example1s" class="table table-bordered table-striped table-responsive">
 
+                    <tbody>
+                        <tr>
+                            <th>turnament Name</th>
+                            <td>{{ $turnament->name }}</td>
+                        </tr>
+                        <tr>
+                            <th>Turnament start date</th>
+                            <td>{{ $turnament->start_date }}</td>
+                        </tr>
+                        <tr>
+                            <th>Turnament End date</th>
+                            <td>{{ $turnament->end_date }}</td>
+                        </tr>
 
-	<div class="box">
-		<div class="box-header">
-			<h3 class="box-title">Data Table With Full Features</h3>
-		</div>
-		<!-- /.box-header -->
-		<div class="box-body">
-			<table id="example1s" class="table table-bordered table-striped table-responsive">
-		
-                <tbody>
-                	<tr>
-                		<th>ID</th>
-                		<td>{{ $turnament->id }}</td>
-                	</tr>
-                	<tr>
-                		<th>Turnament Name</th>
-                		<td>{{ $turnament->name }}</td>
-                	</tr>
-                    <tr>
-                        <th>Turnament start date</th>
-                        <td>{{ $turnament->start_date }}</td>
-                    </tr>
-                                  <th>Turnament end date</th>
-                        <td>{{ $turnament->end_date }}</td>
-                    </tr>
-                    
-                	
-                        	<div class="btn-group">
-                        		<a href="{{ route('admin.turnament.show', $turnament->id) }}" class="btn btn-default">Show</a>
-                        		<a href="{{ route('admin.turnament.edit', $turnament->id) }}" class="btn btn-default">Edit</a>
-                        		<form role="form" action="{{ route('admin.turnament.destroy', $turnament->id) }}" method="post">
-                        			@csrf
-                        			@method('DELETE ')
-                        			<button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this Category?');">Delete</button>
-                        		</form>
-
-                        	</div>
-                        </td>
-                    </tr>
-
-                </tbody>
-            
-            </table>
-        </div>
-        <!-- /.box-body -->
-    </div>
-
+                    </tbody>
+                </table>
+                <div class="btn-group">
+                    <a href="{{ route('admin.turnament.show', $turnament->id) }}" class="btn btn-info"><i class="fa fa-eye"></i> Show</a>
+                    <a href="{{ route('admin.turnament.edit', $turnament->id) }}" class="btn btn-success"><i class="fa fa-edit"> Edit</i></a>
+                    <form role="form" action="{{ route('admin.turnament.destroy', $turnament->id) }}" method="post">
+                       @csrf
+                       @method('DELETE ')
+                       <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this Category?');"><i class="fa  fa-trash"></i> Delete</button>
+                   </form>
+               </div>
+           </div>
+       </div>
+   </div>
+   <div class="col-md-5"></div>
+</div>
 </section>
 <!-- /.content -->
 

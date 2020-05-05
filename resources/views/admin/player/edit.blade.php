@@ -61,6 +61,11 @@
 							<label for="jersy_no"> Jersy no: *</label>
 							<input type="text" class="form-control" id="jersy_no" name="jersy_no" placeholder="Enter jersy no" value="{{ $player->jersy_no }}">
 						</div>
+
+						<div class="form-group">
+							<label for="con_num">Phone Number: </label>
+							<input type="text" class="form-control" id="con_num" name="con_num" placeholder="Enter Contact Number" value="{{ $player->con_num }}">
+						</div>
 					
 						<div class="form-group">
 							<label for="address"> Address: * </label>

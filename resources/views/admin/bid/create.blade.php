@@ -44,13 +44,13 @@
 							<select name="player_auction_id" id="player_auction_id" class="form-control" value="{{old('player_auction_id')}}">
 								
 								@foreach($playerauctions as $playerauction)
-									<option value="{{ $playerauction->id }}">{{ $playerauction->id }}</option>
+									<option value="{{ $playerauction->id }}">{{ $playerauction->auction->name . " - " .  $playerauction->player->name}}</option>
 								@endforeach
 							</select>
 						</div>
 
 						<div class="form-group">
-							<label for="bidder_id">Player Name: *</label>
+							<label for="bidder_id">Bidder Name: *</label>
 							<select name="bidder_id" id="bidder_id" class="form-control" value="{{old('bidder_id')}}">
 								
 								@foreach($bidders as $bidder)

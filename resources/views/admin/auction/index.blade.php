@@ -4,6 +4,17 @@
 
 @section("css")
 <link rel="stylesheet" href="{{ asset('admin/bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css') }}">
+<style>
+    
+  button.btn.btn-danger {
+     margin-left: 141px;
+     margin-top: -57px;
+ }
+
+ .btn-group.a {
+     padding: 66px;
+ }
+</style>
 @endsection
 
 @section('content')
@@ -22,7 +33,7 @@
 
     <div class="box">
         <div class="box-header">
-            <h3 class="box-title">Data Table With Full Features</h3>
+            <h3 class="box-title">List Of Auction</h3>
         </div>
         <!-- /.box-header -->
         <div class="box-body">
@@ -44,15 +55,14 @@
                         <td>{{ $auction->start_time }}</td>
                         <td>{{ $auction->end_time }}</td>
                         <td>
-                            <div class="btn-group">
-                                <a href="{{ route('admin.auction.show', $auction->id) }}" class="btn btn-default">Show</a>
-                                <a href="{{ route('admin.auction.edit', $auction->id) }}" class="btn btn-default">Edit</a>
+                             <div class="btn-group">
+                                <a href="{{ route('admin.auction.show', $auction->id) }}" class="btn btn-info"><i class="fa fa-eye"></i> Show</a>
+                                <a href="{{ route('admin.auction.edit', $auction->id) }}" class="btn btn-success"><i class="fa fa-edit"></i> Edit</a>
                                <form role="form" action="{{ route('admin.auction.destroy', $auction->id) }}" method="post">
                                    @csrf
                                     @method('DELETE ')
-                                    <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this Category?');">Delete</button>
-                               </form>
-                                
+                                    <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this Category?');"><i class="fa  fa-trash"></i> Delete</button>
+                               </form>  
                             </div>
                         </td>
                     </tr>
@@ -63,7 +73,7 @@
                         <th>ID</th>
                       	<th>Name</th>
                         <th>Auction start time</th>
-                        <th>Auction end time</th>>
+                        <th>Auction end time</th>
                         <th>Action</th>
                     </tr>
                 </tfoot>

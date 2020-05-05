@@ -2,10 +2,12 @@
 
 namespace App;
 
-use Illuminate\Notifications\Notifiable;
+use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Notifications\Notifiable;
 
-class Trainee extends Authenticatable
+
+class Trainee extends Authenticatable  implements MustVerifyEmail
 {
     use Notifiable;
 
@@ -20,7 +22,7 @@ class Trainee extends Authenticatable
         'password', 'remember_token',
     ];
 
-    protected $fillable = ["name", "playertype_id", "coach_id", "dob", "img", "address", "city", "state", "country", "nationality", "gender", "hight", "weight", "religion", "national_id_number", "birth_certificet_number", "email", "password", "is_verified", "is_played", "ap_fee"];
+    protected $fillable = ["name", "con_num", "playertype_id", "coach_id", "dob", "img", "address", "city", "state", "country", "nationality", "gender", "hight", "weight", "religion", "national_id_number", "birth_certificet_number", "email", "password", "is_verified", "is_played", "ap_fee"];
 
     public function playerType()
     {

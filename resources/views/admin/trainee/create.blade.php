@@ -43,6 +43,11 @@
 							<label for="name">Name: *</label>
 							<input type="text" class="form-control" id="name" name="name" placeholder="Enter Trainee name" value="{{old('name')}}">
 						</div>
+						<div class="form-group">
+							<label for="con_num">Phone number: *</label>
+							<input type="text" class="form-control" id="con_num" name="con_num" placeholder="Enter Trainee Contact Number" value="{{old('con_num')}}">
+						</div>
+						
 
 						<div class="form-group">
 							<label for="playertype_id">Playertype name: *</label>
@@ -146,7 +151,7 @@
 						</div>
 						<div class="form-group">
 							<label for="password">Password: *</label>
-							<input type="text" class="form-control" name="password" id="password" placeholder="Enter Trainee Password" value="{{old('password')}}">
+							<input type="password" class="form-control" name="password" id="password" placeholder="Enter Trainee Password" value="{{old('password')}}">
 						</div>
 
 						<!-- <div class="form-group">

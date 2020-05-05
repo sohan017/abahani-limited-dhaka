@@ -18,6 +18,7 @@ class CreateCoachesTable extends Migration
             $table->string('name', 100);
             $table->text('dob');
             $table->text('img');
+            $table->text('con_num')->nullable();
             $table->text('address');
             $table->string('city');
             $table->string('state');

@@ -4,90 +4,150 @@
 
 @section('css')
 <link rel="stylesheet" href="{{ asset('admin/bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css') }}">
+<style>
+    img {
+        border-radius: 50%;
+        height: 130px;
+    }
+    button.btn.btn-danger {
+        margin-left: 108px;
+        margin-top: -57px;
+    }
+
+    .btn-group.a {
+        padding: 66px;
+    }
+</style>
 @endsection
 
 @section('content')
 
 <section class="content-header">
-	<h1> Show Trainee page</h1>
-	<a href="{{ route('admin.trainee.create')}}" class="btn btn-primary">Add new Trainee</a>
-	<ol class="breadcrumb">
-		<li><a href="{{ route('admin.admin.dashboard') }}"><i class="fa fa-dashboard"></i> Home</a></li>
+    <h1> Show Trainee page</h1>
+    <a href="{{ route('admin.trainee.create')}}" class="btn btn-primary">Add new Trainee</a>
+    <ol class="breadcrumb">
+        <li><a href="{{ route('admin.admin.dashboard') }}"><i class="fa fa-dashboard"></i> Home</a></li>
         <li><a href="{{ route('admin.trainee.index') }}">Trainee</a></li>
-		<li class="active">Show Trainee</li>
-	</ol>
+        <li class="active">Show Trainee</li>
+    </ol>
 </section>
 <!-- Main content -->
 <section class="content">
+    <div class="row">
+        <div class="col-md-1"></div>
+        <div class="col-md-6">
 
+            <div class="box">
+                <div class="box-header">
+                    <h3 class="box-title">Trainee Profile With Full Features</h3>
+                </div>
+                <!-- /.box-header -->
+                <div class="box-body">
+                    <table id="example1s" class="table table-bordered table-striped table-responsive">
 
-	<div class="box">
-		<div class="box-header">
-			<h3 class="box-title">Data Table With Full Features</h3>
-		</div>
-		<!-- /.box-header -->
-		<div class="box-body">
-			<table id="example1s" class="table table-bordered table-striped table-responsive">
-		
-                <tbody>
-                	<tr>
-                		<th>ID</th>
-                		<td>{{ $trainee->id }}</td>
-                	</tr>
-                	<tr>
-                		<th>Name</th>
-                		<td>{{ $trainee->name }}</td>
-                	</tr>
-                	<tr>
-                		<th>Photo</th>
-                		<td><img src="{{ asset($trainee->img) }}" alt="img"></td>
-                	</tr>
-                	<tr>
-                		<th>Address</th>
-                		<td>{{ $trainee->address }}</td>
-                	</tr>
-                	<tr>
-                		<th>City</th>
-                		<td>{{ $trainee->city }}</td>
-                	</tr>
-                	
+                        <tbody>
+                            <tr>
+                                <img src="{{ asset($trainee->img) }}" alt="img">
+                            </tr>
+                            <tr>
+                                <th>ID</th>
+                                <td>{{ $trainee->id }}</td>
+                            </tr>
+                            <tr>
+                                <th>Name</th>
+                                <td>{{ $trainee->name }}</td>
+                            </tr>
 
-                	
-                        	<div class="btn-group">
-                        		<a href="{{ route('admin.trainee.show', $trainee->id) }}" class="btn btn-default">Show</a>
-                        		<a href="{{ route('admin.trainee.edit', $trainee->id) }}" class="btn btn-default">Edit</a>
-                        		<form role="form" action="{{ route('admin.trainee.destroy', $trainee->id) }}" method="post">
-                        			@csrf
-                        			@method('DELETE ')
-                        			<button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this Category?');">Delete</button>
-                        		</form>
+                            <tr>
+                                <th>Email</th>
+                                <td>{{ $trainee->email }}</td>
+                            </tr>
+                            <tr>
+                                <th>Contact Number</th>
+                                <td>{{ $trainee->con_num }}</td>
+                            </tr>
+                            <tr>
+                                <th>Date of birth</th>
+                                <td>{{ $trainee->dob }}</td>
+                            </tr>
+                            <tr>
+                                <th>Address</th>
+                                <td>{{ $trainee->address }}</td>
+                            </tr>
+                            <tr>
+                                <th>City</th>
+                                <td>{{ $trainee->city }}</td>
+                            </tr>
+                            <tr>
+                                <th>State</th>
+                                <td>{{ $trainee->state }}</td>
+                            </tr>
+                            <tr>
+                                <th>Country</th>
+                                <td>{{ $trainee->country }}</td>
+                            </tr>
+                            <tr>
+                                <th>Nationality</th>
+                                <td>{{ $trainee->nationality }}</td>
+                            </tr>
+                            <tr>
+                                <th>Gender</th>
+                                <td>{{ $trainee->gender }}</td>
+                            </tr>
+                            <tr>
+                                <th>Hight</th>
+                                <td>{{ $trainee->hight }}</td>
+                            </tr>
+                            <tr>
+                                <th>Weight</th>
+                                <td>{{ $trainee->weight }}</td>
+                            </tr>
+                            <tr>
+                                <th>Religion</th>
+                                <td>{{ $trainee->religion }}</td>
+                            </tr>
+                            <tr>
+                                <th>National id number</th>
+                                <td>{{ $trainee->national_id_number }}</td>
+                            </tr>
+                            <tr>
+                                <th>Coach name</th>
+                                <td>{{ $trainee->coach->name }}</td>
+                            </tr>
+                            <tr>
+                                <th>Playertype name</th>
+                                <td>{{ $trainee->playertype->name }}</td>
+                            </tr>
+                            <tr>
+                                <th>Is verified</th>
+                                <td>{{ $trainee->is_verified ? "True" : "False" }}</td>
+                            </tr>
+                            <tr>
+                                <th>trainee played</th>
+                                <td>{{ $trainee->is_played ? "True" : "False" }}</td>
+                            </tr>
+                             <tr>
+                                <th>Application fee</th>
+                                <td>{{ $trainee->ap_fee }}</td>
+                            </tr>
 
-                        	</div>
-                        </td>
-                    </tr>
+                        </tbody>
 
-                </tbody>
-             <!--    <tfoot>
-                	<tr>
-                		<th>ID</th>
-                		<th>Name</th>
-                		<th>DoB</th>
-                		<th>Photo</th>
-                		<th>Address</th>
-                		<th>City</th>
-                		<th>State</th>
-                		<th>Nationality</th>
-                		<th>Gender</th>
-                		<th>Hight</th>
-                        <th>Religion</th>
-                        <th>NID NO</th>
-                        <th>Email</th>
-                        <th>Action</th>
-                    </tr>
-                </tfoot> -->
-            </table>
+                    </table>
+                    <div class="btn-group">
+                        <a href="{{ route('admin.trainee.show', $trainee->id) }}" class="btn btn-info">Show</a>
+                        <a href="{{ route('admin.trainee.edit', $trainee->id) }}" class="btn btn-success">Edit</a>
+                        <form role="form" action="{{ route('admin.trainee.destroy', $trainee->id) }}" method="post">
+                            @csrf
+                            @method('DELETE ')
+                            <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this Category?');">Delete</button>
+                        </form>
+                    </div>
+                </div>
+                <!-- /.box-body -->
+            </div>
         </div>
-        <!-- /.box-body -->
+        <div class="col-md-5"></div>
     </div>
 
 </section>
@@ -102,9 +162,9 @@
 <script src="{{ asset('admin/bower_components/datatables.net/js/jquery.dataTables.min.js') }}"></script>
 <script src="{{ asset('admin/bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js') }}"></script>
 <script>
-	$(function () {
-		$('#example1s').DataTable()
-	})
+    $(function () {
+        $('#example1s').DataTable()
+    })
 </script>
 
 @endsection

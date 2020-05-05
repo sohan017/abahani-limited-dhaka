@@ -35,13 +35,18 @@
 				<!-- /.box-header -->
 				@include("partial.notification")
 				<!-- form start -->
-				<form role="form" action="{{ route('admin.bidder.store') }}" method="post">
+				<form role="form" action="{{ route('admin.bidder.store') }}" method="post" enctype="multipart/form-data">
 					@csrf
 					<div class="box-body">
 						<small>required = *</small>
 						<div class="form-group">
 							<label for="name"> Name: *</label>
 							<input type="text" class="form-control" id="name" name="name" placeholder="Enter name" value="{{old('name')}}">
+						</div>
+
+						<div class="form-group">
+							<label for="img">Image upload: *</label>
+							<input type="file" class="form-control" id="img" name="img" >
 						</div>
 
 						<div class="form-group">

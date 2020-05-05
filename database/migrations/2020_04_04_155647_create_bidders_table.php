@@ -16,8 +16,9 @@ class CreateBiddersTable extends Migration
         Schema::create('bidders', function (Blueprint $table) {
             $table->id();
             $table->string('name', 100);
+            $table->text('img');
             $table->string('club_name');
-            $table->string('contact_num');
+            $table->string('contact_num')->nullable();
             $table->string('email');
             $table->text('password');
             $table->rememberToken();

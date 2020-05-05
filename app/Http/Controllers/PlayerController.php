@@ -43,6 +43,7 @@ class PlayerController extends Controller
             'dob' => 'required',
             'img' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
             'jersy_no' => 'required|max:4',
+            'con_num' => 'required|max:20',
             'address' => 'required',
             'city' => 'required|max:100',
             'state' => 'required|max:100',
@@ -84,6 +85,7 @@ class PlayerController extends Controller
             'dob' => $request->dob,
             'img' => $uploadsLocation,
             'jersy_no' => $request->jersy_no,
+            'con_num' => $request->con_num,
             'address' => $request->address,
             'city' => $request->city,
             'state' => $request->state,
@@ -98,7 +100,7 @@ class PlayerController extends Controller
             'team_id' => $request->team_id,
             'playertype_id' => $request->playertype_id,
             'email' => $request->email,
-            'password' => $request->password,
+            'password' =>Hash::make($request->password),
             
         ]);
         return redirect()->route("admin.player.index")->withSuccess("Player create success.");
@@ -155,6 +157,7 @@ class PlayerController extends Controller
             $player->img = $request->img->store('uploads/images/player');
         }
         $player->jersy_no = $request->jersy_no;
+        $player->con_num = $request->con_num;
         $player->address = $request->address;
         $player->city = $request->city;
         $player->state = $request->state;
@@ -169,7 +172,8 @@ class PlayerController extends Controller
         $player->team_id = $request->team_id;
         $player->playertype_id = $request->playertype_id;
         $player->email = $request->email;
-        $player->password = $request->password;
+       
+        $player->password = Hash::make($request->password);
         $player->save();
 
         return redirect()->route('admin.player.index')->withSuccess("Player Update success.");

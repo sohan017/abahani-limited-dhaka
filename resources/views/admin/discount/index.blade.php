@@ -4,6 +4,20 @@
 
 @section("css")
 <link rel="stylesheet" href="{{ asset('admin/bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css') }}">
+<style>
+    img {
+      border-radius: 50%;
+      height: 130px;
+  }
+  button.btn.btn-danger {
+     margin-left: 141px;
+     margin-top: -57px;
+ }
+
+ .btn-group.a {
+     padding: 66px;
+ }
+</style>
 @endsection
 
 @section('content')
@@ -43,14 +57,13 @@
                         <td>{{ $discount->percent }}</td>
                         <td>
                             <div class="btn-group">
-                                <a href="{{ route('admin.discount.show', $discount->id) }}" class="btn btn-default">Show</a>
-                                <a href="{{ route('admin.discount.edit', $discount->id) }}" class="btn btn-default">Edit</a>
+                                <a href="{{ route('admin.discount.show', $discount->id) }}" class="btn btn-info"><i class="fa fa-eye"></i> Show</a>
+                                <a href="{{ route('admin.discount.edit', $discount->id) }}" class="btn btn-success"><i class="fa fa-edit"></i> Edit</a>
                                <form role="form" action="{{ route('admin.discount.destroy', $discount->id) }}" method="post">
                                    @csrf
                                     @method('DELETE ')
-                                    <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this Category?');">Delete</button>
-                               </form>
-                                
+                                    <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this Category?');"><i class="fa  fa-trash"></i> Delete</button>
+                               </form>  
                             </div>
                         </td>
                     </tr>

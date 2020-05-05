@@ -10,6 +10,7 @@ use App\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Http\Request;
 
 class RegisterController extends Controller
 {
@@ -83,12 +84,23 @@ class RegisterController extends Controller
 
     protected function createSubscriber(Request $request)
     {
-        $this->validator($request->all())->validate();
+        $request->validate([
+            'contact_num' => ['required', 'string', 'max:20'],
+            'address' => ['required', 'string', 'max:255'],
+            'name' => ['required', 'string', 'max:255'],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:subscribers'],
+            'password' => ['required', 'string', 'min:6', 'confirmed'],
+        ]);
         $subscriber = Subscriber::create([
+            'contact_num' => $request['contact_num'],
+            'address' => $request['address'],
             'name' => $request['name'],
             'email' => $request['email'],
             'password' => Hash::make($request['password']),
         ]);
+        
+        // $subscriber->sendEmailVerificationNotification();
+
         return redirect()->intended('login/subscriber');
     }
 
@@ -99,8 +111,32 @@ class RegisterController extends Controller
 
     protected function createTrainee(Request $request)
     {
-        $this->validator($request->all())->validate();
+        $request->validate([
+            'contact_num' => ['required', 'string', 'max:20'],
+            'dob' => ['required', 'string', 'max:50'],
+            'address' => ['required', 'string', 'max:255'],
+            'city' => ['required', 'string', 'max:255'],
+            'state' => ['required', 'string', 'max:255'],
+            'country' => ['required', 'string', 'max:255'],
+            'nationality' => ['required', 'string', 'max:255'],
+            'gender' => ['required', 'string', 'max:255'],
+            'hight' => ['required', 'string', 'max:255'],
+            'weight' => ['required', 'string', 'max:255'],
+            'name' => ['required', 'string', 'max:255'],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:trainees'],
+            'password' => ['required', 'string', 'min:6', 'confirmed'],
+        ]);
         $admin = Trainee::create([
+            'contact_num' => $request['contact_num'],
+            'dob' => $request['dob'],
+            'address' => $request['address'],
+            'city' => $request['city'],
+            'state' => $request['state'],
+            'country' => $request['country'],
+            'nationality' => $request['nationality'],
+            'gender' => $request['gender'],
+            'hight' => $request['hight'],
+            'weight' => $request['weight'],
             'name' => $request['name'],
             'email' => $request['email'],
             'password' => Hash::make($request['password']),

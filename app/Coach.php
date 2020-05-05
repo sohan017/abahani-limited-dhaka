@@ -20,7 +20,7 @@ class Coach extends Authenticatable
         'password', 'remember_token',
     ];
 
-    protected $fillable = ["name", "dob","img","address","city","state","country","nationality","gender","hight","religion","national_id_number","email","password"];
+    protected $fillable = ["name", "dob","img", "con_num", "address","city","state","country","nationality","gender","hight","religion","national_id_number","email","password"];
 
 
     public function team()

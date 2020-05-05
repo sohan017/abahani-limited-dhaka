@@ -4,6 +4,20 @@
 
 @section("css")
 <link rel="stylesheet" href="{{ asset('admin/bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css') }}">
+<style>
+    img {
+      border-radius: 50%;
+      height: 130px;
+  }
+  button.btn.btn-danger {
+     margin-left: 141px;
+     margin-top: -57px;
+ }
+
+ .btn-group.a {
+     padding: 66px;
+ }
+</style>
 @endsection
 
 @section('content')
@@ -41,20 +55,19 @@
                     @foreach($bids as $bid)
                     <tr>
                         <td>{{ $bid->id }}</td>
-                        <td>{{ $bid->player_auction_id }}</td>
-                        <td>{{ $bid->bidder_id }}</td>
+                        <td>{{ $bid->id}}</td>
+                        <td>{{ $bid->bidder->name }}</td>
                         <td>{{ $bid->price }}</td>
                         <td>{{ $bid->date_time }}</td>
                         <td>
-                            <div class="btn-group">
-                                <a href="{{ route('admin.bid.show', $bid->id) }}" class="btn btn-default">Show</a>
-                                <a href="{{ route('admin.bid.edit', $bid->id) }}" class="btn btn-default">Edit</a>
+                             <div class="btn-group">
+                                <a href="{{ route('admin.bid.show', $bid->id) }}" class="btn btn-info"><i class="fa fa-eye"></i> Show</a>
+                                <a href="{{ route('admin.bid.edit', $bid->id) }}" class="btn btn-success"><i class="fa fa-edit"></i> Edit</a>
                                <form role="form" action="{{ route('admin.bid.destroy', $bid->id) }}" method="post">
                                    @csrf
                                     @method('DELETE ')
-                                    <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this Category?');">Delete</button>
-                               </form>
-                                
+                                    <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this Category?');"><i class="fa  fa-trash"></i> Delete</button>
+                               </form>  
                             </div>
                         </td>
                     </tr>

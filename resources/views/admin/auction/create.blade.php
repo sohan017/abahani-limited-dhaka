@@ -40,7 +40,7 @@
 					<div class="box-body">
 						<small>required = *</small>
 						<div class="form-group">
-							<label for="name"> Name: *</label>
+							<label for="name">Auction Name: *</label>
 							<input type="text" class="form-control" id="name" name="name" placeholder="Enter name" value="{{old('name')}}">
 						</div>
 					

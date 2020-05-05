@@ -4,12 +4,26 @@
 
 @section("css")
 <link rel="stylesheet" href="{{ asset('admin/bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css') }}">
+<style>
+    img {
+      border-radius: 50%;
+      height: 130px;
+  }
+  button.btn.btn-danger {
+   margin-left: 141px;
+   margin-top: -57px;
+}
+
+.btn-group.a {
+   padding: 66px;
+}
+</style>
 @endsection
 
 @section('content')
 
 <section class="content-header">
-	<h1> Show player auction page</h1>
+	<h1> </h1>
 	<a href="{{ route('admin.playerauction.create')}}" class="btn btn-primary">Add new playerauction</a>
 	<ol class="breadcrumb">
 		<li><a href="{{ route('admin.admin.dashboard') }}"><i class="fa fa-dashboard"></i> Home</a></li>
@@ -22,7 +36,7 @@
 
     <div class="box">
         <div class="box-header">
-            <h3 class="box-title">Data Table With Full Features</h3>
+            <h3 class="box-title">List Of  Player Auction</h3>
         </div>
         <!-- /.box-header -->
         <div class="box-body">
@@ -40,37 +54,36 @@
                     @foreach($playerauctions as $playerauction)
                     <tr>
                         <td>{{ $playerauction->id }}</td>
-                        <td>{{ $playerauction->auction_id }}</td>
-                        <td>{{ $playerauction->player_id }}</td>
+                        <td>{{ $playerauction->auction->name }}</td>
+                        <td>{{ $playerauction->player->name }}</td>
                         <td>{{ $playerauction->player_price }}</td>
                         <td>
-                            <div class="btn-group">
-                                <a href="{{ route('admin.playerauction.show', $playerauction->id) }}" class="btn btn-default">Show</a>
-                                <a href="{{ route('admin.playerauction.edit', $playerauction->id) }}" class="btn btn-default">Edit</a>
-                               <form role="form" action="{{ route('admin.playerauction.destroy', $playerauction->id) }}" method="post">
-                                   @csrf
-                                    @method('DELETE ')
-                                    <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this Category?');">Delete</button>
-                               </form>
-                                
-                            </div>
-                        </td>
-                    </tr>
-                   @endforeach 
-                </tbody>
-                <tfoot>
-                    <tr>
-                        <th>ID</th>
-                      	<th>Auction Name</th>
-                        <th>Player Name</th>
-                        <th>Player Price</th>
-                        <th>Action</th>
-                    </tr>
-                </tfoot>
-            </table>
-        </div>
-        <!-- /.box-body -->
-    </div>
+                           <div class="btn-group">
+                            <a href="{{ route('admin.playerauction.show', $playerauction->id) }}" class="btn btn-info"><i class="fa fa-eye"></i> Show</a>
+                            <a href="{{ route('admin.playerauction.edit', $playerauction->id) }}" class="btn btn-success"><i class="fa fa-edit"></i> Edit</a>
+                            <form role="form" action="{{ route('admin.playerauction.destroy', $playerauction->id) }}" method="post">
+                             @csrf
+                             @method('DELETE ')
+                             <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this Category?');"><i class="fa  fa-trash"></i> Delete</button>
+                         </form>  
+                     </div>
+                 </td>
+             </tr>
+             @endforeach 
+         </tbody>
+         <tfoot>
+            <tr>
+                <th>ID</th>
+                <th>Auction Name</th>
+                <th>Player Name</th>
+                <th>Player Price</th>
+                <th>Action</th>
+            </tr>
+        </tfoot>
+    </table>
+</div>
+<!-- /.box-body -->
+</div>
 
 </section>
 <!-- /.content -->

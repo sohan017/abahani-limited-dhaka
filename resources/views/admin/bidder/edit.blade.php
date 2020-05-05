@@ -35,7 +35,7 @@
 				<!-- /.box-header -->
 				@include("partial.notification")
 				<!-- form start -->
-				<form role="form" action="{{ route('admin.bidder.update',$bidder->id) }}" method="post">
+				<form role="form" action="{{ route('admin.bidder.update',$bidder->id) }}" method="post" enctype="multipart/form-data">
 					@csrf
 					@method('PUT')
 					<div class="box-body">
@@ -43,6 +43,13 @@
 						<div class="form-group">
 							<label for="name"> Name: *</label>
 							<input type="text" class="form-control" id="name" name="name" placeholder="Update name" value="{{ $bidder->name }}">
+						</div>
+
+						<div class="form-group">
+							<label for="img">Image upload: *</label>
+							<input type="file" class="form-control" id="img" name="img" value="{{ $bidder->img }}">
+
+							<p class="help-block">Example block-level help text here.</p>
 						</div>
 
 						<div class="form-group">

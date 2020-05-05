@@ -18,6 +18,7 @@ class CreatePhysiosTable extends Migration
             $table->string('name', 100);
             $table->text('img');
             $table->string('spacalize');
+            $table->string('con_num')->nullable();
             $table->text('address');
             $table->string('city');
             $table->string('state');

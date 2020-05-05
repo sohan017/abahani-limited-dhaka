@@ -4,6 +4,21 @@
 
 @section("css")
 <link rel="stylesheet" href="{{ asset('admin/bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css') }}">
+<style>
+    img {
+        border-radius: 50%;
+        height: 130px;
+        margin-left: 100px
+    }
+    button.btn.btn-danger {
+        margin-left: 108px;
+        margin-top: -57px;
+    }
+
+    .btn-group.a {
+        padding: 66px;
+    }
+</style>
 @endsection
 
 @section('content')

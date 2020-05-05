@@ -4,12 +4,26 @@
 
 @section("css")
 <link rel="stylesheet" href="{{ asset('admin/bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css') }}">
+<style>
+    img {
+        border-radius: 50%;
+        height: 130px;
+    }
+    button.btn.btn-danger {
+        margin-left: 141px;
+        margin-top: -57px;
+    }
+
+    .btn-group.a {
+        padding: 66px;
+    }
+</style>
 @endsection
 
 @section('content')
 
 <section class="content-header">
-	<h1> Show Physio page</h1>
+	<h1></h1>
 	<a href="{{ route('admin.physio.create')}}" class="btn btn-primary">Add new Physio</a>
 	<ol class="breadcrumb">
 		<li><a href="{{ route('admin.admin.dashboard') }}"><i class="fa fa-dashboard"></i> Home</a></li>
@@ -22,7 +36,7 @@
 
     <div class="box">
         <div class="box-header">
-            <h3 class="box-title">Data Table With Full Features</h3>
+            <h3 class="box-title"> All Physio List</h3>
         </div>
         <!-- /.box-header -->
         <div class="box-body">
@@ -43,12 +57,12 @@
                         <td><img src="{{ asset($physio->img) }}" alt="img"></td>
                         <td>
                             <div class="btn-group">
-                                <a href="{{ route('admin.physio.show', $physio->id) }}" class="btn btn-default">Show</a>
-                                <a href="{{ route('admin.physio.edit', $physio->id) }}" class="btn btn-default">Edit</a>
+                                <a href="{{ route('admin.physio.show', $physio->id) }}" class="btn btn-info"><i class="fa fa-eye"></i> Show</a>
+                                <a href="{{ route('admin.physio.edit', $physio->id) }}" class="btn btn-success"><i class="fa fa-edit"></i> Edit</a>
                                <form role="form" action="{{ route('admin.physio.destroy', $physio->id) }}" method="post">
                                    @csrf
                                     @method('DELETE ')
-                                    <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this Category?');">Delete</button>
+                                    <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this Category?');"><i class="fa  fa-trash"></i> Delete</button>
                                </form>
                                 
                             </div>

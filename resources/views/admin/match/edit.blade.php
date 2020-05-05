@@ -111,17 +111,27 @@
 					
 						<div class="form-group">
 							<label for="result">Match Result: *</label>
-							<input type="result" class="form-control" id="result" name="result" placeholder="Enter Match result" value="{{ $match->result }}">
+
+							<select class="form-control select2" name="result" value="{{ $match->result }}" style="width: 100%;">
+								<option selected="selected" value="win">Win</option>
+								<option value="drow">Drow</option>
+								<option value="lost">Lost</option>
+							</select>
 						</div>
 					
 						<div class="form-group">
 							<label for="decided_by">Match decided by: *</label>
-							<input type="decided_by" class="form-control" id="decided_by" name="decided_by" placeholder="Enter Match decided by" value="{{ $match->decided_by }}">
+							<input type="text" class="form-control" id="decided_by" name="decided_by" placeholder="Enter Match decided by" value="{{ $match->decided_by }}">
 						</div>
 					
 						<div class="form-group">
-							<label for="gd_point">Match GD point: *</label>
-							<input type="gd_point" class="form-control" id="gd_point" name="gd_point" placeholder="Enter Match GD point" value="{{ $match->gd_point }}">
+							<label for="gf">Goal for: *</label>
+							<input type="text" class="form-control" id="gf" name="gf" placeholder="Enter Goal for" value="{{ $match->gf }}">
+						</div>
+
+						<div class="form-group">
+							<label for="ga">Goal Against: *</label>
+							<input type="text" class="form-control" id="ga" name="ga" placeholder="Enter Goal Against" value="{{ $match->ga }}">
 						</div>
 					
 						<div class="form-group">

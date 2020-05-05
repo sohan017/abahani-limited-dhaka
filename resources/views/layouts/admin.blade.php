@@ -45,7 +45,7 @@
     @yield('content')
     <!-- Content Header (Page header) -->
     
-  </div>
+   </div>
   <!-- Content Wrapper. Contains page content -->
  
       @include("partial.footer")

@@ -16,10 +16,12 @@ class CreateSubscribersTable extends Migration
         Schema::create('subscribers', function (Blueprint $table) {
             $table->id();
             $table->string('name', 100);
+            $table->text('img')->nullable();
             $table->string('contact_num');
             $table->string('address');
             $table->string('email');
             $table->text('password');
+            $table->timestamp('email_verified_at')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });

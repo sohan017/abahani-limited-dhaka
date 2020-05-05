@@ -81,7 +81,7 @@ class CoachController extends Controller
             'religion' => $request->religion,
             'national_id_number' => $request->national_id_number,
             'email' => $request->email,
-            'password' => $request->password,
+            'password' => Hash::make($request->password),
             
         ]);
         return redirect()->route("admin.coach.index")->withSuccess("Coach create success.");;
@@ -141,7 +141,7 @@ class CoachController extends Controller
         $coach->religion = $request->religion;
         $coach->national_id_number = $request->national_id_number;
         $coach->email = $request->email;
-        $coach->password = $request->password;
+        $coach->password = Hash::make($request->password);
         $coach->save();
         return redirect()->route("admin.coach.index")->withSuccess("Coach Update success.");
     }

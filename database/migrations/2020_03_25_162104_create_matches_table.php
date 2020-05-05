@@ -26,7 +26,8 @@ class CreateMatchesTable extends Migration
             $table->string('time');
             $table->string('result');
             $table->string('decided_by');
-            $table->string('gd_point');
+            $table->string('gf');
+            $table->string('ga');
             $table->string('pts');
             $table->timestamps();
         });

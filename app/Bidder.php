@@ -20,7 +20,7 @@ class Bidder extends Authenticatable
         'password', 'remember_token',
     ];
 
-    protected $fillable = ["name", "club_name", "contact_num", "email", "password"];
+    protected $fillable = ["name", "img", "club_name", "contact_num", "email", "password"];
 
     public function bids()
     {

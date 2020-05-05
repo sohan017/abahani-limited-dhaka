@@ -14,17 +14,6 @@
             <form method="POST" action='{{ url("register/$url") }}' aria-label="{{ __('Register') }}">
                 @csrf
                 @if($url == "subscriber")
-<!-- 
-                    <div class="form-group has-feedback">
-                        <input type="text" class="form-control @error('name') is-invalid @enderror" placeholder="Enter Name" name="name" value="{{ old('name') }}" required autocomplete="name">
-                        <span class="glyphicon glyphicon-user form-control-feedback"></span>
-
-                        @error('name')
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                        @enderror
-                    </div> -->
 
                     <div class="form-group has-feedback">
                         <input type="text" class="form-control @error('contact_num') is-invalid @enderror" placeholder="Enter Contact Number" name="contact_num" value="{{ old('contact_num') }}" required autocomplete="contact_num">
@@ -48,8 +37,19 @@
                         @enderror
                     </div>
 
-                    <!-- <div class="form-group has-feedback">
-                        <input type="text" class="form-control @error('email') is-invalid @enderror" placeholder="Enter Email" name="email" value="{{ old('email') }}" required autocomplete="email">
+                @elseif($url == "trainee")
+                    <div class="form-group has-feedback">
+                        <input type="text" class="form-control @error('name') is-invalid @enderror" placeholder="Full name" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
+                        <span class="glyphicon glyphicon-user form-control-feedback"></span>
+
+                        @error('name')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
+                    </div>
+                    <div class="form-group has-feedback">
+                        <input type="email" class="form-control @error('email') is-invalid @enderror" placeholder="Email" name="email" value="{{ old('email') }}" required autocomplete="email">
                         <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
 
                         @error('email')
@@ -60,23 +60,10 @@
                     </div>
 
                     <div class="form-group has-feedback">
-                        <input type="text" class="form-control @error('password') is-invalid @enderror" placeholder="Enter Password" name="password" value="{{ old('password') }}" required autocomplete="password">
-                        <span class="glyphicon glyphicon-lock form-control-feedback"></span>
-
-                        @error('password')
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                        @enderror
-                    </div> -->
-
-                @elseif($url == "trainee")
-
-                    <div class="form-group has-feedback">
-                        <input type="text" class="form-control @error('national_id_number') is-invalid @enderror" placeholder="Enter national id number" name="national_id_number" value="{{ old('national_id_number') }}" required autocomplete="national_id_number">
+                        <input type="text" class="form-control @error('birth_certificet_number') is-invalid @enderror" placeholder="Enter birth certificet number" name="birth_certificet_number" value="{{ old('birth_certificet_number') }}" required autocomplete="birth_certificet_number">
                         <span class="glyphicon glyphicon-credit-card form-control-feedback"></span>
 
-                        @error('national_id_number')
+                        @error('birth_certificet_number')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
                             </span>
@@ -84,37 +71,50 @@
                     </div>
 
                     <div class="form-group has-feedback">
-                        <input type="text" class="form-control @error('weight') is-invalid @enderror" placeholder="Weight" name="weight" value="{{ old('weight') }}" required autocomplete="weight">
+                        <input type="text" class="form-control @error('city') is-invalid @enderror" placeholder="city" name="city" value="{{ old('city') }}" required autocomplete="city">
                         <span class="glyphicon glyphicon-user form-control-feedback"></span>
 
-                        @error('weight')
+                        @error('city')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
                             </span>
                         @enderror
                     </div>
 
+                    <div class="form-group has-feedback">
+                        <input type="text" class="form-control @error('state') is-invalid @enderror" placeholder="state" name="state" value="{{ old('state') }}" required autocomplete="state">
+                        <span class="glyphicon glyphicon-user form-control-feedback"></span>
+
+                        @error('state')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
+                    </div>
+                    <div class="form-group has-feedback">
+                        <input type="text" class="form-control @error('country') is-invalid @enderror" placeholder="Country" name="country" value="{{ old('country') }}" required autocomplete="country">
+                        <span class="glyphicon glyphicon-user form-control-feedback"></span>
+
+                        @error('country')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
+                    </div>
+                    <div class="form-group has-feedback">
+                        <input type="date" class="form-control @error('dob') is-invalid @enderror" placeholder="Date of Birth" name="dob" value="{{ old('dob') }}" required autocomplete="dob">
+                        <span class="glyphicon glyphicon-user form-control-feedback"></span>
+
+                        @error('dob')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
+                    </div>
+                    
+
                 @endif
-                <div class="form-group has-feedback">
-                    <input type="text" class="form-control @error('name') is-invalid @enderror" placeholder="Full name" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
-                    <span class="glyphicon glyphicon-user form-control-feedback"></span>
-
-                    @error('name')
-                        <span class="invalid-feedback" role="alert">
-                            <strong>{{ $message }}</strong>
-                        </span>
-                    @enderror
-                </div>
-                <div class="form-group has-feedback">
-                    <input type="email" class="form-control @error('email') is-invalid @enderror" placeholder="Email" name="email" value="{{ old('email') }}" required autocomplete="email">
-                    <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
-
-                    @error('email')
-                        <span class="invalid-feedback" role="alert">
-                            <strong>{{ $message }}</strong>
-                        </span>
-                    @enderror
-                </div>
+                
                 <div class="form-group has-feedback">
                     <input type="password" class="form-control @error('password') is-invalid @enderror" placeholder="Password"  name="password" required autocomplete="new-password">
                     <span class="glyphicon glyphicon-lock form-control-feedback"></span>

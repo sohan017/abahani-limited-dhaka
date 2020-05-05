@@ -34,6 +34,7 @@ class BidderController extends Controller
     {
         return Validator::make($data, [
             'name' => 'required|max:100|string',
+            'img' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
             'club_name' => 'required|max:200|string',
             'contact_num' => 'required|max:20',
             'email' => 'required|email|unique:App\Bidder,email',
@@ -54,8 +55,14 @@ class BidderController extends Controller
             return redirect()->back()->withInput()->withErrors($validator);
         }
 
+        $uploadsLocation ="";
+        if ($request->has('img')) {
+            $uploadsLocation = $request->img->store('uploads/images/bidder');
+        }
+
         Bidder::create([
             'name' => $request->name,
+            'img' => $uploadsLocation,
             'club_name' => $request->club_name,
             'contact_num' => $request->contact_num,
             'email' => $request->email,
@@ -97,17 +104,28 @@ class BidderController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $validator = $this->validator($request->all());
-        if ($validator->fails()) {
-            return redirect()->back()->withInput()->withErrors($validator);
-        }
-        Bidder::findOrFail($id)->update([
-            'name' => $request->name,
-            'club_name' => $request->club_name,
-            'contact_num' => $request->contact_num,
-            'email' => $request->email,
-            'password' => Hash::make($request->password),
+        // $validator = $this->validator($request->all());
+        // if ($validator->fails()) {
+        //     return redirect()->back()->withInput()->withErrors($validator);
+        // }
+        $validatedData = $request->validate([
+            'name' => 'required|max:100|string',
+            'img' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
+            'club_name' => 'required|max:200|string',
+            'contact_num' => 'required|max:20',
+            'password' => 'required|min:6',
         ]);
+
+        $bidder = Bidder::findOrFail($id);
+        $bidder->name = $request->name;
+        if ($request->has('img')) {
+            $bidder->img = $request->img->store('uploads/images/bidder');
+        }
+        $bidder->contact_num = $request->contact_num;
+        $bidder->club_name = $request->club_name;
+        $bidder->email = $request->email;
+        $bidder->password =  Hash::make($request->get('password'));
+        $bidder->save();
         return redirect()->route('admin.bidder.index')->withSuccess("Bidder update success.");
     }
 

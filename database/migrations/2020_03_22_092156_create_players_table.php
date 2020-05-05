@@ -19,6 +19,7 @@ class CreatePlayersTable extends Migration
             $table->text('dob');
             $table->text('img');
             $table->string('jersy_no');
+            $table->text('con_num')->nullable();
             $table->text('address');
             $table->string('city');
             $table->string('state');

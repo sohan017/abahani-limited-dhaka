@@ -1,6 +1,6 @@
 
 @extends('layouts.admin')
-@section('title') Auction Create @endsection
+@section('title') Amin Profile @endsection
 @section('css') 
 
 @endsection
@@ -29,7 +29,8 @@
 			<!-- Profile Image -->
 			<div class="box box-primary">
 				<div class="box-body box-profile">
-					<img class="profile-user-img img-responsive img-circle" src="{{ $userprofile->img ? $userprofile->img : asset('admin/dist/img/user4-128x128.jpg')}}" alt="User profile picture">
+
+					<img class="profile-user-img img-responsive img-circle" src="{{ $userprofile->img ? asset($userprofile->img) : asset('admin/dist/img/user4-128x128.jpg')}}" alt="User profile picture">
 
 
 					<h3 class="profile-username text-center">{{ $userprofile->name }}</h3>
@@ -56,13 +57,13 @@
 				@include("partial.notification")
 			<div class="nav-tabs-custom">
 				<ul class="nav nav-tabs">
-					<li><a href="#profile" data-toggle="tab">Edit Profile</a></li>
 					<li><a href="#password" data-toggle="tab">Change Password</a></li>
+					<li><a href="#profile" data-toggle="tab">Edit Profile</a></li>
 				</ul>
 				<div class="tab-content">
 
-					<div class="active tab-pane" id="profile">
-						<form class="form-horizontal" action="{{ route('admin.profile.update') }}" method="post" >
+					<div class=" tab-pane" id="profile">
+						<form class="form-horizontal" action="{{ route('admin.profile.update') }}" method="post" enctype="multipart/form-data" >
 							@csrf
 							<div class="form-group">
 								<label for="img" class="col-sm-2 control-label">Change Picture:</label>
@@ -86,7 +87,7 @@
 							</div>
 						</form>
 					</div>
-					<div class="tab-pane" id="password">
+					<div class="active tab-pane" id="password">
 						<form class="form-horizontal" action="{{ route('admin.profile.change.password') }}" method="post" >
 							@csrf
 							<div class="form-group">

@@ -55,6 +55,11 @@
 
 							<p class="help-block">Example block-level help text here.</p>
 						</div>
+
+						<div class="form-group">
+							<label for="con_num">Phone number: *</label>
+							<input type="text" class="form-control" id="con_num" name="con_num" placeholder="Enter Trainee Contact Number" value="{{old('con_num')}}">
+						</div>
 					
 						<div class="form-group">
 							<label for="address"> Address: * </label>
@@ -117,7 +122,7 @@
 						</div>
 						<div class="form-group">
 							<label for="password">Password: *</label>
-							<input type="text" class="form-control" name="password" id="password" placeholder="Password" value="{{old('password')}}">
+							<input type="password" class="form-control" name="password" id="password" placeholder="Password" value="{{old('password')}}">
 						</div>
 					</div>
 					<!-- /.box-body -->

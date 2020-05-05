@@ -58,6 +58,11 @@
 							<input type="text" class="form-control" id="spacalize" name="spacalize" placeholder="Enter category spacalize" value="{{ $physio->spacalize }}">
 						</div>
 
+						<div class="form-group">
+							<label for="con_num">Phone Number: </label>
+							<input type="text" class="form-control" id="con_num" name="con_num" placeholder="Enter Contact Number" value="{{ $physio->con_num }}">
+						</div>
+
 					
 						<div class="form-group">
 							<label for="address"> Address: * </label>
@@ -117,7 +122,7 @@
 						</div>
 						<div class="form-group">
 							<label for="password">Password: *</label>
-							<input type="text" class="form-control" name="password" id="password" placeholder="Password" value="{{ $physio->password }}">
+							<input type="password" class="form-control" name="password" id="password" placeholder="Password" value="{{ $physio->password }}">
 						</div>
 
 

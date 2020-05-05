@@ -4,6 +4,16 @@
 
 @section("css")
 <link rel="stylesheet" href="{{ asset('admin/bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css') }}">
+<style>
+  button.btn.btn-danger {
+     margin-left: 141px;
+     margin-top: -57px;
+ }
+
+ .btn-group.a {
+     padding: 66px;
+ }
+</style>
 @endsection
 
 @section('content')
@@ -41,19 +51,17 @@
                     <tr>
                         <td>{{ $goal->id }}</td>
                         <td>{{ $goal->goal_number }}</td>
-                        <td>{{ $goal->player_id }}</td>
-                        <td>{{ $goal->match_id }}</td>
-                        <td>{{ $goal->goal_type }}</td>
+                        <td>{{ $goal->player->name }}</td>
+                        <td>{{ $goal->match->name }}</td>
                         <td>
-                            <div class="btn-group">
-                                <a href="{{ route('admin.goal.show', $goal->id) }}" class="btn btn-default">Show</a>
-                                <a href="{{ route('admin.goal.edit', $goal->id) }}" class="btn btn-default">Edit</a>
+                             <div class="btn-group">
+                                <a href="{{ route('admin.goal.show', $goal->id) }}" class="btn btn-info"><i class="fa fa-eye"></i> Show</a>
+                                <a href="{{ route('admin.goal.edit', $goal->id) }}" class="btn btn-success"><i class="fa fa-edit"></i> Edit</a>
                                <form role="form" action="{{ route('admin.goal.destroy', $goal->id) }}" method="post">
                                    @csrf
                                     @method('DELETE ')
-                                    <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this Category?');">Delete</button>
-                               </form>
-                                
+                                    <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this Category?');"><i class="fa  fa-trash"></i> Delete</button>
+                               </form>  
                             </div>
                         </td>
                     </tr>

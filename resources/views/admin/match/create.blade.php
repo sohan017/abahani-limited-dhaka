@@ -45,7 +45,7 @@
 						</div>
 
 						<div class="form-group">
-							<label for="match_number">Match match_number: *</label>
+							<label for="match_number">Match Number: *</label>
 							<input type="text" class="form-control" id="match_number" name="match_number" placeholder="Enter Match match_number" value="{{old('match_number')}}">
 						</div>
 
@@ -109,7 +109,14 @@
 					
 						<div class="form-group">
 							<label for="result">Match Result: *</label>
-							<input type="result" class="form-control" id="result" name="result" placeholder="Enter Match result" value="{{old('result')}}">
+							<select class="form-control select2" name="result" style="width: 100%;" value="{{old('result')}}">
+								<option selected="selected" value="Home" placeholder="none">none</option>
+								<option  value="win">Win</option>
+								<option value="drow">Drow</option>
+								<option value="lost">Lost</option>
+							</select>
+							
+							<!-- <input type="result" class="form-control" id="result" name="result" placeholder="Enter Match result" value="{{old('result')}}"> -->
 						</div>
 					
 						<div class="form-group">
@@ -118,13 +125,18 @@
 						</div>
 					
 						<div class="form-group">
-							<label for="gd_point">Match GD point: *</label>
-							<input type="gd_point" class="form-control" id="gd_point" name="gd_point" placeholder="Enter Match GD point" value="{{old('gd_point')}}">
+							<label for="gf">Goals For: *</label>
+							<input type="text" class="form-control" id="gf" name="gf" placeholder="Enter Goals For" value="{{old('gf')}}">
 						</div>
+						<div class="form-group">
+							<label for="ga">Goals Against: *</label>
+							<input type="text" class="form-control" id="ga" name="ga" placeholder="Enter Goals Against" value="{{old('ga')}}">
+						</div>
+						
 					
 						<div class="form-group">
 							<label for="pts">Match Point: *</label>
-							<input type="pts" class="form-control" id="pts" name="pts" placeholder="Enter Match  point" value="{{old('pts')}}">
+							<input type="text" class="form-control" id="pts" name="pts" placeholder="Enter Match  point" value="{{old('pts')}}">
 						</div>
 					
 					

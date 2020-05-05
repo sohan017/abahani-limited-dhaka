@@ -15,7 +15,7 @@
 	</h1>
 	<ol class="breadcrumb">
 		<li><a href="{{ route('admin.admin.dashboard') }}"><i class="fa fa-dashboard"></i> Home</a></li>
-		<li><a href="{{ route('admin.playerfitmess.index') }}">Player fitness</a></li>
+		<li><a href="{{ route('admin.playerfitness.index') }}">Player fitness</a></li>
 		<li class="active">Player fitness Update</li>
 	</ol>
 </section>

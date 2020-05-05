@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
@@ -24,6 +23,9 @@ class ProfileController extends Controller
     public function update(Request $request)
     {
         $user = Auth::user();
+        if ($request->has('img')) {
+            $user->img = $request->img->store('uploads/images/userprofile');
+        }
         $user->name = $request->name;
         $user->save();
          return redirect()->route('admin.profile')->withSuccess("User Profile Update success.");

@@ -80,8 +80,7 @@ class PhysioController extends Controller
             'religion' => $request->religion,
             'national_id_number' => $request->national_id_number,
             'email' => $request->email,
-            'password' => $request->password,
-            
+            'password' => Hash::make($request->password),            
         ]);
         return redirect()->route("admin.physio.index")->withSuccess("Physio create success.");
     }
@@ -128,19 +127,19 @@ class PhysioController extends Controller
         if ($request->has('img')) {
             $physio->img = $request->img->store('uploads/images/physio');
         }
-        $team->name = $request->name;
-        $team->spacalize = $request->spacalize;
-        $team->address = $request->address;
-        $team->city = $request->city;
-        $team->state = $request->state;
-        $team->country = $request->country;
-        $team->nationality = $request->nationality;
-        $team->gender = $request->gender;
-        $team->religion = $request->religion;
-        $team->national_id_number = $request->national_id_number;
-        $team->email = $request->email;
-        $team->password = $request->password;
-        $team->save();
+        $physio->name = $request->name;
+        $physio->spacalize = $request->spacalize;
+        $physio->address = $request->address;
+        $physio->city = $request->city;
+        $physio->state = $request->state;
+        $physio->country = $request->country;
+        $physio->nationality = $request->nationality;
+        $physio->gender = $request->gender;
+        $physio->religion = $request->religion;
+        $physio->national_id_number = $request->national_id_number;
+        $physio->email = $request->email;
+        $physio->password =  Hash::make($request->get('password'));
+        $physio->save();
         return redirect()->route('admin.physio.index')->withSuccess("Physio update success.");
     }
 

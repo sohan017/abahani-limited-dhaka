@@ -20,7 +20,7 @@ class Physio extends Authenticatable
         'password', 'remember_token',
     ];
 
-     protected $fillable = ["name","img", "spacalize", "address","city","state","country","nationality","gender","religion","national_id_number","birth_certificet_number","email","password"];
+     protected $fillable = ["name","img", "spacalize", "con_num", "address","city","state","country","nationality","gender","religion","national_id_number","birth_certificet_number","email","password"];
 
     public function team()
     {

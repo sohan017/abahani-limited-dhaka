@@ -1,0 +1,206 @@
+@extends('layouts.admin')
+@section('title') Auction page @endsection
+@section('css') 
+<link rel="stylesheet" href="{{ asset('admin/bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css') }}">
+
+<style>
+	a.btn.btn-info.bid_place{
+		margin-left: 48px;
+	}
+
+	.form-group.input_right {
+    margin-top: -10px;
+}
+</style>
+@endsection
+
+
+@section('content')
+
+<!-- Content Header (Page header) -->
+<section class="content-header">
+	<h1>
+		Auction page
+	</h1>
+	<ol class="breadcrumb">
+		<li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+		<li><a href="#">Auction </a></li>
+		<li class="active">Auction page</li>
+	</ol>
+</section>
+
+<!-- Main content -->
+<section class="content">
+
+	<div class="row">
+		<!-- left column -->
+		<div class="col-md-3">
+			<!-- Profile Image -->
+			<div class="box box-primary">
+				<div class="box-body box-profile">
+					<img class="profile-user-img img-responsive img-circle" src="" alt="Club picture">
+
+					<h3 class="profile-username text-center"></h3>
+
+					<p class="text-muted text-center">Player Biding </p>
+
+					<ul class="list-group list-group-unbordered">
+						<li class="list-group-item">
+							<b>Biding Name</b> <a class="pull-right"></a>
+						</li>
+						<li class="list-group-item">
+							<b>Biding Start Time</b> <a class="pull-right"></a>
+						</li>
+						<li class="list-group-item">
+							<b>Biding Start Time</b> <a class="pull-right"></a>
+						</li>
+					</ul>
+				</div>
+				<!-- /.box-body -->
+			</div>
+		</div>
+
+		<div class="col-md-2"></div>
+		
+		<div class="col-md-4">
+			<!-- general form elements -->
+			<div class="box box-primary">
+				<div class="box-body box-profile">
+
+					<img class="profile-user-img img-responsive img-circle" src="" alt="Auction Player picture">
+
+
+					<h3 class="profile-username text-center"></h3>
+
+					<p class="text-muted text-center">Auction Player</p>
+					<p class="text-muted text-center">Ronaldo</p>
+
+					<ul class="list-group list-group-unbordered">
+						<li class="list-group-item">
+							<b>Name</b> <a class="pull-right"></a>
+						</li>
+						<li class="list-group-item">
+							<b>Turnament</b> <a class="pull-right"></a>
+						</li>
+						<li class="list-group-item">
+							<b>Matchs</b> <a class="pull-right"></a>
+						</li>
+						<li class="list-group-item">
+							<b>Goals</b> <a class="pull-right"></a>
+						</li>
+					</ul>
+				</div>
+				<!-- /.box-body -->
+			</div>
+		</div>
+		
+		<div class="col-md-3"></div>
+		<!-- /.box-body -->
+	</div>
+
+	<div class="row">
+		<div class="col-md-">
+
+			
+		</div>
+			<!-- /.box -->
+		<!-- /.col -->
+		<div class="col-md-12">
+			<div class="box">
+				<!-- /.box-header -->
+				<div class="box-body">
+					<table id="example1" class="table table-bordered table-striped">
+						<thead>
+							<tr>
+								<th>ID</th>
+								<th>Bidder Name</th>
+								<th>Domain</th>
+								<th>Bid</th>
+								<th>View</th>
+								<th>Price</th>
+								<th>Time left</th>
+								<th>Enter Bid Price *</th>
+								<th>Place Bid Now/ Place Bide</th>
+								<!-- <th>Action</th> -->
+							</tr>
+						</thead>
+						<tbody>
+							
+							<tr>
+								<td>1</td>
+								<td>Hade Pain</td>
+								<td>Hade@gmail.com</td>
+								<td>Lorem </td>
+								<td>10</td>
+								<td>$15000</td>
+								<td>1D 10:31</td>
+								<td>
+									<form role="form" action="" method="post" >
+										@csrf
+										<div class="box-body">
+											<div class="form-group input_right">
+												<input type="text" class="form-control" id="bid_price" name="bid_price" placeholder="Enter bit Price" value="{{old('bid_price')}}">
+											</div>
+										</div>
+									</form>
+								</td>
+								<td>
+									<div class="btn-group">
+										<a href="" class="btn btn-info bid_place">Place Bid</a>
+										<!-- <form role="form" action="" method="post">
+											
+											<button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this Category?');">Delete</button>
+										</form> -->
+									</div>
+								</td>
+							</tr>
+							
+						</tbody>
+						<tfoot>
+							<tr>
+								<th>ID</th>
+								<th>Bidder Name</th>
+								<th>Domain</th>
+								<th>Bid</th>
+								<th>View</th>
+								<th>Price</th>
+								<th>Time left</th>
+								<th>Enter Bid Price *</th>
+								<th>Place Bid Now/ Place Bide</th>
+							</tr>
+						</tfoot>
+					</table>
+				</div>
+				<!-- /.box-body -->
+			</div>
+			<!-- /.nav-tabs-custom -->
+		</div>
+		<!-- /.col -->
+	</div>
+	<!-- /.row -->
+
+	</section>
+	<!-- /.content -->
+
+@endsection  
+
+@section("js")
+
+<!-- DataTables -->
+<script src="{{ asset('admin/bower_components/datatables.net/js/jquery.dataTables.min.js') }}"></script>
+<script src="{{ asset('admin/bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js') }}"></script>
+<script>
+    $(function () {
+        $('#example1').DataTable()
+        $('#example2').DataTable({
+            'paging'      : true,
+            'lengthChange': false,
+            'searching'   : false,
+            'ordering'    : true,
+            'info'        : true,
+            'autoWidth'   : false
+        })
+    })
+</script>
+
+@endsection 

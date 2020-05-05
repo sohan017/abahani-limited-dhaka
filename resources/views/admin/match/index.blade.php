@@ -5,15 +5,24 @@
 @section("css")
 <link rel="stylesheet" href="{{ asset('admin/bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css') }}">
 @endsection
+<style>
+    button.btn.btn-danger {
+        margin-left: 141px;
+        margin-top: -34px;
+    }
 
+    .btn-group.a {
+        padding: 66px;
+    }
+</style>
 @section('content')
 
 <section class="content-header">
-	<h1> Show Match page</h1>
+	<h1> Match page</h1>
 	<a href="{{ route('admin.match.create')}}" class="btn btn-primary">Add new Match</a>
 	<ol class="breadcrumb">
 		<li><a href="{{ route('admin.admin.dashboard') }}"><i class="fa fa-dashboard"></i> Home</a></li>
-		<li class="active">Show Match</li>
+		<li class="active">Matches</li>
 	</ol>
 </section>
 <!-- Main content -->
@@ -39,18 +48,17 @@
                     @foreach($matchs as $match)
                     <tr>
                         <td>{{ $match->id }}</td>
-                        <td>{{ $match->turnament_id }}</td>
+                        <td>{{ $match->turnament->name }}</td>
                         <td>{{ $match->matchVanue->name }}</td>
                         <td>
-                            <div class="btn-group">
-                                <a href="{{ route('admin.match.show', $match->id) }}" class="btn btn-default">Show</a>
-                                <a href="{{ route('admin.match.edit', $match->id) }}" class="btn btn-default">Edit</a>
+                           <div class="btn-group">
+                                <a href="{{ route('admin.match.show', $match->id) }}" class="btn btn-info"><i class="fa fa-eye"></i> Show</a>
+                                <a href="{{ route('admin.match.edit', $match->id) }}" class="btn btn-success"><i class="fa fa-edit"></i> Edit</a>
                                <form role="form" action="{{ route('admin.match.destroy', $match->id) }}" method="post">
                                    @csrf
                                     @method('DELETE ')
-                                    <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this Category?');">Delete</button>
-                               </form>
-                                
+                                    <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this Category?');"><i class="fa  fa-trash"></i> Delete</button>
+                               </form>  
                             </div>
                         </td>
                     </tr>

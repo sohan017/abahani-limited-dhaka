@@ -52,8 +52,9 @@ class MatchController extends Controller
             'time' => 'required',
             'result' => 'required',
             'decided_by' => 'required',
-            'gd_point' => 'required',
-            'pts' => 'required',
+            'gf' => 'required|max:20|integer',
+            'ga' => 'required|max:20|integer',
+            'pts' => 'required|max:9|integer',
         ]);
     }
 
@@ -82,7 +83,8 @@ class MatchController extends Controller
             'time' => $request->time,
             'result' => $request->result,
             'decided_by' => $request->decided_by,
-            'gd_point' => $request->gd_point,
+            'gf' => $request->gf,
+            'ga' => $request->ga,
             'pts' => $request->pts,
         ]);
         return redirect()->route("admin.match.index")->withSuccess("Match create success.");
@@ -146,7 +148,8 @@ class MatchController extends Controller
             'time' => $request->time,
             'result' => $request->result,
             'decided_by' => $request->decided_by,
-            'gd_point' => $request->gd_point,
+            'gf' => $request->gf,
+            'ga' => $request->ga,
             'pts' => $request->pts,
         ]);
         return redirect()->route('admin.match.index')->withSuccess("Match Update success.");;

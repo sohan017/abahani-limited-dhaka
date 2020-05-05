@@ -34,6 +34,7 @@ class SubscriberController extends Controller
     {
         return Validator::make($data, [
             'name' => 'required|max:100',
+            'img' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
             'contact_num' => 'required|max:20',
             'address' => 'required',
             'email' => 'required|email|unique:App\Subscriber,email',
@@ -54,8 +55,15 @@ class SubscriberController extends Controller
             return redirect()->back()->withInput()->withErrors($validator);
         }
 
+        $uploadsLocation ="";
+        if ($request->has('img')) {
+            $uploadsLocation = $request->img->store('uploads/images/subscriber');
+        }
+        // dd($uploadsLocation);
+
         Subscriber::create([
             'name' => $request->name,
+            'img' => $uploadsLocation,
             'contact_num' => $request->contact_num,
             'address' => $request->address,
             'email' => $request->email,
@@ -97,19 +105,32 @@ class SubscriberController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $validator = $this->validator($request->all());
-        if ($validator->fails()) {
-            return redirect()->back()->withInput()->withErrors($validator);
-        }
-
-        Subscriber::findOrFail($id)->update([
-            'name' => $request->name,
-            'contact_num' => $request->contact_num,
-            'address' => $request->address,
-            'email' => $request->email,
-            'password' => Hash::make($request->password),
+        // $validator = $this->validator($request->all());
+        // if ($validator->fails()) {
+        //     return redirect()->back()->withInput()->withErrors($validator);
+        // }
+        $validatedData = $request->validate([
+            'name' => 'required|max:100',
+            'img' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
+            'contact_num' => 'required|max:20',
+            'address' => 'required',
+            'email' => 'required|email',
+            'password' => 'required|min:6',
         ]);
-        return redirect()->route('admin.subscriber.index')->withSuccess("Subscriber Update success.");
+
+
+        $subscriber = Subscriber::findOrFail($id);
+        $subscriber->name = $request->name;
+        if ($request->has('img')) {
+        $subscriber->img = $request->img->store('uploads/images/subscriber');
+         }
+        $subscriber->contact_num = $request->contact_num;
+        $subscriber->address = $request->address;
+        $subscriber->email = $request->email;
+        $subscriber->password =  Hash::make($request->get('password'));
+        $subscriber->save();
+        return redirect()->route('admin.subscriber.index')->withSuccess("Subscriber update success.");
+       
     }
 
     /**
