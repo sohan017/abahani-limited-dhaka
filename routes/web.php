@@ -12,36 +12,27 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-// Route::get('/', function () {
-// 	    return view('website.layouts.index');
-// 	})->name("website");
 
-Route::get('welcome', function () {
+
+Route::get('/', function () {
 	    return view('website.website.run');
-	})->name("welcome");
+	})->name("home");
 
 Route::get('ticket', function () {
 	    return view('website.website.ticket');
 	})->name("ticket");
 
+Route::get('ticketdetail/{id}', 'TicketController@ticketdetail')->name("ticketdetail");
+Route::post('ticket/buy', 'PaymentController@ticketbuy')->name("ticketbuy");
+Route::any('success', 'PaymentController@success')->name("success");
+Route::any('pricing', 'PaymentController@pricing')->name("pricing");
 
-
-
-Route::get('ticketdetail', function () {
-	    return view('website.website.ticketdetail');
-	})->name("ticketdetail");
 
 Route::get('payment', function () {
 	    return view('website.website.payment');
 	})->name("payment");
 
 
-
-
-
-Route::get('/', function () {
-    return view('welcome');
-})->name("home");
 
 Route::get('/clr', function () {
     Artisan::call('cache:clear');

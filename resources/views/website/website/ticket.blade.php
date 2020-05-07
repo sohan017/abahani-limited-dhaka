@@ -25,263 +25,45 @@
             <div class="container">
                 <div class="kf_ticket2_wrap">
                     <ul>
-                        <li>
-                            <!--Ticket 2 Start-->
-                            <div class="ticket_dec2">
-                                <span class="ticket_date">
-                                    <b>17</b>
-                                    <small>Oct, 2016</small>
-                                </span>
-                                <div class="kf_opponents_wrap2">
-                                    <div class="kf_opponents_wrap">
-                                        <p>English Premier Leauge</p>
-                                        <div class="kf_opponents_dec">
-                                            <span><img src="{{ asset('website/extra-images/opponent2.png')}}" alt=""></span>
-                                            <div class="text">
-                                                <h6><a href="#">Belts Bull</a></h6>
-                                                <span class="icon_tag"><i class="fa fa-calendar-plus-o"></i>29 October, 08 : 30 p.m</span>
-                                            </div>
-                                        </div>
-                                        <div class="kf_opponents_gols">
-                                            <h5>vs</h5>
-                                        </div>
-                                        <div class="kf_opponents_dec span_right">
-                                            <span><img src="{{ asset('website/extra-images/opponent3.png')}}" alt=""></span>
-                                            <div class="text">
-                                                <h6><a href="#">Miami Heat</a></h6>
-                                                <span class="icon_tag">United Center Miami<i class="fa fa-map-marker"></i></span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="ticket_button">
-                                        <button>Buy Ticket</button>
-                                    </div>
-                                </div>
-                            </div>
-                            <!--Ticket 2 End-->
-                        </li>
-                        <li>
-                            <!--Ticket 2 Start-->
-                            <div class="ticket_dec2">
-                                <span class="ticket_date">
-                                    <b>18</b>
-                                    <small>Oct, 2016</small>
-                                </span>
-                                <div class="kf_opponents_wrap2">
-                                    <div class="kf_opponents_wrap">
-                                        <p>English Premier Leauge</p>
-                                        <div class="kf_opponents_dec">
-                                            <span><img src="{{ asset('website/extra-images/opponent2.png')}}" alt=""></span>
-                                            <div class="text">
-                                                <h6><a href="#">Belts Bull</a></h6>
-                                                <span class="icon_tag"><i class="fa fa-calendar-plus-o"></i>29 October, 08 : 30 p.m</span>
-                                            </div>
-                                        </div>
-                                        <div class="kf_opponents_gols">
-                                            <h5>vs</h5>
-                                        </div>
-                                        <div class="kf_opponents_dec span_right">
-                                            <span><img src="{{ asset('website/extra-images/opponent3.png')}}" alt=""></span>
-                                            <div class="text">
-                                                <h6><a href="#">Miami Heat</a></h6>
-                                                <span class="icon_tag">United Center Miami<i class="fa fa-map-marker"></i></span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="ticket_button">
-                                        <button>Buy Ticket</button>
-                                    </div>
-                                </div>
-                            </div>
-                            <!--Ticket 2 End-->
-                        </li>
-                        <li>
-                            <!--Ticket 2 Start-->
-                            <div class="ticket_dec2">
-                                <span class="ticket_date">
-                                    <b>19</b>
-                                    <small>Oct, 2016</small>
-                                </span>
-                                <div class="kf_opponents_wrap2">
-                                    <div class="kf_opponents_wrap">
-                                        <p>English Premier Leauge</p>
-                                        <div class="kf_opponents_dec">
-                                            <span><img src="{{ asset('website/extra-images/opponent2.png')}}" alt=""></span>
-                                            <div class="text">
-                                                <h6><a href="#">Belts Bull</a></h6>
-                                                <span class="icon_tag"><i class="fa fa-calendar-plus-o"></i>29 October, 08 : 30 p.m</span>
-                                            </div>
-                                        </div>
-                                        <div class="kf_opponents_gols">
-                                            <h5>vs</h5>
-                                        </div>
-                                        <div class="kf_opponents_dec span_right">
-                                            <span><img src="{{ asset('website/extra-images/opponent3.png')}}" alt=""></span>
-                                            <div class="text">
-                                                <h6><a href="#">Miami Heat</a></h6>
-                                                <span class="icon_tag">United Center Miami<i class="fa fa-map-marker"></i></span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="ticket_button">
-                                        <button>Buy Ticket</button>
-                                    </div>
-                                </div>
-                            </div>
-                            <!--Ticket 2 End-->
-                        </li>
-                        <li>
-                            <!--Ticket 2 Start-->
-                            <div class="ticket_dec2">
-                                <span class="ticket_date">
-                                    <b>20</b>
-                                    <small>Oct, 2016</small>
-                                </span>
-                                <div class="kf_opponents_wrap2">
-                                    <div class="kf_opponents_wrap">
-                                        <p>English Premier Leauge</p>
-                                        <div class="kf_opponents_dec">
-                                            <span><img src="{{ asset('website/extra-images/opponent2.png')}}" alt=""></span>
-                                            <div class="text">
-                                                <h6><a href="#">Belts Bull</a></h6>
-                                                <span class="icon_tag"><i class="fa fa-calendar-plus-o"></i>29 October, 08 : 30 p.m</span>
-                                            </div>
-                                        </div>
-                                        <div class="kf_opponents_gols">
-                                            <h5>vs</h5>
-                                        </div>
-                                        <div class="kf_opponents_dec span_right">
-                                            <span><img src="{{ asset('website/extra-images/opponent3.png')}}" alt=""></span>
-                                            <div class="text">
-                                                <h6><a href="#">Miami Heat</a></h6>
-                                                <span class="icon_tag">United Center Miami<i class="fa fa-map-marker"></i></span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="ticket_button">
-                                        <button>Buy Ticket</button>
-                                    </div>
-                                </div>
-                            </div>
-                            <!--Ticket 2 End-->
-                        </li>
-                        <li>
-                            <!--Ticket 2 Start-->
-                            <div class="ticket_dec2">
-                                <span class="ticket_date">
-                                    <b>21</b>
-                                    <small>Oct, 2016</small>
-                                </span>
-                                <div class="kf_opponents_wrap2">
-                                    <div class="kf_opponents_wrap">
-                                        <p>English Premier Leauge</p>
-                                        <div class="kf_opponents_dec">
-                                            <span><img src="{{ asset('website/extra-images/opponent2.png')}}" alt=""></span>
-                                            <div class="text">
-                                                <h6><a href="#">Belts Bull</a></h6>
-                                                <span class="icon_tag"><i class="fa fa-calendar-plus-o"></i>29 October, 08 : 30 p.m</span>
-                                            </div>
-                                        </div>
-                                        <div class="kf_opponents_gols">
-                                            <h5>vs</h5>
-                                        </div>
-                                        <div class="kf_opponents_dec span_right">
-                                            <span><img src="{{ asset('website/extra-images/opponent3.png')}}" alt=""></span>
-                                            <div class="text">
-                                                <h6><a href="#">Miami Heat</a></h6>
-                                                <span class="icon_tag">United Center Miami<i class="fa fa-map-marker"></i></span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="ticket_button">
-                                        <button>Buy Ticket</button>
-                                    </div>
-                                </div>
-                            </div>
-                            <!--Ticket 2 End-->
-                        </li>
-                        <li>
-                            <!--Ticket 2 Start-->
-                            <div class="ticket_dec2">
-                                <span class="ticket_date">
-                                    <b>22</b>
-                                    <small>Oct, 2016</small>
-                                </span>
-                                <div class="kf_opponents_wrap2">
-                                    <div class="kf_opponents_wrap">
-                                        <p>English Premier Leauge</p>
-                                        <div class="kf_opponents_dec">
-                                            <span><img src="{{ asset('website/extra-images/opponent2.png')}}" alt=""></span>
-                                            <div class="text">
-                                                <h6><a href="#">Belts Bull</a></h6>
-                                                <span class="icon_tag"><i class="fa fa-calendar-plus-o"></i>29 October, 08 : 30 p.m</span>
-                                            </div>
-                                        </div>
-                                        <div class="kf_opponents_gols">
-                                            <h5>vs</h5>
-                                        </div>
-                                        <div class="kf_opponents_dec span_right">
-                                            <span><img src="{{ asset('website/extra-images/opponent3.png')}}" alt=""></span>
-                                            <div class="text">
-                                                <h6><a href="#">Miami Heat</a></h6>
-                                                <span class="icon_tag">United Center Miami<i class="fa fa-map-marker"></i></span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="ticket_button">
-                                        <button>Buy Ticket</button>
-                                    </div>
-                                </div>
-                            </div>
-                            <!--Ticket 2 End-->
-                        </li>
-                        <li>
-                            <!--Ticket 2 Start-->
-                            <div class="ticket_dec2">
-                                <span class="ticket_date">
-                                    <b>23</b>
-                                    <small>Oct, 2016</small>
-                                </span>
-                                <div class="kf_opponents_wrap2">
-                                    <div class="kf_opponents_wrap">
-                                        <p>English Premier Leauge</p>
-                                        <div class="kf_opponents_dec">
-                                            <span><img src="{{ asset('website/extra-images/opponent2.png')}}" alt=""></span>
-                                            <div class="text">
-                                                <h6><a href="#">Belts Bull</a></h6>
-                                                <span class="icon_tag"><i class="fa fa-calendar-plus-o"></i>29 October, 08 : 30 p.m</span>
-                                            </div>
-                                        </div>
-                                        <div class="kf_opponents_gols">
-                                            <h5>vs</h5>
-                                        </div>
-                                        <div class="kf_opponents_dec span_right">
-                                            <span><img src="{{ asset('website/extra-images/opponent3.png')}}" alt=""></span>
-                                            <div class="text">
-                                                <h6><a href="#">Miami Heat</a></h6>
-                                                <span class="icon_tag">United Center Miami<i class="fa fa-map-marker"></i></span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="ticket_button">
-                                        <button>Buy Ticket</button>
-                                    </div>
-                                </div>
-                            </div>
-                            <!--Ticket 2 End-->
-                        </li>
-                    </ul>
-                    <!--Kf Pagination Start-->
-                    <div class="kode-pagination">
-                        <span class="page-numbers current">1</span>
-                        <a class="page-numbers" href="#">2</a>
-                        <a class="page-numbers" href="#">3</a>
-                        <a class="page-numbers border_none" href="#">...</a>
-                        <a class="page-numbers" href="#">18</a>
-                        <a class="page-numbers" href="#">19</a>
-                        <a class="page-numbers" href="#">20</a>
+@foreach(\App\Match::get() as $match)
+<li>
+    <!--Ticket 2 Start-->
+    <div class="ticket_dec2">
+        <span class="ticket_date">
+            <b>{{ Carbon\Carbon::parse($match->date)->format('d') }}</b>
+            <small>{{ Carbon\Carbon::parse($match->date)->format('M, Y') }}</small>
+        </span>
+        <div class="kf_opponents_wrap2">
+            <div class="kf_opponents_wrap">
+                <p>{{ $match->turnament->name }}</p>
+                <div class="kf_opponents_dec">
+                    <span><img src="{{ asset($match->team->logo )}}" alt=""></span>
+                    <div class="text">
+                        <h6><a href="#">{{ $match->team->name }}</a></h6>
+                        <span class="icon_tag"><i class="fa fa-calendar-plus-o"></i>{{ Carbon\Carbon::parse($match->date)->format('d M, Y') }}, {{ $match->time }}</span>
                     </div>
-                    <!--Kf Pagination End-->
+                </div>
+                <div class="kf_opponents_gols">
+                    <h5>vs</h5>
+                </div>
+                <div class="kf_opponents_dec span_right">
+                    <span><img src="{{ asset('website/extra-images/opponent3.png')}}" alt=""></span>
+                    <div class="text">
+                        <h6><a href="#">{{ $match->opnentClub->name }}</a></h6>
+                        <span class="icon_tag">{{ $match->matchVanue->name }}<i class="fa fa-map-marker"></i></span>
+                    </div>
+                </div>
+            </div>
+            <div class="ticket_button">
+                <a href="{{ route('ticketdetail',$match->id) }}" id="custom_by_ticket">Buy Ticket </a>
+            </div>
+        </div>
+    </div>
+    <!--Ticket 2 End-->
+</li>
+@endforeach
+                    </ul>
+
                 </div>
             </div>
         </section>

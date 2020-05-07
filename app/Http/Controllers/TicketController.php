@@ -133,5 +133,13 @@ class TicketController extends Controller
         Ticket::findOrFail($id)->delete();
         return redirect()->route("admin.ticket.index");
     }
+
+    public function ticketdetail($id)
+    {
+        $ticket = Ticket::where('match_id',$id)->first();
+        return view('website.website.ticketdetail',compact('ticket'));
+    }
+
+
 }
 
