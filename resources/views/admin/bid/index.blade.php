@@ -55,7 +55,7 @@
                     @foreach($bids as $bid)
                     <tr>
                         <td>{{ $bid->id }}</td>
-                        <td>{{ $bid->id}}</td>
+                        <td>{{ $bid->playerAuction->auction->name}}</td>
                         <td>{{ $bid->bidder->name }}</td>
                         <td>{{ $bid->price }}</td>
                         <td>{{ $bid->date_time }}</td>

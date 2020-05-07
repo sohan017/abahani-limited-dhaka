@@ -41,7 +41,21 @@
                         <!-- Menu Footer-->
                         <li class="user-footer">
                             <div class="pull-left">
-                                <a href="#" class="btn btn-default btn-flat">Profile</a>
+                                @if(Auth::guard('trainee')->check())
+                                    <a href="{{ route('trainee.profile') }}" class="btn btn-default btn-flat">Profile</a>
+                                @elseif(Auth::guard('player')->check())
+                                    <a href="{{ route('player.profile') }}" class="btn btn-default btn-flat">Profile</a>
+                                @elseif(Auth::guard('coach')->check())
+                                    <a href="{{ route('coach.profile') }}" class="btn btn-default btn-flat">Profile</a>
+                                @elseif(Auth::guard('physio')->check())
+                                    <a href="{{ route('physio.profile') }}" class="btn btn-default btn-flat">Profile</a>
+                                @elseif(Auth::guard('subscriber')->check())
+                                    <a href="{{ route('subscriber.profile') }}" class="btn btn-default btn-flat">Profile</a>
+                                @elseif(Auth::guard('bidder')->check())
+                                    <a href="{{ route('bidder.profile') }}" class="btn btn-default btn-flat">Profile</a>
+                                @else 
+                                    <a href="{{ route('admin.profile') }}" class="btn btn-default btn-flat">Profile</a>
+                                @endif
                             </div>
                             <div class="pull-right">
                                 <a href="{{ route('logout') }}" class="btn btn-default btn-flat" onclick="event.preventDefault();

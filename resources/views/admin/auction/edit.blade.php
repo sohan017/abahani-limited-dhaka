@@ -47,12 +47,12 @@
 					
 						<div class="form-group">
 							<label for="start_time"> Auction start time: *</label>
-							<input type="time" class="form-control" id="start_time" name="start_time" placeholder="Enter Auction start timeh" value="{{ $auction->start_time }}">
+							<input type="datetime-local" class="form-control" id="start_time" name="start_time" placeholder="Enter Auction start timeh" value="{{ $auction->start_time }}">
 						</div>
 
 						<div class="form-group">
 							<label for="end_time"> Auction End time: *</label>
-							<input type="time" class="form-control" id="end_time" name="end_time" placeholder="Enter Auction End timeh" value="{{ $auction->end_time }}">
+							<input type="datetime-local" class="form-control" id="end_time" name="end_time" placeholder="Enter Auction End timeh" value="{{ $auction->end_time }}">
 						</div>
 					
 						<div class="form-group">

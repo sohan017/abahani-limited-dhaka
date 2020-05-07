@@ -43,12 +43,12 @@ Route::get('/clr', function () {
  });
 
 Auth::routes(['register' => false, 'verify' => true]);
-Route::get('/login/bidder', 'Auth\LoginController@showBidderLoginForm');
-Route::get('/login/coach', 'Auth\LoginController@showCoachLoginForm');
-Route::get('/login/physio', 'Auth\LoginController@showPhysioLoginForm');
-Route::get('/login/player', 'Auth\LoginController@showPlayerLoginForm');
-Route::get('/login/subscriber', 'Auth\LoginController@showSubscriberLoginForm');
-Route::get('/login/trainee', 'Auth\LoginController@showTraineeLoginForm');
+Route::get('/login/bidder', 'Auth\LoginController@showBidderLoginForm')->name("login.bidder");
+Route::get('/login/coach', 'Auth\LoginController@showCoachLoginForm')->name("login.coach");;
+Route::get('/login/physio', 'Auth\LoginController@showPhysioLoginForm')->name("login.physio");;
+Route::get('/login/player', 'Auth\LoginController@showPlayerLoginForm')->name("login.player");;
+Route::get('/login/subscriber', 'Auth\LoginController@showSubscriberLoginForm')->name("login.subscriber");;
+Route::get('/login/trainee', 'Auth\LoginController@showTraineeLoginForm')->name("login.trainee");;
 
 Route::post('/login/bidder', 'Auth\LoginController@bidderLogin');
 Route::post('/login/coach', 'Auth\LoginController@coachLogin');
@@ -166,16 +166,6 @@ Route::middleware("auth:coach")->namespace('Coach')->prefix('coach')->name('coac
 	Route::get('trainee_physionote', function () {
 	    return view('coach.trainee-fitness.index');
 	})->name("trainee_physionote");
-
-
-
-
-
-
-
-
-
-
 });
 
 Route::middleware("auth:physio")->namespace('Physio')->prefix('physio')->name('physio.')->group(function () {
@@ -190,11 +180,9 @@ Route::middleware("auth:physio")->namespace('Physio')->prefix('physio')->name('p
 	    return view('physio.trainee.index');
 	})->name("trainee");
 
-
 	Route::get('traineeprofile', function () {
 	    return view('physio.trainee.trainee-profile');
 	})->name("traineeprofile");
-
 
 	Route::get('player', function () {
 	    return view('physio.player.index');
@@ -216,7 +204,6 @@ Route::middleware("auth:physio")->namespace('Physio')->prefix('physio')->name('p
 	Route::get('turnament', function () {
 	    return view('physio.turnament.index');
 	})->name("turnament");
-
 
 	Route::get('turnamentprofile', function () {
 	    return view('physio.player-fitness.index');
