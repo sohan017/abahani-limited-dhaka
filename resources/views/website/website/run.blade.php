@@ -574,14 +574,14 @@
                         			<span>Friday, 10th Sep, 2016, 16:00GMT</span>
                         			<div class="match_teams">
                         				<div class="pull-left">
-                        					<a href="#"><img src="{{ asset('website/images/team_logo11.png')}}" alt=""></a>
+                        					<a href="{{ route('ticket') }}"><img src="{{ asset('website/images/team_logo11.png')}}" alt=""></a>
                         				</div>
                         				<span>vs</span>
                         				<div class="pull-right">
-                        					<a href="#"><img src="{{ asset('website/images/team_logo12.png')}}" alt=""></a>
+                        					<a href="{{ route('ticket') }}"><img src="{{ asset('website/images/team_logo12.png')}}" alt=""></a>
                         				</div>
                         			</div>
-                        			<a class="input-btn" href="#">Buy Tickets Now</a>
+                        			<a class="input-btn" href="{{ route('ticket') }}">Buy Tickets Now</a>
                         			<h5>Starting in</h5>
                         			<!--Widget COUNT Down Start-->
                         			<ul class="kf_countdown countdown">

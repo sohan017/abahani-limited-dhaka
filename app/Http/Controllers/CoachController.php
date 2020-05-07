@@ -38,6 +38,7 @@ class CoachController extends Controller
             'img' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
             'address' => 'required',
             'city' => 'required|max:100',
+            'con_num' => 'nullable|max:100',
             'state' => 'required|max:100',
             'country' => 'required|max:100',
             'nationality' => 'required|max:100',
@@ -63,7 +64,7 @@ class CoachController extends Controller
             return redirect()->back()->withInput()->withErrors($validator);
         }
 
-
+        $uploadsLocation = "";
         if ($request->has('img')) {
             $uploadsLocation = $request->img->store('uploads/images/coach');
         }
@@ -79,6 +80,7 @@ class CoachController extends Controller
             'gender' => $request->gender,
             'hight' => $request->hight,
             'religion' => $request->religion,
+            'con_num' => $request->con_num,
             'national_id_number' => $request->national_id_number,
             'email' => $request->email,
             'password' => Hash::make($request->password),
@@ -136,12 +138,17 @@ class CoachController extends Controller
         $coach->state = $request->state;
         $coach->country = $request->country;
         $coach->nationality = $request->nationality;
+        $coach->con_num = $request->con_num;
         $coach->gender = $request->gender;
         $coach->hight = $request->hight;
         $coach->religion = $request->religion;
         $coach->national_id_number = $request->national_id_number;
         $coach->email = $request->email;
-        $coach->password = Hash::make($request->password);
+
+        if($coach->password){
+            $coach->password = Hash::make($request->password);
+        }
+
         $coach->save();
         return redirect()->route("admin.coach.index")->withSuccess("Coach Update success.");
     }

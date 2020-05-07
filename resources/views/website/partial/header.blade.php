@@ -1,47 +1,11 @@
  <header class="kode_header_2">
-        <!--Header 2 Top Bar Start-->
-        <div class="kf_top_bar">
-            <div class="container">
-                <div class="pull-left">
-                    <ul class="kf_social2">
-                        <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                        <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                        <li><a href="#"><i class="fa fa-rss"></i></a></li>
-                    </ul>
-                </div>
-                <div class="kf_right_dec">
-                    <ul class="kf_topdec">
-                        <li>
-                            <div class="kf_lung">
-                                <span>Curreny :</span>
-                                <div class="dropdown">
-                                    <button id="dLabel" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> USD
-                                    </button>
-                                    <ul class="dropdown-menu" aria-labelledby="dLabel">
-                                        <li>BRL</li>
-                                        <li>EUR</li>
-                                    </ul>
-                                </div> 
-                            </div>
-                        </li>
-                        <li><a href="#">Support</a></li>
-                        <li><a href="#">Whishlist</a></li>
-                    </ul>
-                    <ul class="kf_user">
-                        <li><a href="#"><i class="fa fa-lock"></i>Sign up</a></li>
-                        <li><a href="#">Login</a></li>
-                    </ul>
-                    <a href="#" data-toggle="modal" data-target="#search" class="kode_search"><i class="fa fa-search"></i></a>
-                </div>
-            </div>
-        </div>
-        <!--Header 2 Top Bar End-->
+
         <div class="container">
             <!--Logo Bar Start-->
             <div class="kode_logo_bar">
                 <!--Logo Start-->
                 <div class="logo">
-                    <a href="#">
+                    <a href="{{ url('/') }}">
                         <img src="{{ asset('website/images/logo.png')}}" alt="">
                     </a>
                 </div>
@@ -50,42 +14,26 @@
                 <div class="kode_navigation">
                     <!--Navigation Start-->
                     <ul class="nav">
-                        <li><a href="index-2.html">home</a></li>
+                        <li><a href="{{ url('/') }}">home</a></li>
+                        <li><a href="{{ route('ticket') }}">Ticket</a></li>
                         <li>
-                            <a href="#">Fixtures & Results</a>
+                            <a href="#">Register</a>
                             <ul>
-                                <li><a href="latest-result.html">latest result</a></li>
-                                <li><a href="team-schedule.html">teamschedule</a></li>
-                            </ul>
-                        </li>
-                        
-                        
-                        <li>
-                            <a href="#">player</a>
-                            <ul>
-                                <li><a href="player-detail.html">player detail</a></li>
-                                <li><a href="players-standing.html">players standing</a></li>
-                            </ul>
-                        </li>
-                        <li>
-                            <a href="#">Ticket</a>
-                            <ul>
-                                <li><a href="ticket.html">ticket</a></li>
-                                
-                                <li><a href="ticket-detail.html">ticket detail</a></li>
+                                <li><a href="{{ route('register.trainee') }}">Register Trainee</a></li>
+                                <li><a href="{{ route('register.subscriber') }}">Register Subscriber</a></li>
                                 
                             </ul>
                         </li>
                         <li>
-                            <a href="#">pages</a>
+                            <a href="#">Login</a>
                             <ul>
-                                <li><a href="ticket.html">ticket</a></li>
-                                <li><a href="shop.html">shop</a></li>
-                                <li><a href="ticket-detail.html">ticket detail</a></li>
-                                <li><a href="404.html">404</a></li>
-                                <li><a href="comingsoon.html">comingsoon</a></li>
-                                <li><a href="widget.html">widget</a></li>
-                                <li><a href="contactus.html">contact us</a></li>
+                                <li><a href="{{ route('login.bidder') }}">Bidder Login</a></li>
+                                <li><a href="{{ route('login.coach') }}">Coach Login</a></li>
+                                <li><a href="{{ route('login.physio') }}">Physio Login</a></li>
+                                <li><a href="{{ route('login.player') }}">Player Login</a></li>
+                                <li><a href="{{ route('login.subscriber') }}">Subscriber Login</a></li>
+                                <li><a href="{{ route('login.trainee') }}">Trainee Login</a></li>
+                                <li><a href="{{ route('login') }}">Admin Login</a></li>
                             </ul>
                         </li>
                        

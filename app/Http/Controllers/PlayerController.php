@@ -75,7 +75,7 @@ class PlayerController extends Controller
             return redirect()->back()->withInput()->withErrors($validator);
         }
 
-
+        $uploadsLocation = "";
         if ($request->has('img')) {
             $uploadsLocation = $request->img->store('uploads/images/trainee');
         }
@@ -100,7 +100,7 @@ class PlayerController extends Controller
             'team_id' => $request->team_id,
             'playertype_id' => $request->playertype_id,
             'email' => $request->email,
-            'password' =>Hash::make($request->password),
+            'password' => Hash::make($request->password),
             
         ]);
         return redirect()->route("admin.player.index")->withSuccess("Player create success.");

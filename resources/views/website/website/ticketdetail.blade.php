@@ -23,76 +23,102 @@
                 <div class="kf_ticketdetail">
                     <div class="ticketdetail_hd">
                         <div class="tkt_date">
-                            <span><i class="fa fa-calendar-minus-o"></i>Saturday , 15th October, 2016</span>
+                            <span><i class="fa fa-calendar-minus-o"></i>{{ Carbon\Carbon::parse($ticket->match->date)->format('l,  jS F, Y') }}</span>
                         </div>
                         <div class="tkt_date">
-                            <span><i class="fa fa-street-view"></i>Soccer stadium, Dubai United Arab Emriates</span>
+                            <span><i class="fa fa-street-view"></i>{{ $ticket->match->matchVanue->name }}</span>
                         </div>
                     </div>
                     <ul class="kf_table2">
-                        <li>
-                            <div class="tkt_pkg">
-                                <span>
-                                    <i class="fa fa-ticket"></i>
-                                    <strong>Standard Ticket</strong>
-                                    <small>This ticket is for unlimited persons.</small>
-                                </span>
-                            </div> 
-                            <div class="tkt_price">
-                                <em>$199.00</em>
-                            </div>
-                            <div class="tkt_qty">
-                                <label>total persons :</label>
-                                <div class="numbers-row">
-                                    <input class="kf_trigger" name="family" id="totalpersons" value="0" type="text">
-                                </div>
-                            </div>
-                            <div class="tkt_btn">
-                                <a href="#" class="input-btn ">Buy now</a>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="tkt_pkg">
-                                <span>
-                                    <i class="fa fa-ticket"></i>
-                                    <strong>Family Ticket</strong>
-                                    <small>This ticket is only for family Maxium 4 person Are Allowed.</small>
-                                </span>
-                            </div> 
-                            <div class="tkt_price">
-                                <em>$299.00</em>
-                            </div>
-                            <div class="tkt_qty">
-                                <label>total persons :</label>
-                                <div class="numbers-row">
-                                    <input class="kf_trigger" name="standard" id="totalpersons2" value="0" type="text">
-                                </div>
-                            </div>
-                            <div class="tkt_btn">
-                                <a href="#" class="input-btn ">Buy now</a>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="tkt_pkg">
-                                <span>
-                                    <i class="fa fa-ticket"></i>
-                                    <strong>Vip Ticket</strong>
-                                    <small>This ticket is only  for a  single person .</small>
-                                </span>
-                            </div> 
-                            <div class="tkt_price">
-                                <em>$599.00</em>
-                            </div>
-                            <div class="tkt_qty">
-                                <label>total persons :</label>
-                                <div class="numbers-row">
-                                    <input class="kf_trigger" name="vip" id="totalpersons4" value="0" type="text">
-                                </div>
-                            </div>
-                            <div class="tkt_btn">
-                                <a href="#" class="input-btn ">Buy now</a>
-                            </div>
-                        </li>
+
+<form action="{{ route('ticketbuy') }}" method="post" style="width: 160%">
+    @csrf
+    <input type="hidden" name="id" value="{{ $ticket->id }}">
+    <input type="hidden" name="type" value="normal">
+    <li>
+        <div class="tkt_pkg">
+            <span>
+                <i class="fa fa-ticket"></i>
+                <strong>Normal Ticket</strong>
+                <small>This ticket is for unlimited persons.</small>
+            </span>
+        </div> 
+        <div class="tkt_price">
+            <em>${{ $ticket->normal_price }}</em>
+        </div>
+        <div class="tkt_qty">
+            <label>total persons :</label>
+            <div class="numbers-row">
+                <input class="kf_trigger" name="qty" id="totalpersons" value="1" type="text" min="1" max="5">
+            </div>
+        </div>
+        <div class="tkt_qty">
+            <input type="text" name="coupon" >
+        </div>
+        <div class="tkt_btn">
+            <button type="submit" class="input-btn">Buy now</button>
+        </div>
+    </li>
+</form>
+
+<form action="{{ route('ticketbuy') }}" method="post" style="width: 160%">
+    @csrf
+    <input type="hidden" name="id" value="{{ $ticket->id }}">
+    <input type="hidden" name="type" value="classic">
+    <li>
+        <div class="tkt_pkg">
+            <span>
+                <i class="fa fa-ticket"></i>
+                <strong>Classic Ticket</strong>
+                <small>This ticket is for unlimited persons.</small>
+            </span>
+        </div> 
+        <div class="tkt_price">
+            <em>${{ $ticket->classic_price }}</em>
+        </div>
+        <div class="tkt_qty">
+            <label>total persons :</label>
+            <div class="numbers-row">
+                <input class="kf_trigger" name="qty" id="totalpersons" value="1" type="text" min="1" max="4">
+            </div>
+        </div>
+        <div class="tkt_btn">
+            <button type="submit" class="input-btn">Buy now</button>
+        </div>
+    </li>
+</form>
+
+
+<form action="{{ route('ticketbuy') }}" method="post" style="width: 160%">
+    @csrf
+    <input type="hidden" name="id" value="{{ $ticket->id }}">
+    <input type="hidden" name="type" value="vip">
+    <li>
+        <div class="tkt_pkg">
+            <span>
+                <i class="fa fa-ticket"></i>
+                <strong>Vip Ticket</strong>
+                <small>This ticket is for unlimited persons.</small>
+            </span>
+        </div> 
+        <div class="tkt_price">
+            <em>${{ $ticket->vip_price }}</em>
+        </div>
+        <div class="tkt_qty">
+            <label>total persons :</label>
+            <div class="numbers-row">
+                <input class="kf_trigger" name="qty" id="totalpersons" value="1" type="text"min="1" max="2">
+            </div>
+        </div>
+        <div class="tkt_qty">
+            <input type="text" name="coupon" >
+        </div>
+        <div class="tkt_btn">
+            <button type="submit" class="input-btn">Buy now</button>
+        </div>
+    </li>
+</form>
+
                     </ul>
                 </div>
                 <div class="nextmatch_wrap">
@@ -114,17 +140,7 @@
                         <h5>Quarter final</h5>
                     </div>
                 </div>
-                <!--Kf Pagination Start-->
-                <div class="kode-pagination text-center">
-                    <span class="page-numbers current">1</span>
-                    <a class="page-numbers" href="#">2</a>
-                    <a class="page-numbers" href="#">3</a>
-                    <a class="page-numbers border_none" href="#">...</a>
-                    <a class="page-numbers" href="#">18</a>
-                    <a class="page-numbers" href="#">19</a>
-                    <a class="page-numbers" href="#">20</a>
-                </div>
-                <!--Kf Pagination End-->
+
             </div>
         </section>
     </div>

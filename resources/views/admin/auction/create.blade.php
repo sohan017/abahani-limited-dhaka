@@ -46,12 +46,12 @@
 					
 						<div class="form-group">
 							<label for="start_time">Auction Start Time: *</label>
-							<input type="time" class="form-control" id="start_time" name="start_time" placeholder="Enter Auction Start Time" value="{{old('start_time')}}">
+							<input type="datetime-local" class="form-control" id="start_time" name="start_time" placeholder="Enter Auction Start Time" value="{{old('start_time')}}">
 						</div>
 
 						<div class="form-group">
 							<label for="end_time">Auction End Time: *</label>
-							<input type="time" class="form-control" id="end_time" name="end_time" placeholder="Enter Auction End Time" value="{{old('end_time')}}">
+							<input type="datetime-local" class="form-control" id="end_time" name="end_time" placeholder="Enter Auction End Time" value="{{old('end_time')}}">
 						</div>
 					
 						<div class="form-group">

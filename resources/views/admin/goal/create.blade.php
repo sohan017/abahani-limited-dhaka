@@ -85,7 +85,10 @@
 					
 						<div class="form-group">
 							<label for="goal_half">Goal half: *</label>
-							<input type="text" class="form-control" id="goal_half" name="goal_half" placeholder="Enter goal half" value="{{old('goal_half')}}">
+							<select name="goal_half" id="goal_half" class="form-control" value="{{old('goal_half')}}">
+								<option value="first">First Half</option>
+								<option value="second">Second Half</option>
+							</select>
 						</div>
 					</div>
 					

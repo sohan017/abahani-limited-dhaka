@@ -12,36 +12,27 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-// Route::get('/', function () {
-// 	    return view('website.layouts.index');
-// 	})->name("website");
 
-Route::get('welcome', function () {
+
+Route::get('/', function () {
 	    return view('website.website.run');
-	})->name("welcome");
+	})->name("home");
 
 Route::get('ticket', function () {
 	    return view('website.website.ticket');
 	})->name("ticket");
 
+Route::get('ticketdetail/{id}', 'TicketController@ticketdetail')->name("ticketdetail");
+Route::post('ticket/buy', 'PaymentController@ticketbuy')->name("ticketbuy");
+Route::any('success', 'PaymentController@success')->name("success");
+Route::any('pricing', 'PaymentController@pricing')->name("pricing");
 
-
-
-Route::get('ticketdetail', function () {
-	    return view('website.website.ticketdetail');
-	})->name("ticketdetail");
 
 Route::get('payment', function () {
 	    return view('website.website.payment');
 	})->name("payment");
 
 
-
-
-
-Route::get('/', function () {
-    return view('welcome');
-})->name("home");
 
 Route::get('/clr', function () {
     Artisan::call('cache:clear');
@@ -52,12 +43,12 @@ Route::get('/clr', function () {
  });
 
 Auth::routes(['register' => false, 'verify' => true]);
-Route::get('/login/bidder', 'Auth\LoginController@showBidderLoginForm');
-Route::get('/login/coach', 'Auth\LoginController@showCoachLoginForm');
-Route::get('/login/physio', 'Auth\LoginController@showPhysioLoginForm');
-Route::get('/login/player', 'Auth\LoginController@showPlayerLoginForm');
-Route::get('/login/subscriber', 'Auth\LoginController@showSubscriberLoginForm');
-Route::get('/login/trainee', 'Auth\LoginController@showTraineeLoginForm');
+Route::get('/login/bidder', 'Auth\LoginController@showBidderLoginForm')->name("login.bidder");
+Route::get('/login/coach', 'Auth\LoginController@showCoachLoginForm')->name("login.coach");;
+Route::get('/login/physio', 'Auth\LoginController@showPhysioLoginForm')->name("login.physio");;
+Route::get('/login/player', 'Auth\LoginController@showPlayerLoginForm')->name("login.player");;
+Route::get('/login/subscriber', 'Auth\LoginController@showSubscriberLoginForm')->name("login.subscriber");;
+Route::get('/login/trainee', 'Auth\LoginController@showTraineeLoginForm')->name("login.trainee");;
 
 Route::post('/login/bidder', 'Auth\LoginController@bidderLogin');
 Route::post('/login/coach', 'Auth\LoginController@coachLogin');
@@ -175,16 +166,6 @@ Route::middleware("auth:coach")->namespace('Coach')->prefix('coach')->name('coac
 	Route::get('trainee_physionote', function () {
 	    return view('coach.trainee-fitness.index');
 	})->name("trainee_physionote");
-
-
-
-
-
-
-
-
-
-
 });
 
 Route::middleware("auth:physio")->namespace('Physio')->prefix('physio')->name('physio.')->group(function () {
@@ -199,15 +180,20 @@ Route::middleware("auth:physio")->namespace('Physio')->prefix('physio')->name('p
 	    return view('physio.trainee.index');
 	})->name("trainee");
 
-
 	Route::get('traineeprofile', function () {
 	    return view('physio.trainee.trainee-profile');
 	})->name("traineeprofile");
 
+<<<<<<< HEAD
 
 	// Route::get('player', function () {
 	//     return view('physio.player.index');
 	// })->name("player");
+=======
+	Route::get('player', function () {
+	    return view('physio.player.index');
+	})->name("player");
+>>>>>>> e965e0d77da4baad1850c3cb60790313f92e5ec4
 
 	// Route::get('playerprofile', function () {
 	//     return view('physio.player.player-profile');
@@ -230,6 +216,7 @@ Route::middleware("auth:physio")->namespace('Physio')->prefix('physio')->name('p
 	Route::get('turnament',"TurnamentController@index")->name("turnament");
 	Route::get('turnamentprofile/{id}',"TurnamentController@show")->name("turnamentprofile");
 
+<<<<<<< HEAD
 
 	// Route::get('turnament', function () {
 	//     return view('physio.turnament.index');
@@ -239,6 +226,11 @@ Route::middleware("auth:physio")->namespace('Physio')->prefix('physio')->name('p
 	// Route::get('turnamentprofile', function () {
 	//     return view('physio.player-fitness.index');
 	// })->name("turnamentprofile");
+=======
+	Route::get('turnamentprofile', function () {
+	    return view('physio.player-fitness.index');
+	})->name("turnamentprofile");
+>>>>>>> e965e0d77da4baad1850c3cb60790313f92e5ec4
 
 	Route::get('playerfitness', 'PlayerfitnessController@index')->name("playerfitness");
 	Route::get('playerfitnessnote/{id}', 'PlayerfitnessController@show')->name("playerfitnessnote");
