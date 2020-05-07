@@ -31,47 +31,47 @@
                     <tr>
                         <th>ID</th>
                         <th>Turnament Name</th>
-                        <th>Game Played</th>
+                        <th>Turnament Start Date</th>
+                        <th>Turnament End Date</th>
+                        <!-- <th>Game Played</th>
                         <th>Win</th>
                         <th>Drow</th>
                         <th>Lost</th>
-                        <th>PTS</th>
+                        <th>PTS</th> -->
                         <th>Action</th>
                     </tr>
                 </thead>
                 <tbody>
-                    
-                    <tr>
-                        <td>1</td>
-                        <td>wegh</td>
-                        <td>60</td>
-                        <td>42</td>
+                  @foreach($turnaments as $turnament)  
+                  <tr>
+                    <td>{{$turnament->id}}</td>
+                    <td>{{$turnament->name}}</td>
+                    <td>{{$turnament->start_date}}</td>
+                    <td>{{$turnament->end_date}}</td>
+                        <!-- <td>42</td>
                         <td>12</td>
                         <td>6</td>
-                        <td>95</td>
+                        <td>95</td> -->
                         <td>
                             <div class="btn-group">
-                                <a href="" class="btn btn-block btn-primary">Show</a>
-                               <!--  <a href="" class="btn btn-default">Edit</a>
-                               <form role="form"  method="post">
-                                  
-                                    <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this Category?');">Delete</button>
-                               </form> -->
+                                <a href="{{ route('physio.turnamentprofile', $turnament->id) }}" class="btn btn-block btn-primary">Show</a>
                                 
                             </div>
                         </td>
                     </tr>
-                  
+                    @endforeach
                 </tbody>
                 <tfoot>
                     <tr>
-                       <th>ID</th>
-                        <th>Turnament Name</th>
-                        <th>Point</th>
+                     <th>ID</th>
+                     <th>Turnament Name</th>
+                     <th>Turnament Start Date</th>
+                     <th>Turnament End Date</th>
+                        <!-- <th>Point</th>
                         <th>Win</th>
                         <th>Drow</th>
                         <th>Lost</th>
-                        <th>PTS</th>
+                        <th>PTS</th> -->
                         <th>Action</th>
                     </tr>
                 </tfoot>

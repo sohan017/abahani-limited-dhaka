@@ -78,7 +78,7 @@ body {
 			<!-- Profile Image -->
 			<div class="box box-primary">
 				<div class="box-body box-profile cap">
-					<!-- <img class="profile-user-img img-responsive img-circle" src="" alt="Player profile picture"> -->
+					
 					<img src="{{ asset($player->img) }}" alt="img">
 
 					<h3 class="profile-username text-center"></h3>

@@ -27,51 +27,40 @@
         <!-- /.box-header -->
         <div class="box-body">
             <table id="example1" class="table table-bordered table-striped">
-                <thead>
+                 <thead>
                     <tr>
                         <th>ID</th>
                         <th>Team Name</th>
-                        <th>Game Played</th>
-                        <th>Win</th>
-                        <th>Drow</th>
-                        <th>Lost</th>
-                        <th>PTS</th>
+                        <th>Captain Name</th>
+                        <th>Coach Name</th>
+                        <th>Physio Name</th>
                         <th>Action</th>
                     </tr>
                 </thead>
                 <tbody>
-                    
+                    @foreach($teams as $team)
                     <tr>
-                        <td>1</td>
-                        <td>wegh</td>
-                        <td>60</td>
-                        <td>42</td>
-                        <td>12</td>
-                        <td>6</td>
-                        <td>95</td>
+                        <td>{{ $team->id }}</td>
+                        <td>{{ $team->name }}</td>
+                        <td>{{ $team->captain }}</td>
+                        <td>{{ $team->coach->name }}</td>
+                        <td>{{ $team->physio->name }}</td>
                         <td>
                             <div class="btn-group">
-                                <a href="" class="btn btn-block btn-primary">Show</a>
-                               <!--  <a href="" class="btn btn-default">Edit</a>
-                               <form role="form"  method="post">
-                                  
-                                    <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this Category?');">Delete</button>
-                               </form> -->
-                                
+                                <a href="{{ route('physio.teamprofile', $team->id) }}" class="btn btn-block btn-info"><i class="fa fa-eye"></i> Show</a>
+                               
                             </div>
                         </td>
                     </tr>
-                  
+                    @endforeach
                 </tbody>
                 <tfoot>
                     <tr>
                        <th>ID</th>
                         <th>Team Name</th>
-                        <th>Point</th>
-                        <th>Win</th>
-                        <th>Drow</th>
-                        <th>Lost</th>
-                        <th>PTS</th>
+                        <th>Captain Name</th>
+                        <th>Coach Name</th>
+                        <th>Physio Name</th>
                         <th>Action</th>
                     </tr>
                 </tfoot>

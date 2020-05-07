@@ -205,35 +205,44 @@ Route::middleware("auth:physio")->namespace('Physio')->prefix('physio')->name('p
 	})->name("traineeprofile");
 
 
-	Route::get('player', function () {
-	    return view('physio.player.index');
-	})->name("player");
+	// Route::get('player', function () {
+	//     return view('physio.player.index');
+	// })->name("player");
 
-	Route::get('playerprofile', function () {
-	    return view('physio.player.player-profile');
-	})->name("playerprofile");
+	// Route::get('playerprofile', function () {
+	//     return view('physio.player.player-profile');
+	// })->name("playerprofile");
 
-	Route::get('team', function () {
-	    return view('physio.team.index');
-	})->name("team");
+	Route::get('player', "PlayerController@index")->name("player");
+	Route::get('playerprofile/{id}', "PlayerController@show")->name("playerprofile");
 
-	Route::get('teamprofile', function () {
-	    return view('physio.team.team-profile');
-	})->name("teamprofile");
+	Route::get('team', "TeamController@index")->name("team");
+	Route::get('teamprofile/{id}', "TeamController@show")->name("teamprofile");
+
+	// Route::get('team', function () {
+	//     return view('physio.team.index');
+	// })->name("team");
+
+	// Route::get('teamprofile', function () {
+	//     return view('physio.team.team-profile');
+	// })->name("teamprofile");
+
+	Route::get('turnament',"TurnamentController@index")->name("turnament");
+	Route::get('turnamentprofile/{id}',"TurnamentController@show")->name("turnamentprofile");
 
 
-	Route::get('turnament', function () {
-	    return view('physio.turnament.index');
-	})->name("turnament");
+	// Route::get('turnament', function () {
+	//     return view('physio.turnament.index');
+	// })->name("turnament");
 
 
-	Route::get('turnamentprofile', function () {
-	    return view('physio.player-fitness.index');
-	})->name("turnamentprofile");
+	// Route::get('turnamentprofile', function () {
+	//     return view('physio.player-fitness.index');
+	// })->name("turnamentprofile");
 
-	Route::get('playerfitness', function () {
-	    return view('physio.player-fitness.index');
-	})->name("playerfitness");
+	Route::get('playerfitness', 'PlayerfitnessController@index')->name("playerfitness");
+	Route::get('playerfitnessnote/{id}', 'PlayerfitnessController@show')->name("playerfitnessnote");
+	Route::post('playerfitnessnote/{id}', 'PlayerfitnessController@add_player_fitness')->name("playerfitnessnote.post");
 
 	Route::get('teaineefitness', function () {
 	    return view('physio.trainee-fitness.index');

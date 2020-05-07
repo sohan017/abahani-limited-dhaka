@@ -2,49 +2,49 @@
 @section('title') Turnament Profile @endsection
 @section('css') 
 <style>
-body {
-  font-family: Arial, Helvetica, sans-serif;
-}
+	body {
+		font-family: Arial, Helvetica, sans-serif;
+	}
 
-.flip-card {
-  background-color: transparent;
-  width: 300px;
-  height: 300px;
-  perspective: 1000px;
-}
+	.flip-card {
+		background-color: transparent;
+		width: 300px;
+		height: 300px;
+		perspective: 1000px;
+	}
 
-.flip-card-inner {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  text-align: center;
-  transition: transform 0.6s;
-  transform-style: preserve-3d;
-  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
-}
+	.flip-card-inner {
+		position: relative;
+		width: 100%;
+		height: 100%;
+		text-align: center;
+		transition: transform 0.6s;
+		transform-style: preserve-3d;
+		box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+	}
 
-.flip-card:hover .flip-card-inner {
-  transform: rotateY(180deg);
-}
+	.flip-card:hover .flip-card-inner {
+		transform: rotateY(180deg);
+	}
 
-.flip-card-front, .flip-card-back {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  -webkit-backface-visibility: hidden;
-  backface-visibility: hidden;
-}
+	.flip-card-front, .flip-card-back {
+		position: absolute;
+		width: 100%;
+		height: 100%;
+		-webkit-backface-visibility: hidden;
+		backface-visibility: hidden;
+	}
 
-.flip-card-front {
-  background-color: #bbb;
-  color: black;
-}
+	.flip-card-front {
+		background-color: #bbb;
+		color: black;
+	}
 
-.flip-card-back {
-  background-color: #2980b9;
-  color: white;
-  transform: rotateY(180deg);
-}
+	.flip-card-back {
+		background-color: #2980b9;
+		color: white;
+		transform: rotateY(180deg);
+	}
 </style>
 @endsection
 
@@ -74,22 +74,19 @@ body {
 			<!-- Profile Image -->
 			<div class="box box-primary">
 				<div class="box-body box-profile">
-
-					<img class="profile-user-img img-responsive img-circle" src="" alt="Turnament Name profile picture">
-
 					<h3 class="profile-username text-center"></h3>
 
-					<p class="text-muted text-center">Turnament Name</p>
+					<p class="text-muted text-center">Turnament</p>
 
 					<ul class="list-group list-group-unbordered">
 						<li class="list-group-item">
-							<b>Turnament Name</b> <a class="pull-right"></a>
+							<b>Turnament Name</b> <a class="pull-right">{{$turnament->name}}</a>
 						</li>
 						<li class="list-group-item">
-							<b>Game Played</b> <a class="pull-right"></a>
+							<b>Game Played</b> <a class="pull-right">{{$turnament->start_date}}</a>
 						</li>
 						<li class="list-group-item">
-							<b>Win</b> <a class="pull-right"></a>
+							<b>Win</b> <a class="pull-right">{{$turnament->end_date}}</a>
 						</li>
 						<li class="list-group-item">
 							<b>Drow</b> <a class="pull-right"></a>
@@ -121,6 +118,7 @@ body {
 						
 					</ul>
 
+
 				</div>
 				<!-- /.box-body -->
 			</div>
@@ -130,7 +128,7 @@ body {
 		<!-- /.col -->
 		<div class="col-md-3">
 			@include("partial.notification")
-			<div class="nav-tabs-custom">
+			<!-- <div class="nav-tabs-custom">
 				<div class="flip-card">
 					<div class="flip-card-inner">
 						<div class="flip-card-front">
@@ -142,7 +140,7 @@ body {
 							<p>We love that guy</p>
 						</div>
 					</div>
-				</div>
+				</div> -->
 			</div>
 			<!-- /.nav-tabs-custom -->
 
@@ -156,4 +154,3 @@ body {
 
 @endsection   
 
-.php
