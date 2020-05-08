@@ -184,16 +184,13 @@ Route::middleware("auth:physio")->namespace('Physio')->prefix('physio')->name('p
 	    return view('physio.trainee.trainee-profile');
 	})->name("traineeprofile");
 
-<<<<<<< HEAD
 
 	// Route::get('player', function () {
 	//     return view('physio.player.index');
 	// })->name("player");
-=======
 	Route::get('player', function () {
 	    return view('physio.player.index');
 	})->name("player");
->>>>>>> e965e0d77da4baad1850c3cb60790313f92e5ec4
 
 	// Route::get('playerprofile', function () {
 	//     return view('physio.player.player-profile');
@@ -216,7 +213,6 @@ Route::middleware("auth:physio")->namespace('Physio')->prefix('physio')->name('p
 	Route::get('turnament',"TurnamentController@index")->name("turnament");
 	Route::get('turnamentprofile/{id}',"TurnamentController@show")->name("turnamentprofile");
 
-<<<<<<< HEAD
 
 	// Route::get('turnament', function () {
 	//     return view('physio.turnament.index');
@@ -226,11 +222,6 @@ Route::middleware("auth:physio")->namespace('Physio')->prefix('physio')->name('p
 	// Route::get('turnamentprofile', function () {
 	//     return view('physio.player-fitness.index');
 	// })->name("turnamentprofile");
-=======
-	Route::get('turnamentprofile', function () {
-	    return view('physio.player-fitness.index');
-	})->name("turnamentprofile");
->>>>>>> e965e0d77da4baad1850c3cb60790313f92e5ec4
 
 	Route::get('playerfitness', 'PlayerfitnessController@index')->name("playerfitness");
 	Route::get('playerfitnessnote/{id}', 'PlayerfitnessController@show')->name("playerfitnessnote");
