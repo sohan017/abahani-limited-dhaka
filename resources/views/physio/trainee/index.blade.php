@@ -31,38 +31,30 @@
                     <tr>
                         <th>ID</th>
                         <th>Tarinee Name</th>
-                        <th>Photo</th>
                         <th>Contact Number</th>
                         <th>Action</th>
                     </tr>
                 </thead>
                 <tbody>
-                    
+                    @foreach($trainees as $trainee)
                     <tr>
-                        <td>werty</td>
-                        <td>wegh</td>
-                        <td>wegh</td>
-                        <td>erghghj</td>
+                        <td>{{ $trainee->id }}</td>
+                        <td>{{ $trainee->name }}</td>
+                        <td>{{ $trainee->con_num }}</td>
                         <td>
                             <div class="btn-group">
-                                <a href="" class="btn btn-block btn-primary">Show</a>
-                               <!--  <a href="" class="btn btn-default">Edit</a>
-                               <form role="form"  method="post">
-                                  
-                                    <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this Category?');">Delete</button>
-                               </form> -->
+                                <a href="{{ route('physio.traineeprofile', $trainee->id) }}" class="btn btn-block btn-primary">Show</a>
                                 
                             </div>
                         </td>
                     </tr>
-                  
+                  @endforeach
                 </tbody>
                 <tfoot>
                     <tr>
                         <th>ID</th>
                         <th>Tarinee Name</th>
-                        <th>CLub Name</th>
-                        <th>Contact email</th>
+                        <th>Contact Number</th>
                         <th>Action</th>
                     </tr>
                 </tfoot>

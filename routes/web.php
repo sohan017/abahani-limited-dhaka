@@ -176,25 +176,8 @@ Route::middleware("auth:physio")->namespace('Physio')->prefix('physio')->name('p
 	Route::post("profile/change-password", "ProfileController@changePassword")->name("profile.change.password");
 
 
-	Route::get('trainee', function () {
-	    return view('physio.trainee.index');
-	})->name("trainee");
-
-	Route::get('traineeprofile', function () {
-	    return view('physio.trainee.trainee-profile');
-	})->name("traineeprofile");
-
-
-	// Route::get('player', function () {
-	//     return view('physio.player.index');
-	// })->name("player");
-	Route::get('player', function () {
-	    return view('physio.player.index');
-	})->name("player");
-
-	// Route::get('playerprofile', function () {
-	//     return view('physio.player.player-profile');
-	// })->name("playerprofile");
+	Route::get('trainee', "TraineeController@index")->name("trainee");
+	Route::get('traineeprofile/{id}', "TraineeController@show")->name("traineeprofile");
 
 	Route::get('player', "PlayerController@index")->name("player");
 	Route::get('playerprofile/{id}', "PlayerController@show")->name("playerprofile");
@@ -202,26 +185,8 @@ Route::middleware("auth:physio")->namespace('Physio')->prefix('physio')->name('p
 	Route::get('team', "TeamController@index")->name("team");
 	Route::get('teamprofile/{id}', "TeamController@show")->name("teamprofile");
 
-	// Route::get('team', function () {
-	//     return view('physio.team.index');
-	// })->name("team");
-
-	// Route::get('teamprofile', function () {
-	//     return view('physio.team.team-profile');
-	// })->name("teamprofile");
-
 	Route::get('turnament',"TurnamentController@index")->name("turnament");
 	Route::get('turnamentprofile/{id}',"TurnamentController@show")->name("turnamentprofile");
-
-
-	// Route::get('turnament', function () {
-	//     return view('physio.turnament.index');
-	// })->name("turnament");
-
-
-	// Route::get('turnamentprofile', function () {
-	//     return view('physio.player-fitness.index');
-	// })->name("turnamentprofile");
 
 	Route::get('playerfitness', 'PlayerfitnessController@index')->name("playerfitness");
 	Route::get('playerfitnessnote/{id}', 'PlayerfitnessController@show')->name("playerfitnessnote");

@@ -21,6 +21,12 @@
 			<li class="header">COACH MAIN NAVIGATION</li>
 			@elseif(Auth::guard('physio')->check())
 			<li class="header">PHYSIO MAIN NAVIGATION</li>
+			<li>
+				<a href="{{ route('physio.dashboard')}}">
+					<i class="fa fa-dashboard"></i> 
+					<span>Dashboard</span>
+				</a>
+			</li>
 			@elseif(Auth::guard('player')->check())
 			<li class="header">PLAYER MAIN NAVIGATION</li>
 			@elseif(Auth::guard('subscriber')->check())
