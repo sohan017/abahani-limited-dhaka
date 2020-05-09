@@ -10,89 +10,28 @@
 <!-- Content Header (Page header) -->
 <section class="content-header">
 	<h1>
-		Trainee fitness Profile
+	Trainee fitness Profile
 	</h1>
 	<ol class="breadcrumb">
 		<li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
 		<li><a href="#">Examples</a></li>
-		<li class="active">Physio Note For Physio Fitness</li>
+		<li class="active">Trainee fitness profile</li>
 	</ol>
 </section>
 
 <!-- Main content -->
 <section class="content">
 
-	<div class="row">
-		<!-- left column -->
-		<div class="col-md-3">
-			<!-- Profile Image -->
-			<div class="box box-primary">
-				<div class="box-body box-profile">
-
-					<img class="profile-user-img img-responsive img-circle" src="" alt="Trainee profile picture">
-
-
-					<h3 class="profile-username text-center"></h3>
-
-					<p class="text-muted text-center">Trainee</p>
-
-					<ul class="list-group list-group-unbordered">
-						<li class="list-group-item">
-							<b>Name</b> <a class="pull-right"></a>
-						</li>
-						<li class="list-group-item">
-							<b>Email</b> <a class="pull-right"></a>
-						</li>
-					</ul>
-				</div>
-				<!-- /.box-body -->
-			</div>
-		</div>
-		<div class="col-md-9">
-			<!-- general form elements -->
-			<div class="box box-primary">
-				<div class="box-header with-border">
-					<h3 class="box-title">Physio Note Entry</h3>
-				</div>
-				<!-- /.box-header -->
-				@include("partial.notification")
-				<!-- form start -->
-				<form role="form" action="" method="post" enctype="multipart/form-data">
-
-					<div class="box-body">
-						<small>required = *</small>
-						<div class="form-group">
-							<label for="name">Problem name: *</label>
-							<input type="text" class="form-control" id="name" name="name" placeholder="Enter Full name"value="{{old('name')}}">
-						</div>
-
-						<div class="form-group">
-							<label for="physio_note"> Physio Note: *</label>
-							<textarea name="physio_note" id="physio_note" cols="30" rows="10" class="form-control" placeholder="Enter physio note"></textarea>
-						</div>
-
-
-						<!-- /.box-body -->
-
-						<div class="box-footer">
-							<button type="submit" class="btn btn-primary">Submit</button>
-						</div>
-					</div>
-				</form>	
-			</div>
-		</div>
-		<!-- /.box-body -->
-	</div>
 
 
 	<div class="row">
-		<div class="col-md-3">
-			<!-- Profile Image -->
+		<div class="col-md-1">
+
 			
-			<!-- /.box -->
 		</div>
+			<!-- /.box -->
 		<!-- /.col -->
-		<div class="col-md-9">
+		<div class="col-md-11">
 			<div class="box">
 				<!-- /.box-header -->
 				<div class="box-body">
@@ -100,39 +39,38 @@
 						<thead>
 							<tr>
 								<th>ID</th>
-								<th>Problem Name</th>
+								<th>Trainee Name</th>
 								<th>physio Note</th>
-								<th>Trainee Comment</th>
 								<th>Action</th>
 							</tr>
 						</thead>
 						<tbody>
-
+							@foreach($trainees as $trainee)
 							<tr>
-								<td>1</td>
-								<td>Hade Pain</td>
-								<td>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eligendi perferendis aut praesentium, nostrum odio vitae tempora, commodi quos modi molestiae qui quisquam ex natus aperiam temporibus aliquid, neque tempore magni.</td>
-								<td>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eligendi perferendis aut praesentium, nostrum odio vitae tempora, commodi quos modi molestiae qui quisquam ex natus aperiam temporibus aliquid, neque tempore magni.</td>
+								<td>{{ $trainee->id }}</td>
+								<td>{{ $trainee->name }}</td>
+								<td>
+									@if($trainee->fitnesses->last()) 
+										{{ $trainee->fitnesses->last()->physio_note }}
+									@else
+										no fitness added
+									@endif
+								</td>
+								
 								<td>
 									<div class="btn-group">
-										<a href="" class="btn btn-default">Edit</a>
-										<form role="form" action="" method="post">
-											@csrf
-											@method('DELETE ')
-											<button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this Category?');">Delete</button>
-										</form>
+										<a href="{{route('physio.traineefitnessnote', $trainee->id)}}" class="btn btn-block btn-primary">Show</a>
 
 									</div>
 								</td>
 							</tr>
-
+							@endforeach
 						</tbody>
 						<tfoot>
 							<tr>
 								<th>ID</th>
-								<th>Problem Name</th>
-								<th>Player Comment</th>
-								<th>Trainee Note</th>
+								<th>Trainee Name</th>
+								<th>physio Note</th>
 								<th>Action</th>
 							</tr>
 						</tfoot>
@@ -140,11 +78,14 @@
 				</div>
 				<!-- /.box-body -->
 			</div>
+			<!-- /.nav-tabs-custom -->
 		</div>
+		<!-- /.col -->
 	</div>
+	<!-- /.row -->
 
-</section>
-<!-- /.content -->
+	</section>
+	<!-- /.content -->
 
 @endsection  
 
@@ -154,18 +95,17 @@
 <script src="{{ asset('admin/bower_components/datatables.net/js/jquery.dataTables.min.js') }}"></script>
 <script src="{{ asset('admin/bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js') }}"></script>
 <script>
-	$(function () {
-		$('#example1').DataTable()
-		$('#example2').DataTable({
-			'paging'      : true,
-			'lengthChange': false,
-			'searching'   : false,
-			'ordering'    : true,
-			'info'        : true,
-			'autoWidth'   : false
-		})
-	})
+    $(function () {
+        $('#example1').DataTable()
+        $('#example2').DataTable({
+            'paging'      : true,
+            'lengthChange': false,
+            'searching'   : false,
+            'ordering'    : true,
+            'info'        : true,
+            'autoWidth'   : false
+        })
+    })
 </script>
 
 @endsection 
-

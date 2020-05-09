@@ -22,12 +22,28 @@
 
 @section('content')
 
+@if(Auth::guard('coach')->check())
+@php 
+    $route = "coach";
+@endphp
+@elseif(Auth::guard('physio')->check())
+@php 
+    $route = "physio";
+@endphp
+@elseif(Auth::guard('player')->check())
+@php 
+    $route = "player";
+@endphp
+@elseif(Auth::guard('trainee')->check())
+@php 
+    $route = "trainee";
+@endphp
+@endif
 <section class="content-header">
 	<h1></h1>
-	<a href="{{ route('admin.player.create')}}" class="btn btn-primary">Add new Player</a>
 	<ol class="breadcrumb">
-		<li><a href="{{ route('admin.admin.dashboard') }}"><i class="fa fa-dashboard"></i> Home</a></li>
-        <li><a href="{{ route('admin.player.index') }}">Player</a></li>
+		<li><a href="{{ route($route.'.dashboard') }}"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li><a href="{{ route($route.'.player') }}">Player</a></li>
         <li class="active">Show Player</li>
     </ol>
 </section>
@@ -119,15 +135,6 @@
                     </tr>
                 </tbody>
             </table>
-            <div class="btn-group">
-                <a href="{{ route('admin.player.show', $player->id) }}" class="btn btn-info"><i class="fa fa-eye"></i> Show</a>
-                <a href="{{ route('admin.player.edit', $player->id) }}" class="btn btn-success"><i class="fa fa-edit"> Edit</i></a>
-                <form role="form" action="{{ route('admin.player.destroy', $player->id) }}" method="post">
-                 @csrf
-                 @method('DELETE ')
-                 <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this Category?');"><i class="fa  fa-trash"></i> Delete</button>
-             </form>
-         </div>
            </div>
       </div>
      </div>

@@ -192,9 +192,9 @@ Route::middleware("auth:physio")->namespace('Physio')->prefix('physio')->name('p
 	Route::get('playerfitnessnote/{id}', 'PlayerfitnessController@show')->name("playerfitnessnote");
 	Route::post('playerfitnessnote/{id}', 'PlayerfitnessController@add_player_fitness')->name("playerfitnessnote.post");
 
-	Route::get('teaineefitness', function () {
-	    return view('physio.trainee-fitness.index');
-	})->name("teaineefitness");
+	Route::get('traineefitness', 'TraineefitnessController@index')->name("traineefitness");
+	Route::get('traineefitnessnote/{id}', 'TraineefitnessController@show')->name("traineefitnessnote");
+	Route::post('traineefitnessnote/{id}', 'TraineefitnessController@add_player_fitness')->name("traineefitnessnote.post");
 
 });
 

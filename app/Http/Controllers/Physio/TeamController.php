@@ -18,7 +18,7 @@ class TeamController extends Controller
     public function index()
     {
          $teams= Team::latest()->get();
-         return view('physio.team.index', compact('teams'));
+         return view('common.team.index', compact('teams'));
     }
 
    
@@ -33,7 +33,7 @@ class TeamController extends Controller
         $team = Team::findOrFail($id);
         $coaches = Coach::latest()->get(); 
         $physios = Physio::latest()->get();
-        return view('physio.team.team-profile', compact('team', 'coaches', 'physios'));
+        return view('common.team.team-profile', compact('team', 'coaches', 'physios'));
     }
 
    

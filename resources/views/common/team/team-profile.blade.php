@@ -1,5 +1,5 @@
 @extends('layouts.admin')
-@section('title') Turnament Profile @endsection
+@section('title') Team Profile @endsection
 @section('css') 
 <style>
 	body {
@@ -51,16 +51,33 @@
 
 @section('content')
 
+@if(Auth::guard('coach')->check())
+@php 
+    $route = "coach";
+@endphp
+@elseif(Auth::guard('physio')->check())
+@php 
+    $route = "physio";
+@endphp
+@elseif(Auth::guard('player')->check())
+@php 
+    $route = "player";
+@endphp
+@elseif(Auth::guard('trainee')->check())
+@php 
+    $route = "trainee";
+@endphp
+@endif
 <!-- Content Header (Page header) -->
 <section class="content-header">
 	<h1>
-		Turnament Profile
+		Team Profile
 	</h1>
-	<ol class="breadcrumb">
-		<li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-		<li><a href="#">Examples</a></li>
-		<li class="active">Turnament profile</li>
-	</ol>
+    <ol class="breadcrumb">
+        <li><a href="{{route($route . '.dashboard')}}"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li><a href="{{route($route . '.team')}}"><i class="fa fa-dashboard"></i> Team</a></li>
+        <li class="active">Team Profile</li>
+    </ol>
 </section>
 
 <!-- Main content -->
@@ -74,51 +91,46 @@
 			<!-- Profile Image -->
 			<div class="box box-primary">
 				<div class="box-body box-profile">
+
+					<img class="profile-user-img img-responsive img-circle" src="{{ asset($team->logo) }}" alt="Team Name profile picture">
+
 					<h3 class="profile-username text-center"></h3>
 
-					<p class="text-muted text-center">Turnament</p>
+					<p class="text-muted text-center">Club Team</p>
 
 					<ul class="list-group list-group-unbordered">
 						<li class="list-group-item">
-							<b>Turnament Name</b> <a class="pull-right">{{$turnament->name}}</a>
+							<b>Team Name</b> <a class="pull-right">{{ $team->name }}</a>
 						</li>
 						<li class="list-group-item">
-							<b>Game Played</b> <a class="pull-right">{{$turnament->start_date}}</a>
+							<b>Team Captain</b> <a class="pull-right">{{ $team->captain }}</a>
 						</li>
 						<li class="list-group-item">
-							<b>Win</b> <a class="pull-right">{{$turnament->end_date}}</a>
+							<b>Team coach</b> <a class="pull-right">{{ $team->coach ? $team->coach->name : "" }}</a>
 						</li>
 						<li class="list-group-item">
-							<b>Drow</b> <a class="pull-right"></a>
-						</li>
-						<li class="list-group-item">
-							<b>Lost</b> <a class="pull-right"></a>
-						</li>
-						<li class="list-group-item">
-							<b> Goals For</b> <a class="pull-right"></a>
-						</li>
-						<li class="list-group-item">
-							<b> Goals Against</b> <a class="pull-right"></a>
-						</li>
-						<li class="list-group-item">
-							<b>Goal Difference</b> <a class="pull-right"></a>
-						</li>
-						<li class="list-group-item">
-							<b>PTS</b> <a class="pull-right"></a>
-						</li>
-						<!-- <li class="list-group-item">
-							<b>Turnament</b> <a class="pull-right"></a>
-						</li> -->
-						<!-- <li class="list-group-item">
-							<b>Team Goal</b> <a class="pull-right"></a>
-						</li> -->
-						<li class="list-group-item">
-							<b>Form</b> <a class="pull-right">W=!</a>
+							<b>Team physio</b> <a class="pull-right">{{ $team->physio ? $team->physio->name : "" }}</a>
 						</li>
 						
+						<li class="list-group-item">
+							<b>Game Played</b> <a class="pull-right">{{ count($team->matchs) }} Matches</a>
+						</li>
+						<li class="list-group-item">
+							<b>Win</b> <a class="pull-right">{{ $team->getMatchsResult()["win"] }}</a>
+						</li>
+						<li class="list-group-item">
+							<b>Drow</b> <a class="pull-right">{{ $team->getMatchsResult()["drow"] }}</a>
+						</li>
+						<li class="list-group-item">
+							<b>Lost</b> <a class="pull-right">{{ $team->getMatchsResult()["lost"] }}</a>
+						</li>
+						<li class="list-group-item">
+							<b> Goals For</b> <a class="pull-right">{{ $team->getMatchsResult()["gf"] }}</a>
+						</li>
+						<li class="list-group-item">
+							<b> Goals Against</b> <a class="pull-right">{{ $team->getMatchsResult()["ga"] }}</a>
+						</li>						
 					</ul>
-
-
 				</div>
 				<!-- /.box-body -->
 			</div>
@@ -128,19 +140,18 @@
 		<!-- /.col -->
 		<div class="col-md-3">
 			@include("partial.notification")
-			<!-- <div class="nav-tabs-custom">
+			<div class="nav-tabs-custom">
 				<div class="flip-card">
 					<div class="flip-card-inner">
 						<div class="flip-card-front">
-							<img src="img_avatar.png" alt="Avatar" style="width:300px;height:300px;">
+							<img src="{{ asset($team->logo) }}" alt="Avatar" style="width:300px;height:300px;">
 						</div>
 						<div class="flip-card-back">
-							<h1>John Doe</h1> 
-							<p>Architect & Engineer</p> 
-							<p>We love that guy</p>
+							<h1>{{ $team->name }}</h1> 
+							<p>Captain:{{ $team->captain }}</p>
 						</div>
 					</div>
-				</div> -->
+				</div>
 			</div>
 			<!-- /.nav-tabs-custom -->
 
@@ -153,4 +164,3 @@
 <!-- /.content -->
 
 @endsection   
-

@@ -14,11 +14,28 @@
 
 @section('content')
 
+@if(Auth::guard('coach')->check())
+@php 
+    $route = "coach";
+@endphp
+@elseif(Auth::guard('physio')->check())
+@php 
+    $route = "physio";
+@endphp
+@elseif(Auth::guard('player')->check())
+@php 
+    $route = "player";
+@endphp
+@elseif(Auth::guard('trainee')->check())
+@php 
+    $route = "trainee";
+@endphp
+@endif
 <section class="content-header">
     <h1> Show Player page</h1>
     
     <ol class="breadcrumb">
-        <li><a href="{{route('admin.admin.dashboard')}}"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li><a href="{{route( $route .'.dashboard')}}"><i class="fa fa-dashboard"></i> Home</a></li>
         <li class="active">Player</li>
     </ol>
 </section>
@@ -51,7 +68,7 @@
                     <td>{{ $player->email }}</td>
                     <td>
                         <div class="btn-group">
-                            <a href="{{ route('physio.playerprofile', $player->id)  }}" class="btn btn-block btn-primary">Show</a>
+                            <a href="{{ route( $route .'.playerprofile', $player->id)  }}" class="btn btn-block btn-primary">Show</a>
                         </div>
                     </td>
                 </tr>

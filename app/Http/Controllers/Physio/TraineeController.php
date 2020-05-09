@@ -11,12 +11,12 @@ class TraineeController extends Controller
     public function index()
     {
         $trainees = Trainee::latest()->get();
-        return view('physio.trainee.index', compact('trainees'));
+        return view('common.trainee.index', compact('trainees'));
     }
 
     public function show($id)
     {
         $trainee = Trainee::findOrFail($id);
-        return view('admin.trainee.show', compact('trainee'));
+        return view('common.trainee.show', compact('trainee'));
     }
 }

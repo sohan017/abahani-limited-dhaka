@@ -27,6 +27,42 @@
 					<span>Dashboard</span>
 				</a>
 			</li>
+			<li>
+				<a href="{{ route('physio.playerfitness')}}">
+					<i class="fa fa-dashboard"></i> 
+					<span>Playerfitness</span>
+				</a>
+			</li>
+			<li>
+				<a href="{{ route('physio.traineefitness')}}">
+					<i class="fa fa-dashboard"></i> 
+					<span>Teaineefitness</span>
+				</a>
+			</li>
+			<li>
+				<a href="{{ route('physio.trainee')}}">
+					<i class="fa fa-dashboard"></i> 
+					<span>Trainees</span>
+				</a>
+			</li>
+			<li>
+				<a href="{{ route('physio.player')}}">
+					<i class="fa fa-dashboard"></i> 
+					<span>Players</span>
+				</a>
+			</li>
+			<li>
+				<a href="{{ route('physio.team')}}">
+					<i class="fa fa-dashboard"></i> 
+					<span>Teams</span>
+				</a>
+			</li>
+			<li>
+				<a href="{{ route('physio.turnament')}}">
+					<i class="fa fa-dashboard"></i> 
+					<span>Turnaments</span>
+				</a>
+			</li>
 			@elseif(Auth::guard('player')->check())
 			<li class="header">PLAYER MAIN NAVIGATION</li>
 			@elseif(Auth::guard('subscriber')->check())

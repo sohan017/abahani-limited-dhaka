@@ -16,7 +16,7 @@ class TurnamentController extends Controller
     public function index()
     {
         $turnaments= Turnament::latest()->get();
-        return view('physio.turnament.index', compact('turnaments'));
+        return view('common.turnament.index', compact('turnaments'));
     }
 
    
@@ -29,7 +29,7 @@ class TurnamentController extends Controller
     public function show($id)
     {
         $turnament = Turnament::findOrFail($id);
-        return view('physio.turnament.turnament-profile', compact('turnament'));
+        return view('common.turnament.turnament-profile', compact('turnament'));
     }
 
    

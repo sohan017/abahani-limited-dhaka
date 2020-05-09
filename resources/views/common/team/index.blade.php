@@ -1,6 +1,6 @@
 @extends('layouts.admin')
 
-@section('title') Turnament List @endsection
+@section('title') Team List @endsection
 
 @section("css")
 <link rel="stylesheet" href="{{ asset('admin/bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css') }}">
@@ -8,12 +8,29 @@
 
 @section('content')
 
+@if(Auth::guard('coach')->check())
+@php 
+    $route = "coach";
+@endphp
+@elseif(Auth::guard('physio')->check())
+@php 
+    $route = "physio";
+@endphp
+@elseif(Auth::guard('player')->check())
+@php 
+    $route = "player";
+@endphp
+@elseif(Auth::guard('trainee')->check())
+@php 
+    $route = "trainee";
+@endphp
+@endif
 <section class="content-header">
-    <h1> Show Turnament page</h1>
+    <h1> Show Team page</h1>
     
     <ol class="breadcrumb">
-        <li><a href="{{route('admin.admin.dashboard')}}"><i class="fa fa-dashboard"></i> Home</a></li>
-        <li class="active">Turnament</li>
+        <li><a href="{{route($route . '.dashboard')}}"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li class="active">Team</li>
     </ol>
 </section>
 <!-- Main content -->
@@ -27,35 +44,28 @@
         <!-- /.box-header -->
         <div class="box-body">
             <table id="example1" class="table table-bordered table-striped">
-                <thead>
+                 <thead>
                     <tr>
                         <th>ID</th>
-                        <th>Turnament Name</th>
-                        <th>Turnament Start Date</th>
-                        <th>Turnament End Date</th>
-                        <!-- <th>Game Played</th>
-                        <th>Win</th>
-                        <th>Drow</th>
-                        <th>Lost</th>
-                        <th>PTS</th> -->
+                        <th>Team Name</th>
+                        <th>Captain Name</th>
+                        <th>Coach Name</th>
+                        <th>Physio Name</th>
                         <th>Action</th>
                     </tr>
                 </thead>
                 <tbody>
-                  @foreach($turnaments as $turnament)  
-                  <tr>
-                    <td>{{$turnament->id}}</td>
-                    <td>{{$turnament->name}}</td>
-                    <td>{{$turnament->start_date}}</td>
-                    <td>{{$turnament->end_date}}</td>
-                        <!-- <td>42</td>
-                        <td>12</td>
-                        <td>6</td>
-                        <td>95</td> -->
+                    @foreach($teams as $team)
+                    <tr>
+                        <td>{{ $team->id }}</td>
+                        <td>{{ $team->name }}</td>
+                        <td>{{ $team->captain }}</td>
+                        <td>{{ $team->coach ? $team->coach->name : "N/A" }}</td>
+                        <td>{{ $team->physio ? $team->physio->name : "N/A"}}</td>
                         <td>
                             <div class="btn-group">
-                                <a href="{{ route('physio.turnamentprofile', $turnament->id) }}" class="btn btn-block btn-primary">Show</a>
-                                
+                                <a href="{{ route($route.'.teamprofile', $team->id) }}" class="btn btn-block btn-info"><i class="fa fa-eye"></i> Show</a>
+                               
                             </div>
                         </td>
                     </tr>
@@ -63,15 +73,11 @@
                 </tbody>
                 <tfoot>
                     <tr>
-                     <th>ID</th>
-                     <th>Turnament Name</th>
-                     <th>Turnament Start Date</th>
-                     <th>Turnament End Date</th>
-                        <!-- <th>Point</th>
-                        <th>Win</th>
-                        <th>Drow</th>
-                        <th>Lost</th>
-                        <th>PTS</th> -->
+                       <th>ID</th>
+                        <th>Team Name</th>
+                        <th>Captain Name</th>
+                        <th>Coach Name</th>
+                        <th>Physio Name</th>
                         <th>Action</th>
                     </tr>
                 </tfoot>

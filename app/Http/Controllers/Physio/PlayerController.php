@@ -20,7 +20,7 @@ class PlayerController extends Controller
     public function index()
     {
         $players= Player::latest()->get();
-        return view('physio.player.index', compact('players'));
+        return view('common.player.index', compact('players'));
     }
 
     
@@ -36,9 +36,7 @@ class PlayerController extends Controller
         $player = Player::findOrFail($id);
         $playerTypes = Playertype::latest()->get();
         $teams = Team::latest()->get();
-        $goals = Goal::latest()->get();
-        $turnaments = Turnament::latest()->get();
-        return view('physio.player.player-profile', compact('player', 'playerTypes', 'teams', 'goals', 'turnaments'));
+        return view('common.player.show', compact('player', 'playerTypes', 'teams'));
     }
 
 

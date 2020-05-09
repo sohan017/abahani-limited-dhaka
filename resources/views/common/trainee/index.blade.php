@@ -8,11 +8,28 @@
 
 @section('content')
 
+@if(Auth::guard('coach')->check())
+@php 
+    $route = "coach";
+@endphp
+@elseif(Auth::guard('physio')->check())
+@php 
+    $route = "physio";
+@endphp
+@elseif(Auth::guard('player')->check())
+@php 
+    $route = "player";
+@endphp
+@elseif(Auth::guard('trainee')->check())
+@php 
+    $route = "trainee";
+@endphp
+@endif
 <section class="content-header">
     <h1> Show Tarinee page</h1>
     <a href="" class="btn btn-primary">Add new Tarinee</a>
     <ol class="breadcrumb">
-        <li><a href="{{route('admin.admin.dashboard')}}"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li><a href="{{route($route.'.dashboard')}}"><i class="fa fa-dashboard"></i> Home</a></li>
         <li class="active">Tarinee</li>
     </ol>
 </section>
