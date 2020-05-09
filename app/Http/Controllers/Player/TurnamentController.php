@@ -16,11 +16,10 @@ class TurnamentController extends Controller
     public function index()
     {
         $turnaments= Turnament::latest()->get();
-        return view('player.turnament.index', compact('turnaments'));
+        return view('common.turnament.index', compact('turnaments'));
     }
 
    
-
     /**
      * Display the specified resource.
      *
@@ -30,8 +29,6 @@ class TurnamentController extends Controller
     public function show($id)
     {
         $turnament = Turnament::findOrFail($id);
-        return view('player.turnament.turnament-profile', compact('turnament'));
+        return view('common.turnament.turnament-profile', compact('turnament'));
     }
-
-    
 }

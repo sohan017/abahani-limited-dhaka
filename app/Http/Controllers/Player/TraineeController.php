@@ -8,13 +8,17 @@ use App\Trainee;
 
 class TraineeController extends Controller
 {
-    public  function index()
+    public function index()
     {
-    	$trainees= Trainee::latest()->get();
-    	return view('player.trainee.index', compact('trainees'));
+        $trainees = Trainee::latest()->get();
+        return view('common.trainee.index', compact('trainees'));
     }
 
-   
+    public function show($id)
+    {
+        $trainee = Trainee::findOrFail($id);
+        return view('common.trainee.show', compact('trainee'));
+    }
 }
 
 

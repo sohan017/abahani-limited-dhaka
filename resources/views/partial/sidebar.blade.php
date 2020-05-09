@@ -95,6 +95,36 @@
 			</li>
 			@elseif(Auth::guard('player')->check())
 			<li class="header">PLAYER MAIN NAVIGATION</li>
+			<li>
+				<a href="{{ route('player.dashboard')}}">
+					<i class="fa fa-dashboard"></i> 
+					<span>Dashboard</span>
+				</a>
+			</li>
+			<li>
+				<a href="{{ route('player.trainee')}}">
+					<i class="fa fa-dashboard"></i> 
+					<span>Trainees</span>
+				</a>
+			</li>
+			<li>
+				<a href="{{ route('player.player')}}">
+					<i class="fa fa-dashboard"></i> 
+					<span>Players</span>
+				</a>
+			</li>
+			<li>
+				<a href="{{ route('player.team')}}">
+					<i class="fa fa-dashboard"></i> 
+					<span>Teams</span>
+				</a>
+			</li>
+			<li>
+				<a href="{{ route('player.turnament')}}">
+					<i class="fa fa-dashboard"></i> 
+					<span>Turnaments</span>
+				</a>
+			</li>
 			@elseif(Auth::guard('subscriber')->check())
 			<li class="header">SUBSCRIBER MAIN NAVIGATION</li>
 			@elseif(Auth::guard('trainee')->check())

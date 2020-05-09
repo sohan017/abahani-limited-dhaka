@@ -145,7 +145,6 @@ Route::middleware("auth:physio")->namespace('Physio')->prefix('physio')->name('p
 	Route::post("profile", "ProfileController@update")->name("profile.update");
 	Route::post("profile/change-password", "ProfileController@changePassword")->name("profile.change.password");
 
-
 	Route::get('trainee', "TraineeController@index")->name("trainee");
 	Route::get('traineeprofile/{id}', "TraineeController@show")->name("traineeprofile");
 
@@ -180,22 +179,16 @@ Route::middleware("auth:player")->namespace('Player')->prefix('player')->name('p
 	})->name("physionote"); 
 
 	Route::get('trainee', "TraineeController@index")->name("trainee");
-	// Route::get('traineeprofile', "TraineeController@show")->name("traineeprofile");
-
+	Route::get('traineeprofile/{id}', "TraineeController@show")->name("traineeprofile");
 
 	Route::get('player', "PlayerController@index")->name("player");
 	Route::get('playerprofile/{id}', "PlayerController@show")->name("playerprofile");
 
-
 	Route::get('team', "TeamController@index")->name("team");
 	Route::get('teamprofile/{id}', "TeamController@show")->name("teamprofile");
 
-	
-
 	Route::get('turnament',"TurnamentController@index")->name("turnament");
 	Route::get('turnamentprofile/{id}',"TurnamentController@show")->name("turnamentprofile");
-
-
 });
 
 Route::middleware(["auth:subscriber"])->namespace('Subscriber')->prefix('subscriber')->name('subscriber.')->group(function () {
