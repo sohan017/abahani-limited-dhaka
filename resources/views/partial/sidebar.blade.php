@@ -19,6 +19,36 @@
 			
 			@elseif(Auth::guard('coach')->check())
 			<li class="header">COACH MAIN NAVIGATION</li>
+			<li>
+				<a href="{{ route('physio.dashboard')}}">
+					<i class="fa fa-dashboard"></i> 
+					<span>Dashboard</span>
+				</a>
+			</li>
+			<li>
+				<a href="{{ route('coach.trainee')}}">
+					<i class="fa fa-dashboard"></i> 
+					<span>Trainees</span>
+				</a>
+			</li>
+			<li>
+				<a href="{{ route('coach.player')}}">
+					<i class="fa fa-dashboard"></i> 
+					<span>Players</span>
+				</a>
+			</li>
+			<li>
+				<a href="{{ route('coach.team')}}">
+					<i class="fa fa-dashboard"></i> 
+					<span>Teams</span>
+				</a>
+			</li>
+			<li>
+				<a href="{{ route('coach.turnament')}}">
+					<i class="fa fa-dashboard"></i> 
+					<span>Turnaments</span>
+				</a>
+			</li>
 			@elseif(Auth::guard('physio')->check())
 			<li class="header">PHYSIO MAIN NAVIGATION</li>
 			<li>

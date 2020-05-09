@@ -60,7 +60,7 @@
                         <td>{{ $trainee->con_num }}</td>
                         <td>
                             <div class="btn-group">
-                                <a href="{{ route('physio.traineeprofile', $trainee->id) }}" class="btn btn-block btn-primary">Show</a>
+                                <a href="{{ route($route.'.traineeprofile', $trainee->id) }}" class="btn btn-block btn-primary">Show</a>
                                 
                             </div>
                         </td>

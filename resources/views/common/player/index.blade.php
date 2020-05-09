@@ -68,7 +68,7 @@
                     <td>{{ $player->email }}</td>
                     <td>
                         <div class="btn-group">
-                            <a href="{{ route( $route .'.playerprofile', $player->id)  }}" class="btn btn-block btn-primary">Show</a>
+                            <a href="{{ route( $route . '.playerprofile', $player->id)  }}" class="btn btn-block btn-primary">Show</a>
                         </div>
                     </td>
                 </tr>

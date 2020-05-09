@@ -49,7 +49,6 @@
 <!-- Main content -->
 <section class="content">
     <div class="row">
-        <div class="col-md-1"></div>
         <div class="col-md-6">
 
             <div class="box">
@@ -153,7 +152,50 @@
                 <!-- /.box-body -->
             </div>
         </div>
-        <div class="col-md-5"></div>
+        <div class="col-md-1"></div>
+        @if(Auth::guard('coach')->check())
+        <div class="col-md-5">
+            <br>
+            <br>
+            <br>
+            <br>
+			<div class="box">
+				<!-- /.box-header -->
+                <div class="box-header">
+                    <h3 class="box-title">Trainee Fitness</h3>
+                </div>
+				<div class="box-body">
+					<table id="example1" class="table table-bordered table-striped">
+						<thead>
+							<tr>
+								<th>ID</th>
+								<th>Physio</th>
+								<th>Note</th>
+							</tr>
+						</thead>
+						<tbody>
+							@foreach($trainee->fitnesses as $fitness)
+							<tr>
+								<td>{{ $fitness->id }}</td>
+								<td>{{ $fitness->physio ? $fitness->physio->name : "" }} </td>
+								<td>{{ $fitness->physio_note }} </td>
+								<td>
+							</tr>
+							@endforeach
+						</tbody>
+						<tfoot>
+							<tr>
+								<th>ID</th>
+								<th>Physio</th>
+								<th>Note</th>
+							</tr>
+						</tfoot>
+					</table>
+				</div>
+				<!-- /.box-body -->
+			</div>
+        </div>
+        @endif
     </div>
 
 </section>

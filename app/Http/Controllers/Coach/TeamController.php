@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Http\Controllers\Physio;
+namespace App\Http\Controllers\Coach;
 
-use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
-use App\Team;
 use App\Coach;
+use App\Http\Controllers\Controller;
 use App\Physio;
+use App\Team;
+use Illuminate\Http\Request;
 
 class TeamController extends Controller
 {

@@ -124,48 +124,18 @@ Route::middleware("auth:coach")->namespace('Coach')->prefix('coach')->name('coac
 	Route::get("profile", "ProfileController@edit")->name('profile');
 	Route::post("profile", "ProfileController@update")->name("profile.update");
 	Route::post("profile/change-password", "ProfileController@changePassword")->name("profile.change.password");
-	Route::get('coachtrainee', function () {
-	    return view('coach.trainee.index');
-	})->name("coachtrainee");
 
-	Route::get('traineeprofile', function () {
-	    return view('coach.trainee.trainee-profile');
-	})->name("traineeprofile");
+	Route::get('trainee', "TraineeController@index")->name("trainee");
+	Route::get('traineeprofile/{id}', "TraineeController@show")->name("traineeprofile");
 
+	Route::get('player', "PlayerController@index")->name("player");
+	Route::get('playerprofile/{id}', "PlayerController@show")->name("playerprofile");
 
-	Route::get('coachplayer', function () {
-	    return view('coach.player.index');
-	})->name("coachplayer");
+	Route::get('team', "TeamController@index")->name("team");
+	Route::get('teamprofile/{id}', "TeamController@show")->name("teamprofile");
 
-	Route::get('playerprofile', function () {
-	    return view('coach.player.player-profile');
-	})->name("playerprofile");
-
-	Route::get('team', function () {
-	    return view('coach.team.index');
-	})->name("team");
-
-	Route::get('teamprofile', function () {
-	    return view('coach.team.team-profile');
-	})->name("teamprofile");
-
-
-	Route::get('turnament', function () {
-	    return view('coach.turnament.index');
-	})->name("turnament");
-
-
-	Route::get('turnamentprofile', function () {
-	    return view('coach.turnament.turnament-profile');
-	})->name("turnamentprofile");
-
-	Route::get('player_physionote', function () {
-	    return view('coach.player-fitness.index');
-	})->name("physionote");
-
-	Route::get('trainee_physionote', function () {
-	    return view('coach.trainee-fitness.index');
-	})->name("trainee_physionote");
+	Route::get('turnament',"TurnamentController@index")->name("turnament");
+	Route::get('turnamentprofile/{id}',"TurnamentController@show")->name("turnamentprofile");
 });
 
 Route::middleware("auth:physio")->namespace('Physio')->prefix('physio')->name('physio.')->group(function () {

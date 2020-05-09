@@ -1,14 +1,12 @@
 <?php
 
-namespace App\Http\Controllers\Physio;
+namespace App\Http\Controllers\Coach;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
 use App\Player;
 use App\Playertype;
 use App\Team;
-use App\Goal;
-use App\Turnament;
+use Illuminate\Http\Request;
 
 class PlayerController extends Controller
 {

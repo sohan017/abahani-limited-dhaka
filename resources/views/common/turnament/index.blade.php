@@ -63,7 +63,7 @@
                     <td>{{$turnament->end_date}}</td>
                         <td>
                             <div class="btn-group">
-                                <a href="{{ route('physio.turnamentprofile', $turnament->id) }}" class="btn btn-block btn-primary">Show</a>
+                                <a href="{{ route($route.'.turnamentprofile', $turnament->id) }}" class="btn btn-block btn-primary">Show</a>
                                 
                             </div>
                         </td>
