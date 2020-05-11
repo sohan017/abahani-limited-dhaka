@@ -127,6 +127,12 @@
 			</li>
 			@elseif(Auth::guard('subscriber')->check())
 			<li class="header">SUBSCRIBER MAIN NAVIGATION</li>
+			<li>
+				<a href="{{ route('subscriber.dashboard')}}">
+					<i class="fa fa-dashboard"></i> 
+					<span>Order History</span>
+				</a>
+			</li>
 			@elseif(Auth::guard('trainee')->check())
 			<li class="header">TRAINEE MAIN NAVIGATION</li>
 			@else

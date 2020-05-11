@@ -21,17 +21,9 @@ Route::get('/', function () {
 Route::get('ticket', function () {
 	    return view('website.website.ticket');
 	})->name("ticket");
-
-Route::get('ticketdetail/{id}', 'TicketController@ticketdetail')->name("ticketdetail");
-Route::post('ticket/buy', 'PaymentController@ticketbuy')->name("ticketbuy");
-Route::any('success', 'PaymentController@success')->name("success");
-Route::any('pricing', 'PaymentController@pricing')->name("pricing");
-
-
 Route::get('payment', function () {
 	    return view('website.website.payment');
 	})->name("payment");
-
 
 
 Route::get('/clr', function () {
@@ -41,6 +33,11 @@ Route::get('/clr', function () {
     Artisan::call('view:clear');
     return 'Cleared!';
  });
+
+Route::get('ticketdetail/{id}', 'TicketController@ticketdetail')->name("ticketdetail");
+Route::post('ticket/buy', 'PaymentController@ticketbuy')->name("ticketbuy");
+Route::any('success', 'PaymentController@success')->name("success");
+Route::any('cencel', 'PaymentController@cencel')->name("pricing");
 
 Auth::routes(['register' => false, 'verify' => true]);
 Route::get('/login/bidder', 'Auth\LoginController@showBidderLoginForm')->name("login.bidder");
@@ -197,13 +194,8 @@ Route::middleware(["auth:subscriber"])->namespace('Subscriber')->prefix('subscri
 	Route::get("profile", "ProfileController@edit")->name('profile');
 	Route::post("profile", "ProfileController@update")->name("profile.update");
 	Route::post("profile/change-password", "ProfileController@changePassword")->name("profile.change.password");
-	// Route::get("buyticket",{return view('buyticket.ticketorder');})->name('buyticket');
 
-	Route::get('buyticket', function () {
-	    return view('subscriber.buyticket.ticketorder');
-	})->name("buyticket");
-
-	// Route::get('/', function () {return view('welcome');})->name("home");
+	
 });
 
 Route::middleware("auth:trainee")->namespace('Trainee')->prefix('trainee')->name('trainee.')->group(function () {
