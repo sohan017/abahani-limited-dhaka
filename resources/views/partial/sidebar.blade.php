@@ -16,6 +16,24 @@
 		<ul class="sidebar-menu" data-widget="tree">
 			@if(Auth::guard('bidder')->check())
 			<li class="header">BIDDER MAIN NAVIGATION</li>
+			<li>
+				<a href="{{ route('bidder.dashboard')}}">
+					<i class="fa fa-dashboard"></i> 
+					<span>Auction</span>
+				</a>
+			</li>
+			<li>
+				<a href="{{ route('bidder.player.sold')}}">
+					<i class="fa fa-dashboard"></i> 
+					<span>Sold Player</span>
+				</a>
+			</li>
+			<li>
+				<a href="{{ route('bidder.my.player')}}">
+					<i class="fa fa-dashboard"></i> 
+					<span>My Player</span>
+				</a>
+			</li>
 			
 			@elseif(Auth::guard('coach')->check())
 			<li class="header">COACH MAIN NAVIGATION</li>

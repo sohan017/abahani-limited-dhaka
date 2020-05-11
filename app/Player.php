@@ -49,4 +49,17 @@ class Player extends Authenticatable
     {
     	return $this->hasMany(PlayerFitness::class);
     }
+
+    public function totalTurnament()
+    {
+        $total = 0;
+        $tur_ids = array();
+        $matches = $this->team->matchs;
+        foreach($matches as $matche){
+            if(!in_array($matche->turnament->id, $tur_ids)){
+                $tur_ids[] = $matche->turnament->id;
+            }
+        }
+        return count($tur_ids);
+    }
 }

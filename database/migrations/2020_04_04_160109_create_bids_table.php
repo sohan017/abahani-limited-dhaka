@@ -18,7 +18,6 @@ class CreateBidsTable extends Migration
             $table->integer('player_auction_id');
             $table->integer('bidder_id');
             $table->string('price');
-            $table->string('date_time');
             $table->timestamps();
         });
     }

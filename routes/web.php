@@ -97,6 +97,11 @@ Route::middleware("auth")->prefix('admin')->name('admin.')->group(function () {
 Route::middleware("auth:bidder")->namespace('Bidder')->prefix('bidder')->name('bidder.')->group(function () {
 
 	Route::get('/', 'DashboardController@index')->name('dashboard');
+	Route::get('player-auction/{id}', 'DashboardController@playerAuction')->name('player.auction');
+	Route::post('player-auction/{id}/bid', 'DashboardController@playerBid')->name('player.bid');
+	Route::get('my-player', 'DashboardController@myPlayer')->name('my.player');
+	Route::get('sold-player', 'DashboardController@soldPlayer')->name('player.sold');
+
 	Route::get("profile", "ProfileController@edit")->name('profile');
 	Route::post("profile", "ProfileController@update")->name("profile.update");
 	Route::post("profile/change-password", "ProfileController@changePassword")->name("profile.change.password");
@@ -194,8 +199,6 @@ Route::middleware(["auth:subscriber"])->namespace('Subscriber')->prefix('subscri
 	Route::get("profile", "ProfileController@edit")->name('profile');
 	Route::post("profile", "ProfileController@update")->name("profile.update");
 	Route::post("profile/change-password", "ProfileController@changePassword")->name("profile.change.password");
-
-	
 });
 
 Route::middleware("auth:trainee")->namespace('Trainee')->prefix('trainee')->name('trainee.')->group(function () {

@@ -20,6 +20,6 @@ class PlayerAuction extends Model
 
      public function bids()
      {
-     	return $this->hasMany(Bid::class);
+     	return $this->hasMany(Bid::class)->orderBy('created_at', "DESC");
      }
 }
