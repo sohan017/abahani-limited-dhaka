@@ -28,7 +28,7 @@
 <!-- Main content -->
 <section class="content">
 
-
+    @include("partial.notification")
     <div class="box">
         <div class="box-header">
             <h3 class="box-title">Data Table With Full Features</h3>

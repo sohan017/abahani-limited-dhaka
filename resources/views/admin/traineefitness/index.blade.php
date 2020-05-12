@@ -28,7 +28,7 @@
 </section>
 <!-- Main content -->
 <section class="content">
-
+    @include("partial.notification")
 
     <div class="box">
         <div class="box-header">
@@ -50,8 +50,8 @@
                     @foreach($traineefitnesses as $traineefitness)
                     <tr>
                         <td>{{ $traineefitness->id }}</td>
-                        <td>{{ $traineefitness->trainee->name }}</td>
-                        <td>{{ $traineefitness->physio->name }}</td>
+                        <td>{{ $traineefitness->trainee ? $traineefitness->trainee->name : '' }}</td>
+                        <td>{{ $traineefitness->physio ?  $traineefitness->physio->name : "" }}</td>
                         <td>{{ $traineefitness->is_feet ? "True" : "False" }}</td>
                         <td>
                             <div class="btn-group">
