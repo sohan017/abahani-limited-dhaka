@@ -105,19 +105,6 @@ Route::middleware("auth:bidder")->namespace('Bidder')->prefix('bidder')->name('b
 	Route::get("profile", "ProfileController@edit")->name('profile');
 	Route::post("profile", "ProfileController@update")->name("profile.update");
 	Route::post("profile/change-password", "ProfileController@changePassword")->name("profile.change.password");
-
-	Route::get('bid', function () {
-	    return view('bidder.bid.index');
-	})->name("bid");
-
-	Route::get('auctionplayer', function () {
-	    return view('bidder.auctionplayer.index');
-	})->name("auctionplayer");
-
-	Route::get('soldplayer', function () {
-	    return view('bidder.soldplayer.index');
-	})->name("soldplayer");
-
 });
 
 Route::middleware("auth:coach")->namespace('Coach')->prefix('coach')->name('coach.')->group(function () {
@@ -208,45 +195,18 @@ Route::middleware("auth:trainee")->namespace('Trainee')->prefix('trainee')->name
 	Route::post("profile", "ProfileController@update")->name("profile.update");
 	Route::post("profile/change-password", "ProfileController@changePassword")->name("profile.change.password");
 
+	Route::get('player', "PlayerController@index")->name("player");
+	Route::get('playerprofile/{id}', "PlayerController@show")->name("playerprofile");
+
+	Route::get('team', "TeamController@index")->name("team");
+	Route::get('teamprofile/{id}', "TeamController@show")->name("teamprofile");
+
+	Route::get('turnament',"TurnamentController@index")->name("turnament");
+	Route::get('turnamentprofile/{id}',"TurnamentController@show")->name("turnamentprofile");
+
 	Route::get('physionote', function () {
 	    return view('trainee.physionote.index');
 	})->name("physionote"); 
-
-	Route::get('trainee', function () {
-	    return view('trainee.trainee.index');
-	})->name("trainee");
-
-	Route::get('traineeprofile', function () {
-	    return view('trainee.trainee.trainee-profile');
-	})->name("traineeprofile");
-
-
-	Route::get('player', function () {
-	    return view('trainee.player.index');
-	})->name("player");
-
-	Route::get('playerprofile', function () {
-	    return view('trainee.player.player-profile');
-	})->name("playerprofile");
-
-	Route::get('team', function () {
-	    return view('trainee.team.index');
-	})->name("team");
-
-	Route::get('teamprofile', function () {
-	    return view('trainee.team.team-profile');
-	})->name("teamprofile");
-
-
-	Route::get('turnament', function () {
-	    return view('trainee.turnament.index');
-	})->name("turnament");
-
-
-	Route::get('turnamentprofile', function () {
-	    return view('player.turnament.turnament-profile');
-	})->name("turnamentprofile");
 });
 
-// websire route
 

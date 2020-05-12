@@ -153,6 +153,30 @@
 			</li>
 			@elseif(Auth::guard('trainee')->check())
 			<li class="header">TRAINEE MAIN NAVIGATION</li>
+			<li>
+				<a href="{{ route('trainee.dashboard')}}">
+					<i class="fa fa-dashboard"></i> 
+					<span>Dashboard</span>
+				</a>
+			</li>
+			<li>
+				<a href="{{ route('trainee.player')}}">
+					<i class="fa fa-dashboard"></i> 
+					<span>Players</span>
+				</a>
+			</li>
+			<li>
+				<a href="{{ route('trainee.team')}}">
+					<i class="fa fa-dashboard"></i> 
+					<span>Teams</span>
+				</a>
+			</li>
+			<li>
+				<a href="{{ route('trainee.turnament')}}">
+					<i class="fa fa-dashboard"></i> 
+					<span>Turnaments</span>
+				</a>
+			</li>
 			@else
 			<li class="header">ADMIN MAIN NAVIGATION</li>
 			<li>

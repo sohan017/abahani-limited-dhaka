@@ -118,26 +118,20 @@ class RegisterController extends Controller
             'city' => ['required', 'string', 'max:255'],
             'state' => ['required', 'string', 'max:255'],
             'country' => ['required', 'string', 'max:255'],
-            'nationality' => ['required', 'string', 'max:255'],
             'gender' => ['required', 'string', 'max:255'],
-            'hight' => ['required', 'string', 'max:255'],
-            'weight' => ['required', 'string', 'max:255'],
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:trainees'],
             'password' => ['required', 'string', 'min:6', 'confirmed'],
         ]);
-        $admin = Trainee::create([
+        Trainee::create([
             'contact_num' => $request['contact_num'],
+            'name' => $request['name'],
             'dob' => $request['dob'],
             'address' => $request['address'],
             'city' => $request['city'],
             'state' => $request['state'],
             'country' => $request['country'],
-            'nationality' => $request['nationality'],
             'gender' => $request['gender'],
-            'hight' => $request['hight'],
-            'weight' => $request['weight'],
-            'name' => $request['name'],
             'email' => $request['email'],
             'password' => Hash::make($request['password']),
         ]);
