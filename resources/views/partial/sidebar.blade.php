@@ -4,7 +4,21 @@
 		<!-- Sidebar user panel -->
 		<div class="user-panel">
 			<div class="pull-left image">
-				<img src="{{ asset('admin/dist/img/user2-160x160.jpg')}}" class="img-circle" alt="User Image">
+				@if(Auth::guard('bidder')->check())
+				<img src="{{ asset(Auth::guard('bidder')->user()->img ? Auth::guard('bidder')->user()->img : 'admin/dist/img/user2-160x160.jpg')}}" class="img-circle" alt="User Image">
+				@elseif(Auth::guard('coach')->check())
+				<img src="{{ asset(Auth::guard('coach')->user()->img ? Auth::guard('coach')->user()->img : 'admin/dist/img/user2-160x160.jpg')}}" class="img-circle" alt="User Image">
+				@elseif(Auth::guard('physio')->check())
+				<img src="{{ asset(Auth::guard('physio')->user()->img ? Auth::guard('physio')->user()->img : 'admin/dist/img/user2-160x160.jpg')}}" class="img-circle" alt="User Image">
+				@elseif(Auth::guard('player')->check())
+				<img src="{{ asset(Auth::guard('player')->user()->img ? Auth::guard('player')->user()->img : 'admin/dist/img/user2-160x160.jpg')}}" class="img-circle" alt="User Image">
+				@elseif(Auth::guard('subscriber')->check())
+				<img src="{{ asset(Auth::guard('subscriber')->user()->img ? Auth::guard('subscriber')->user()->img : 'admin/dist/img/user2-160x160.jpg')}}" class="img-circle" alt="User Image">
+				@elseif(Auth::guard('trainee')->check())
+				<img src="{{ asset(Auth::guard('trainee')->user()->img ? Auth::guard('trainee')->user()->img : 'admin/dist/img/user2-160x160.jpg')}}" class="img-circle" alt="User Image">
+				@else
+				<img src="{{ asset(Auth::user()->img ? Auth::user()->img : 'admin/dist/img/user2-160x160.jpg')}}" class="img-circle" alt="User Image">
+				@endif
 			</div>
 			<div class="pull-left info">
 				<p>{{ Auth::user()->name }}</p>

@@ -50,7 +50,7 @@
                     @foreach($buytickets as $buyticket)
                     <tr>
                         <td>{{ $buyticket->id }}</td>
-                        <td>{{ $buyticket->subscriber->name }}</td>
+                        <td>{{ $buyticket->subscriber ? $buyticket->subscriber->name : "" }}</td>
                         <td>{{ $buyticket->normal_qty }}</td>
                         <td>{{ $buyticket->classic_qty }}</td>
                         <td>
