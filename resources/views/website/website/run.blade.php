@@ -24,7 +24,7 @@
 							Dhaka Abahani <b>vs</b> Mhamedan
 						</h1>
 						<p>Sep 09, Bongobondhu Stadium Dhaka , BD</p>
-						<a href="#" class="btn-1">Buy Tickets Now</a>
+						<a href="{{ route('ticket') }}" class="btn-1">Buy Tickets Now</a>
 					</div>
 				</div>
 			</div>
@@ -86,236 +86,29 @@
 	<!--Result Slider Start-->
 	<div class="result_slide_wrap">
 		<div class="result_slider">
-			<div>
-				<!--Result Thumb Start-->
-				<div class="kf_result_thumb">
-					<span>Sep 1, 2016 <em>2:15 pm</em></span>
-					<div class="kf_result">
-						<div class="figure pull-left">
-							<figure >
-								<img src="{{ asset('website/extra-images/flag1.png')}}" alt="">
-							</figure>
-							<a href="#">England</a>
-						</div>
-						<span>vs</span>
-						<div class="figure pull-right">
-							<figure >
-								<img src="{{ asset('website/extra-images/flag2.png')}}" alt="">
-							</figure>
-							<a href="#">England</a>
-						</div>
-					</div>
-					<a href="#">Arizona Ground</a>
-				</div>    
-				<!--Result Slider Thumb End--> 
+@foreach(\App\Match::latest()->limit(6)->get() as $match)
+	<div>
+		<div class="kf_result_thumb">
+			<span>{{ Carbon\Carbon::parse($match->date)->format('M d, Y') }} <em>{{ $match->time }} pm</em></span>
+			<div class="kf_result">
+				<div class="figure pull-left">
+					<figure >
+						<img src="{{ asset($match->team->logo )}}" alt="">
+					</figure>
+					<a href="#">{{ $match->team->name }}</a>
+				</div>
+				<span>vs</span>
+				<div class="figure pull-right">
+					<figure >
+						<img src="{{ asset($match->opnentClub->logo)}}" alt="">
+					</figure>
+					<a href="#">{{ $match->opnentClub->name }}</a>
+				</div>
 			</div>
-			<div>
-				<!--Result Thumb Start-->
-				<div class="kf_result_thumb">
-					<span>Sep 1, 2016 <em>2:15 pm</em></span>
-					<div class="kf_result">
-						<div class="figure pull-left">
-							<figure >
-								<img src="{{ asset('website/extra-images/flag1.png')}}" alt="">
-							</figure>
-							<a href="#">England</a>
-						</div>
-						<span>vs</span>
-						<div class="figure pull-right">
-							<figure >
-								<img src="{{ asset('website/extra-images/flag2.png')}}" alt="">
-							</figure>
-							<a href="#">England</a>
-						</div>
-					</div>
-					<a href="#">Arizona Ground</a>
-				</div>    
-				<!--Result Slider Thumb End--> 
-			</div>
-			<div>
-				<!--Result Thumb Start-->
-				<div class="kf_result_thumb">
-					<span>Sep 1, 2016 <em>2:15 pm</em></span>
-					<div class="kf_result">
-						<div class="figure pull-left">
-							<figure >
-								<img src="{{ asset('website/extra-images/flag1.png')}}" alt="">
-							</figure>
-							<a href="#">England</a>
-						</div>
-						<span>vs</span>
-						<div class="figure pull-right">
-							<figure >
-								<img src="{{ asset('website/extra-images/flag2.png')}}" alt="">
-							</figure>
-							<a href="#">England</a>
-						</div>
-					</div>
-					<a href="#">Arizona Ground</a>
-				</div>    
-				<!--Result Slider Thumb End--> 
-			</div>
-			<div>
-				<!--Result Thumb Start-->
-				<div class="kf_result_thumb">
-					<span>Sep 1, 2016 <em>2:15 pm</em></span>
-					<div class="kf_result">
-						<div class="figure pull-left">
-							<figure >
-								<img src="{{ asset('website/extra-images/flag1.png')}}" alt="">
-							</figure>
-							<a href="#">England</a>
-						</div>
-						<span>vs</span>
-						<div class="figure pull-right">
-							<figure >
-								<img src="{{ asset('website/extra-images/flag2.png')}}" alt="">
-							</figure>
-							<a href="#">England</a>
-						</div>
-					</div>
-					<a href="#">Arizona Ground</a>
-				</div>    
-				<!--Result Slider Thumb End--> 
-			</div>
-			<div>
-				<!--Result Thumb Start-->
-				<div class="kf_result_thumb">
-					<span>Sep 1, 2016 <em>2:15 pm</em></span>
-					<div class="kf_result">
-						<div class="figure pull-left">
-							<figure >
-								<img src="{{ asset('website/extra-images/flag1.png')}}" alt="">
-							</figure>
-							<a href="#">England</a>
-						</div>
-						<span>vs</span>
-						<div class="figure pull-right">
-							<figure >
-								<img src="{{ asset('website/extra-images/flag2.png')}}" alt="">
-							</figure>
-							<a href="#">England</a>
-						</div>
-					</div>
-					<a href="#">Arizona Ground</a>
-				</div>    
-				<!--Result Slider Thumb End--> 
-			</div>
-			<div>
-				<!--Result Thumb Start-->
-				<div class="kf_result_thumb">
-					<span>Sep 1, 2016 <em>2:15 pm</em></span>
-					<div class="kf_result">
-						<div class="figure pull-left">
-							<figure >
-								<img src="{{ asset('website/extra-images/flag1.png')}}" alt="">
-							</figure>
-							<a href="#">England</a>
-						</div>
-						<span>vs</span>
-						<div class="figure pull-right">
-							<figure >
-								<img src="{{ asset('website/extra-images/flag2.png')}}" alt="">
-							</figure>
-							<a href="#">England</a>
-						</div>
-					</div>
-					<a href="#">Arizona Ground</a>
-				</div>    
-				<!--Result Slider Thumb End--> 
-			</div>
-			<div>
-				<!--Result Thumb Start-->
-				<div class="kf_result_thumb">
-					<span>Sep 1, 2016 <em>2:15 pm</em></span>
-					<div class="kf_result">
-						<div class="figure pull-left">
-							<figure >
-								<img src="{{ asset('website/extra-images/flag1.png')}}" alt="">
-							</figure>
-							<a href="#">England</a>
-						</div>
-						<span>vs</span>
-						<div class="figure pull-right">
-							<figure >
-								<img src="{{ asset('website/extra-images/flag2.png')}}" alt="">
-							</figure>
-							<a href="#">England</a>
-						</div>
-					</div>
-					<a href="#">Arizona Ground</a>
-				</div>    
-				<!--Result Slider Thumb End--> 
-			</div>
-			<div>
-				<!--Result Thumb Start-->
-				<div class="kf_result_thumb">
-					<span>Sep 1, 2016 <em>2:15 pm</em></span>
-					<div class="kf_result">
-						<div class="figure pull-left">
-							<figure >
-								<img src="{{ asset('website/extra-images/flag1.png')}}" alt="">
-							</figure>
-							<a href="#">England</a>
-						</div>
-						<span>vs</span>
-						<div class="figure pull-right">
-							<figure >
-								<img src="{{ asset('website/extra-images/flag2.png')}}" alt="">
-							</figure>
-							<a href="#">England</a>
-						</div>
-					</div>
-					<a href="#">Arizona Ground</a>
-				</div>    
-				<!--Result Slider Thumb End--> 
-			</div>
-			<div>
-				<!--Result Thumb Start-->
-				<div class="kf_result_thumb">
-					<span>Sep 1, 2016 <em>2:15 pm</em></span>
-					<div class="kf_result">
-						<div class="figure pull-left">
-							<figure >
-								<img src="{{ asset('website/extra-images/flag1.png')}}" alt="">
-							</figure>
-							<a href="#">England</a>
-						</div>
-						<span>vs</span>
-						<div class="figure pull-right">
-							<figure >
-								<img src="{{ asset('website/extra-images/flag2.png')}}" alt="">
-							</figure>
-							<a href="#">England</a>
-						</div>
-					</div>
-					<a href="#">Arizona Ground</a>
-				</div>    
-				<!--Result Slider Thumb End--> 
-			</div>
-			<div>
-				<!--Result Thumb Start-->
-				<div class="kf_result_thumb">
-					<span>Sep 1, 2016 <em>2:15 pm</em></span>
-					<div class="kf_result">
-						<div class="figure pull-left">
-							<figure >
-								<img src="{{ asset('website/extra-images/flag1.png')}}" alt="">
-							</figure>
-							<a href="#">England</a>
-						</div>
-						<span>vs</span>
-						<div class="figure pull-right">
-							<figure >
-								<img src="{{ asset('website/extra-images/flag2.png')}}" alt="">
-							</figure>
-							<a href="#">England</a>
-						</div>
-					</div>
-					<a href="#">Arizona Ground</a>
-				</div>    
-				<!--Result Slider Thumb End--> 
-			</div>
+			<a href="#">{{ $match->matchVanue->name }}</a>
+		</div>    
+	</div>
+@endforeach
 		</div>
 	</div>
 	<!--Result Slider End-->
@@ -561,6 +354,9 @@
                         </div> -->
                         <!--Widget Add 2 End-->
                         <!--Widget Next Match Start-->
+                        @php
+                        	$next_Match = \App\Match::first();
+                        @endphp
                         <div class="widget widget_nextmatch">
                         	<!--Heading 1 Start-->
                         	<h6 class="kf_hd1">
@@ -571,14 +367,14 @@
                         		<!--Widget Next Match Dec Start-->
                         		<div class="nextmatch_dec">
                         			<h6>Laliga Semi Finals at city stadium</h6>
-                        			<span>Friday, 10th Sep, 2016, 16:00GMT</span>
+                        			<span>{{ Carbon\Carbon::parse($next_Match->date)->format('l, jS M, Y,') }} {{ $next_Match->time }}</span>
                         			<div class="match_teams">
                         				<div class="pull-left">
-                        					<a href="{{ route('ticket') }}"><img src="{{ asset('website/images/team_logo11.png')}}" alt=""></a>
+                        					<a href="{{ route('ticket') }}"><img src="{{ asset($next_Match->team->logo )}}" alt=""></a>
                         				</div>
                         				<span>vs</span>
                         				<div class="pull-right">
-                        					<a href="{{ route('ticket') }}"><img src="{{ asset('website/images/team_logo12.png')}}" alt=""></a>
+                        					<a href="{{ route('ticket') }}"><img src="{{ asset($next_Match->opnentClub->logo)}}" alt=""></a>
                         				</div>
                         			</div>
                         			<a class="input-btn" href="{{ route('ticket') }}">Buy Tickets Now</a>
@@ -586,20 +382,16 @@
                         			<!--Widget COUNT Down Start-->
                         			<ul class="kf_countdown countdown">
                         				<li>
-                        					<span class="days">69</span>
-                        					<p class="days_ref">days</p>
+                        					<span class="minutes">{{ date('Y', strtotime($next_Match->date)) }}</span>
+                        					<p class="minutes_ref">Year</p>
                         				</li>
                         				<li>
-                        					<span class="hours">13</span>
-                        					<p class="hours_ref">hours</p>
+                        					<span class="hours">{{ date('m', strtotime($next_Match->date)) }}</span>
+                        					<p class="hours_ref">Month</p>
                         				</li>
                         				<li>
-                        					<span class="minutes">44</span>
-                        					<p class="minutes_ref">mins</p>
-                        				</li>
-                        				<li>
-                        					<span class="seconds last">12</span>
-                        					<p class="seconds_ref">secs</p>
+                        					<span class="days">{{ date('d', strtotime($next_Match->date)) }}</span>
+                        					<p class="days_ref">Date</p>
                         				</li>
                         			</ul>
                         			<!--Widget COUNT Down End-->
