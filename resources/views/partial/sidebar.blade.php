@@ -16,6 +16,24 @@
 		<ul class="sidebar-menu" data-widget="tree">
 			@if(Auth::guard('bidder')->check())
 			<li class="header">BIDDER MAIN NAVIGATION</li>
+			<li>
+				<a href="{{ route('bidder.dashboard')}}">
+					<i class="fa fa-dashboard"></i> 
+					<span>Auction</span>
+				</a>
+			</li>
+			<li>
+				<a href="{{ route('bidder.player.sold')}}">
+					<i class="fa fa-dashboard"></i> 
+					<span>Sold Player</span>
+				</a>
+			</li>
+			<li>
+				<a href="{{ route('bidder.my.player')}}">
+					<i class="fa fa-dashboard"></i> 
+					<span>My Player</span>
+				</a>
+			</li>
 			
 			@elseif(Auth::guard('coach')->check())
 			<li class="header">COACH MAIN NAVIGATION</li>
@@ -95,10 +113,70 @@
 			</li>
 			@elseif(Auth::guard('player')->check())
 			<li class="header">PLAYER MAIN NAVIGATION</li>
+			<li>
+				<a href="{{ route('player.dashboard')}}">
+					<i class="fa fa-dashboard"></i> 
+					<span>Dashboard</span>
+				</a>
+			</li>
+			<li>
+				<a href="{{ route('player.trainee')}}">
+					<i class="fa fa-dashboard"></i> 
+					<span>Trainees</span>
+				</a>
+			</li>
+			<li>
+				<a href="{{ route('player.player')}}">
+					<i class="fa fa-dashboard"></i> 
+					<span>Players</span>
+				</a>
+			</li>
+			<li>
+				<a href="{{ route('player.team')}}">
+					<i class="fa fa-dashboard"></i> 
+					<span>Teams</span>
+				</a>
+			</li>
+			<li>
+				<a href="{{ route('player.turnament')}}">
+					<i class="fa fa-dashboard"></i> 
+					<span>Turnaments</span>
+				</a>
+			</li>
 			@elseif(Auth::guard('subscriber')->check())
 			<li class="header">SUBSCRIBER MAIN NAVIGATION</li>
+			<li>
+				<a href="{{ route('subscriber.dashboard')}}">
+					<i class="fa fa-dashboard"></i> 
+					<span>Order History</span>
+				</a>
+			</li>
 			@elseif(Auth::guard('trainee')->check())
 			<li class="header">TRAINEE MAIN NAVIGATION</li>
+			<li>
+				<a href="{{ route('trainee.dashboard')}}">
+					<i class="fa fa-dashboard"></i> 
+					<span>Dashboard</span>
+				</a>
+			</li>
+			<li>
+				<a href="{{ route('trainee.player')}}">
+					<i class="fa fa-dashboard"></i> 
+					<span>Players</span>
+				</a>
+			</li>
+			<li>
+				<a href="{{ route('trainee.team')}}">
+					<i class="fa fa-dashboard"></i> 
+					<span>Teams</span>
+				</a>
+			</li>
+			<li>
+				<a href="{{ route('trainee.turnament')}}">
+					<i class="fa fa-dashboard"></i> 
+					<span>Turnaments</span>
+				</a>
+			</li>
 			@else
 			<li class="header">ADMIN MAIN NAVIGATION</li>
 			<li>

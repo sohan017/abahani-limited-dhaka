@@ -40,28 +40,24 @@
 							<tr>
 								<th>Player Name</th>
 								<th>Player Price</th>
-								<th>Bidder Name</th>
-								<th>Bidder club</th>
 								<th>Sold Price</th>
 							</tr>
 						</thead>
 						<tbody>
-							@foreach($players as $player)
+                            @foreach($players as $player)
+                            @if($player->playerAuctions->first()->bids->first()->bidder->id == Auth::guard('bidder')->id())
 							<tr>
 								<td>{{ $player->name }}</td>
 								<td>{{ $player->playerAuctions->first()->player_price }} Tk</td>
-								<td>{{ $player->playerAuctions->first()->bids->first()->bidder->name }}</td>
-								<td>{{ $player->playerAuctions->first()->bids->first()->bidder->club_name }}</td>
 								<td>{{ $player->playerAuctions->first()->bids->first()->price }} Tk</td>
-							</tr>
+                            </tr>
+                            @endif
 							@endforeach
 						</tbody>
 						<tfoot>
 							<tr>
 								<th>Player Name</th>
 								<th>Player Price</th>
-								<th>Bidder Name</th>
-								<th>Bidder club</th>
 								<th>Sold Price</th>
 							</tr>
 						</tfoot>

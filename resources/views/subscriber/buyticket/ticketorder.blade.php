@@ -1,90 +1,109 @@
 @extends('layouts.admin')
 
-@section('title') Subscriber Create @endsection
-@section('css') 
+@section('title') Ticket List @endsection
 
+@section("css")
+<link rel="stylesheet" href="{{ asset('admin/bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css') }}">
+<style>
+    img {
+      border-radius: 50%;
+      height: 130px;
+  }
+  button.btn.btn-danger {
+     margin-left: 141px;
+     margin-top: -57px;
+ }
+
+ .btn-group.a {
+     padding: 66px;
+ }
+</style>
 @endsection
-
 
 @section('content')
 
 <section class="content-header">
-	<h1>
-		Subscriber Create
-		<small>it all starts here</small>
-	</h1>
-	<ol class="breadcrumb">
-		<li><a href=""><i class="fa fa-dashboard"></i> Dashbaord</a></li>
-		<li><a href="">Subscriber</a></li>
-		<li class="active">Subscriber Buy Ticket Create</li>
-	</ol>
+	<h1> Show Ticket page</h1>
 </section>
-
-
 <!-- Main content -->
 <section class="content">
-	<div class="row">
-		<!-- left column -->
-		<div class="col-md-1"></div>
-		<div class="col-md-7">
-			<!-- general form elements -->
-			<div class="box box-primary">
-				<div class="box-header with-border">
-					<h3 class="box-title">Payment Information</h3>
-				</div>
-				<!-- /.box-header -->
-				@include("partial.notification")
-				<!-- form start -->
-				<form role="form"  method="post">
-					@csrf
-					<div class="box-body">
-						<small>required = *</small>
-						<div class="form-group">
-							<label for="name"> Name: *</label>
-							<input type="text" class="form-control" id="name" name="name" placeholder="Enter name" value="{{old('name')}}">
-						</div>
 
-						<div class="form-group">
-							<label for="email">Email: *</label>
-							<input type="email" class="form-control" id="email" name="email" placeholder="Enter email" value="{{old('email')}}">
-						</div>
-						<div class="form-group">
-							<label for="address">Address: *</label>
-							<input type="text" class="form-control" id="address" name="address" placeholder="Enter address" value="{{old('address')}}">
-						</div>
-						<div class="form-group">
-							<label for="city">City: </label>
-							<input type="text" class="form-control" id="city" name="city" placeholder="Enter city" value="{{old('city')}}">
-						</div>
-						<div class="form-group">
-							<label for="state">State: *</label>
-							<input type="text" class="form-control" id="state" name="state" placeholder="Enter state" value="{{old('state')}}">
-						</div>
-						
-						<div class="form-group">
-							<label for="contact_num">Contact Number: *</label>
-							<input type="text" class="form-control" id="contact_num" name="contact_num" placeholder="Enter contact number" value="{{old('contact_num')}}">
-						</div>
-						
-					</div>
-					<!-- /.box-body -->
 
-					<div class="box-footer">
-						<button type="submit" class="btn btn-primary">Submit</button>
-					</div>
-				</form>
-			</div>
-		</div>
-		<!-- /.box-body -->
-	</div>
+    <div class="box">
+        <div class="box-header">
+            <h3 class="box-title">Ticket List</h3>
+        </div>
+        <!-- /.box-header -->
+        <div class="box-body">
+            <table id="example1" class="table table-bordered table-striped">
+                <thead>
+                    <tr>
+                        <th>Ticket id</th>
+                        <th>Match name</th>
+                        <th>Ticket Type</th>
+                        <th>Total Sits</th>
+                        <th>Sub-Total price</th>
+                        <th>Total price</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach($tickets as $ticket)
+                    <tr>
+                        <td>{{ $ticket->id }}</td>
+						<td>{{ $ticket->ticket->match->name }}</td>
+						@if($ticket->vip_qty != 0)
+                        <td>Vip Sit</td>
+						<td>{{ $ticket->vip_qty }}</td>
+						@elseif($ticket->classic_qty != 0)
+                        <td>Classic Sit</td>
+						<td>{{ $ticket->classic_qty }}</td>
+						@elseif($ticket->normal_qty != 0)
+                        <td>Normal Sit</td>
+						<td>{{ $ticket->normal_qty }}</td>
+						@endif
+                        <td>{{ $ticket->sub_total_price }} Tk</td>
+                        <td>{{ $ticket->total_price }} TK</td>
+                    </tr>
+                   @endforeach 
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <th>Ticket id</th>
+                        <th>match name</th>
+                        <th>Ticket Type</th>
+                        <th>Total Sits</th>
+                        <th>Sub-Total price</th>
+                        <th>Total price</th>
+                    </tr>
+                </tfoot>
+            </table>
+        </div>
+        <!-- /.box-body -->
+    </div>
 
 </section>
-
 <!-- /.content -->
 
 @endsection
 
-@section('js') 
+
+@section("js")
+
+<!-- DataTables -->
+<script src="{{ asset('admin/bower_components/datatables.net/js/jquery.dataTables.min.js') }}"></script>
+<script src="{{ asset('admin/bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js') }}"></script>
+<script>
+    $(function () {
+        $('#example1').DataTable()
+        $('#example2').DataTable({
+            'paging'      : true,
+            'lengthChange': false,
+            'searching'   : false,
+            'ordering'    : true,
+            'info'        : true,
+            'autoWidth'   : false
+        })
+    })
+</script>
 
 @endsection
-

@@ -16,6 +16,17 @@
                 @if($url == "subscriber")
 
                     <div class="form-group has-feedback">
+                        <input type="text" class="form-control @error('name') is-invalid @enderror" placeholder="Enter you name" name="name" value="{{ old('name') }}" required autocomplete="name">
+                        <span class="glyphicon glyphicon-phone form-control-feedback"></span>
+
+                        @error('name')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
+                    </div>
+
+                    <div class="form-group has-feedback">
                         <input type="text" class="form-control @error('contact_num') is-invalid @enderror" placeholder="Enter Contact Number" name="contact_num" value="{{ old('contact_num') }}" required autocomplete="contact_num">
                         <span class="glyphicon glyphicon-phone form-control-feedback"></span>
 
@@ -49,10 +60,10 @@
                         @enderror
                     </div>
                     <div class="form-group has-feedback">
-                        <input type="email" class="form-control @error('email') is-invalid @enderror" placeholder="Email" name="email" value="{{ old('email') }}" required autocomplete="email">
-                        <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+                        <input type="text" class="form-control @error('contact_num') is-invalid @enderror" placeholder="Full name" name="contact_num" value="{{ old('contact_num') }}" required autocomplete="contact_num" autofocus>
+                        <span class="glyphicon glyphicon-user form-control-feedback"></span>
 
-                        @error('email')
+                        @error('contact_num')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
                             </span>
@@ -114,6 +125,15 @@
                     
 
                 @endif
+                <div class="form-group has-feedback">
+                    <input type="email" class="form-control @error('email') is-invalid @enderror" placeholder="Email" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
+                    <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+                    @error('email')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                    @enderror
+                </div>
                 
                 <div class="form-group has-feedback">
                     <input type="password" class="form-control @error('password') is-invalid @enderror" placeholder="Password"  name="password" required autocomplete="new-password">

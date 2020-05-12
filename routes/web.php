@@ -21,17 +21,9 @@ Route::get('/', function () {
 Route::get('ticket', function () {
 	    return view('website.website.ticket');
 	})->name("ticket");
-
-Route::get('ticketdetail/{id}', 'TicketController@ticketdetail')->name("ticketdetail");
-Route::post('ticket/buy', 'PaymentController@ticketbuy')->name("ticketbuy");
-Route::any('success', 'PaymentController@success')->name("success");
-Route::any('pricing', 'PaymentController@pricing')->name("pricing");
-
-
 Route::get('payment', function () {
 	    return view('website.website.payment');
 	})->name("payment");
-
 
 
 Route::get('/clr', function () {
@@ -41,6 +33,11 @@ Route::get('/clr', function () {
     Artisan::call('view:clear');
     return 'Cleared!';
  });
+
+Route::get('ticketdetail/{id}', 'TicketController@ticketdetail')->name("ticketdetail");
+Route::post('ticket/buy', 'PaymentController@ticketbuy')->name("ticketbuy");
+Route::any('success', 'PaymentController@success')->name("success");
+Route::any('cencel', 'PaymentController@cencel')->name("pricing");
 
 Auth::routes(['register' => false, 'verify' => true]);
 Route::get('/login/bidder', 'Auth\LoginController@showBidderLoginForm')->name("login.bidder");
@@ -100,22 +97,14 @@ Route::middleware("auth")->prefix('admin')->name('admin.')->group(function () {
 Route::middleware("auth:bidder")->namespace('Bidder')->prefix('bidder')->name('bidder.')->group(function () {
 
 	Route::get('/', 'DashboardController@index')->name('dashboard');
+	Route::get('player-auction/{id}', 'DashboardController@playerAuction')->name('player.auction');
+	Route::post('player-auction/{id}/bid', 'DashboardController@playerBid')->name('player.bid');
+	Route::get('my-player', 'DashboardController@myPlayer')->name('my.player');
+	Route::get('sold-player', 'DashboardController@soldPlayer')->name('player.sold');
+
 	Route::get("profile", "ProfileController@edit")->name('profile');
 	Route::post("profile", "ProfileController@update")->name("profile.update");
 	Route::post("profile/change-password", "ProfileController@changePassword")->name("profile.change.password");
-
-	Route::get('bid', function () {
-	    return view('bidder.bid.index');
-	})->name("bid");
-
-	Route::get('auctionplayer', function () {
-	    return view('bidder.auctionplayer.index');
-	})->name("auctionplayer");
-
-	Route::get('soldplayer', function () {
-	    return view('bidder.soldplayer.index');
-	})->name("soldplayer");
-
 });
 
 Route::middleware("auth:coach")->namespace('Coach')->prefix('coach')->name('coach.')->group(function () {
@@ -144,7 +133,6 @@ Route::middleware("auth:physio")->namespace('Physio')->prefix('physio')->name('p
 	Route::get("profile", "ProfileController@edit")->name('profile');
 	Route::post("profile", "ProfileController@update")->name("profile.update");
 	Route::post("profile/change-password", "ProfileController@changePassword")->name("profile.change.password");
-
 
 	Route::get('trainee', "TraineeController@index")->name("trainee");
 	Route::get('traineeprofile/{id}', "TraineeController@show")->name("traineeprofile");
@@ -180,22 +168,16 @@ Route::middleware("auth:player")->namespace('Player')->prefix('player')->name('p
 	})->name("physionote"); 
 
 	Route::get('trainee', "TraineeController@index")->name("trainee");
-	// Route::get('traineeprofile', "TraineeController@show")->name("traineeprofile");
-
+	Route::get('traineeprofile/{id}', "TraineeController@show")->name("traineeprofile");
 
 	Route::get('player', "PlayerController@index")->name("player");
 	Route::get('playerprofile/{id}', "PlayerController@show")->name("playerprofile");
 
-
 	Route::get('team', "TeamController@index")->name("team");
 	Route::get('teamprofile/{id}', "TeamController@show")->name("teamprofile");
 
-	
-
 	Route::get('turnament',"TurnamentController@index")->name("turnament");
 	Route::get('turnamentprofile/{id}',"TurnamentController@show")->name("turnamentprofile");
-
-
 });
 
 Route::middleware(["auth:subscriber"])->namespace('Subscriber')->prefix('subscriber')->name('subscriber.')->group(function () {
@@ -204,13 +186,6 @@ Route::middleware(["auth:subscriber"])->namespace('Subscriber')->prefix('subscri
 	Route::get("profile", "ProfileController@edit")->name('profile');
 	Route::post("profile", "ProfileController@update")->name("profile.update");
 	Route::post("profile/change-password", "ProfileController@changePassword")->name("profile.change.password");
-	// Route::get("buyticket",{return view('buyticket.ticketorder');})->name('buyticket');
-
-	Route::get('buyticket', function () {
-	    return view('subscriber.buyticket.ticketorder');
-	})->name("buyticket");
-
-	// Route::get('/', function () {return view('welcome');})->name("home");
 });
 
 Route::middleware("auth:trainee")->namespace('Trainee')->prefix('trainee')->name('trainee.')->group(function () {
@@ -220,45 +195,18 @@ Route::middleware("auth:trainee")->namespace('Trainee')->prefix('trainee')->name
 	Route::post("profile", "ProfileController@update")->name("profile.update");
 	Route::post("profile/change-password", "ProfileController@changePassword")->name("profile.change.password");
 
+	Route::get('player', "PlayerController@index")->name("player");
+	Route::get('playerprofile/{id}', "PlayerController@show")->name("playerprofile");
+
+	Route::get('team', "TeamController@index")->name("team");
+	Route::get('teamprofile/{id}', "TeamController@show")->name("teamprofile");
+
+	Route::get('turnament',"TurnamentController@index")->name("turnament");
+	Route::get('turnamentprofile/{id}',"TurnamentController@show")->name("turnamentprofile");
+
 	Route::get('physionote', function () {
 	    return view('trainee.physionote.index');
 	})->name("physionote"); 
-
-	Route::get('trainee', function () {
-	    return view('trainee.trainee.index');
-	})->name("trainee");
-
-	Route::get('traineeprofile', function () {
-	    return view('trainee.trainee.trainee-profile');
-	})->name("traineeprofile");
-
-
-	Route::get('player', function () {
-	    return view('trainee.player.index');
-	})->name("player");
-
-	Route::get('playerprofile', function () {
-	    return view('trainee.player.player-profile');
-	})->name("playerprofile");
-
-	Route::get('team', function () {
-	    return view('trainee.team.index');
-	})->name("team");
-
-	Route::get('teamprofile', function () {
-	    return view('trainee.team.team-profile');
-	})->name("teamprofile");
-
-
-	Route::get('turnament', function () {
-	    return view('trainee.turnament.index');
-	})->name("turnament");
-
-
-	Route::get('turnamentprofile', function () {
-	    return view('player.turnament.turnament-profile');
-	})->name("turnamentprofile");
 });
 
-// websire route
 

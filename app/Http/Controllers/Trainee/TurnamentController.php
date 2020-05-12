@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Controllers\Player;
+namespace App\Http\Controllers\Trainee;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
 use App\Turnament;
+use Illuminate\Http\Request;
 
 class TurnamentController extends Controller
 {
