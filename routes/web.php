@@ -18,9 +18,15 @@ Route::get('/', function () {
 	    return view('website.website.run');
 	})->name("home");
 
+
 Route::get('ticket', function () {
 	    return view('website.website.ticket');
 	})->name("ticket");
+
+Route::get('contact-us', function () {
+	    return view('website.website.contact');
+	})->name("contact");
+
 Route::get('payment', function () {
 	    return view('website.website.payment');
 	})->name("payment");

@@ -16,6 +16,7 @@
                  <ul class="nav">
                      <li><a href="{{ url('/') }}">home</a></li>
                     <li><a href="{{ route('ticket') }}">Ticket</a></li>
+                    <li><a href="{{ route('contact') }}">Contact us</a></li>
                      @if(!Misc::is_login())
                      <li>
                          <a href="#">Register</a>

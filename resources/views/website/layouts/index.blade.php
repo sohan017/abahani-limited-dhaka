@@ -73,9 +73,9 @@
     <script src="{{ asset('website/js/jprogress.js')}}" type="text/javascript"></script>
     <!--Pretty Photo JavaScript-->
     <script src="{{ asset('website/js/jquery.prettyPhoto.js')}}"></script>
+    @yield('js')
     <!--Custom JavaScript-->
 	<script src="{{ asset('website/js/custom.js')}}"></script>
-    @yield('js')
   </body>
 
 <!-- Mirrored from kodeforest.net/html/gameplay/ by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 22 Jan 2020 21:03:58 GMT -->
