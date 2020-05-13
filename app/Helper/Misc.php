@@ -2,6 +2,7 @@
 
 namespace App\Helper;
 
+use App\BuyTicket;
 use Illuminate\Support\Facades\Auth;
 
 class Misc 
@@ -17,5 +18,22 @@ class Misc
         elseif(Auth::check()) return true;
         
         return false;
+    }
+
+    public static function totalTicketSold()
+    {
+         $total = array(
+              "ticket" => 0,
+              "price" => 0
+         );
+
+         foreach(BuyTicket::latest()->get() as $ticket){
+              $total["ticket"] += $ticket->vip_qty;
+              $total["ticket"] += $ticket->classic_qty;
+              $total["ticket"] += $ticket->normal_qty;
+              
+              $total["price"] += $ticket->total_price;
+         }
+         return $total;
     }
 }
