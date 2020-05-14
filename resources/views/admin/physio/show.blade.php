@@ -56,14 +56,7 @@
                             <th>Email</th>
                             <td>{{ $physio->email }}</td>
                         </tr>
-                        <tr>
-                            <th>Contact Number</th>
-                            <td>{{ $physio->con_num }}</td>
-                        </tr>
-                        <tr>
-                            <th>Date of birth</th>
-                            <td>{{ $physio->dob }}</td>
-                        </tr>
+                        <!--  -->
                         <tr>
                             <th>Address</th>
                             <td>{{ $physio->address }}</td>
