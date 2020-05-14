@@ -60,8 +60,8 @@
                         @enderror
                     </div>
                     <div class="form-group has-feedback">
-                        <input type="text" class="form-control @error('contact_num') is-invalid @enderror" placeholder="Full name" name="contact_num" value="{{ old('contact_num') }}" required autocomplete="contact_num" autofocus>
-                        <span class="glyphicon glyphicon-user form-control-feedback"></span>
+                        <input type="text" class="form-control @error('contact_num') is-invalid @enderror" placeholder="Contact number" name="contact_num" value="{{ old('contact_num') }}" required autocomplete="contact_num" autofocus>
+                        <span class="glyphicon glyphicon-phone form-control-feedback"></span>
 
                         @error('contact_num')
                             <span class="invalid-feedback" role="alert">
@@ -71,10 +71,26 @@
                     </div>
 
                     <div class="form-group has-feedback">
-                        <input type="text" class="form-control @error('birth_certificet_number') is-invalid @enderror" placeholder="Enter birth certificet number" name="birth_certificet_number" value="{{ old('birth_certificet_number') }}" required autocomplete="birth_certificet_number">
+                        <select name="gender" id="gender" class="form-control @error('birth_certificet_number') is-invalid @enderror" required>
+                            <option value="male" {{ old('gender') == "male" ? "selected" : "" }}>Male</option>
+                            <option value="female" {{ old('gender') == "female" ? "selected" : "" }}>Female</option>
+                            <option value="other" {{ old('gender') == "other" ? "selected" : "" }}>Other</option>
+                        </select>
+                        
                         <span class="glyphicon glyphicon-credit-card form-control-feedback"></span>
 
-                        @error('birth_certificet_number')
+                        @error('gender')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
+                    </div>
+
+                    <div class="form-group has-feedback">
+                        <input type="text" class="form-control @error('address') is-invalid @enderror" placeholder="address" name="address" value="{{ old('address') }}" required autocomplete="address">
+                        <span class="glyphicon glyphicon-user form-control-feedback"></span>
+
+                        @error('address')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
                             </span>

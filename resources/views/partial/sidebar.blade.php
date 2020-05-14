@@ -165,6 +165,12 @@
 					<span>Order History</span>
 				</a>
 			</li>
+			<li>
+				<a href="{{ route('subscriber.discounts')}}">
+					<i class="fa fa-dashboard"></i> 
+					<span>Discoounts</span>
+				</a>
+			</li>
 			@elseif(Auth::guard('trainee')->check())
 			<li class="header">TRAINEE MAIN NAVIGATION</li>
 			<li>

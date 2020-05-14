@@ -189,6 +189,7 @@ Route::middleware("auth:player")->namespace('Player')->prefix('player')->name('p
 Route::middleware(["auth:subscriber"])->namespace('Subscriber')->prefix('subscriber')->name('subscriber.')->group(function () {
 
 	Route::get('/', 'DashboardController@index')->name('dashboard');
+	Route::get('discounts', 'DashboardController@discounts')->name('discounts');
 	Route::get("profile", "ProfileController@edit")->name('profile');
 	Route::post("profile", "ProfileController@update")->name("profile.update");
 	Route::post("profile/change-password", "ProfileController@changePassword")->name("profile.change.password");

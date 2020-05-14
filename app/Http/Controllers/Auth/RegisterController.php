@@ -84,6 +84,8 @@ class RegisterController extends Controller
 
     protected function createSubscriber(Request $request)
     {
+
+        $this->redirectTo = "/register/subscriber";
         $request->validate([
             'contact_num' => ['required', 'string', 'max:20'],
             'address' => ['required', 'string', 'max:255'],
@@ -111,15 +113,16 @@ class RegisterController extends Controller
 
     protected function createTrainee(Request $request)
     {
+        $this->redirectTo = "/register/trainee";
         $request->validate([
+            'name' => ['required', 'string', 'max:255'],
             'contact_num' => ['required', 'string', 'max:20'],
-            'dob' => ['required', 'string', 'max:50'],
+            'gender' => ['required', 'string', 'max:255'],
             'address' => ['required', 'string', 'max:255'],
             'city' => ['required', 'string', 'max:255'],
             'state' => ['required', 'string', 'max:255'],
             'country' => ['required', 'string', 'max:255'],
-            'gender' => ['required', 'string', 'max:255'],
-            'name' => ['required', 'string', 'max:255'],
+            'dob' => ['required', 'string', 'max:50'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:trainees'],
             'password' => ['required', 'string', 'min:6', 'confirmed'],
         ]);
