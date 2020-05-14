@@ -18,7 +18,8 @@ class PlayerfitnessController extends Controller
      */
     public function index()
     {
-        $players = player::latest()->get();
+        $physio = Physio::find(Auth::guard("physio")->id());
+        $players = $physio->team ? $physio->team->players : collect();
         return view("physio.player-fitness.index", compact('players'));
     }
 

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Physio;
 use App\Http\Controllers\Controller;
 use App\Trainee;
 use App\TraineeFitness;
+use App\Physio;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -17,6 +18,8 @@ class TraineefitnessController extends Controller
      */
     public function index()
     {
+        dd(Physio::with('trainee_fitness')->find(Auth::guard("physio")->id()));
+        $physio = Physio::find(Auth::guard("physio")->id());
         $trainees = Trainee::latest()->get();
         return view("physio.trainee-fitness.index", compact('trainees'));
     }

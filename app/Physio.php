@@ -36,4 +36,9 @@ class Physio extends Authenticatable
     {
     	return $this->hasMany(PlayerFitness::class);
     }
+
+    public function trainee_fitness()
+    {
+        return $this->belongsToMany(Trainee::class, 'trainee_fitnesses', 'physio_id', 'trainee_id');
+    }
 }
